@@ -1,15 +1,20 @@
 package courseScraper;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import courseStructures.Course;
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +22,14 @@ import java.util.List;
 public class mainScraper {
 
     public static void main(String[] args) {
-//        navigateToCourseList();
+        System.out.println("Hello");
+        ArrayList<Course> courses = getCourseList();
+
+        for (Course course : courses)
+        {
+            System.out.println(course.getCode() + " | " + course.getName());
+//            System.out.println(course.getDescription());
+        }
     }
 
     public static void momentaryPause(int val)
@@ -159,11 +171,19 @@ public class mainScraper {
         driver2.close();
     }
 
-//    public ArrayList<Course> getCourseList()
-//    {
-//        Gson gson = new Gson();
-//        ArrayList<Course> returnable = gson.fromJson();
-//    }
+    public static ArrayList<Course> getCourseList()
+    {
+        Gson gson = new Gson();
+        String jsonString="";
+        try {
+            jsonString = FileUtils.readFileToString(new File("courses.json"), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Type listType = new TypeToken<ArrayList<Course>>(){}.getType();
+        ArrayList<Course> returnable = gson.fromJson(jsonString, listType);
+        return returnable;
+    }
 
 
 }
