@@ -13,6 +13,7 @@ public class Course {
         this.code = code;
         this.name = name;
         this.description = description;
+        this.prerequisites = new ArrayList<Course>();
     }
 
     public String getCode() {
