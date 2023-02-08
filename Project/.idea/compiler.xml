@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <bytecodeTargetLevel target="17" />
+    <bytecodeTargetLevel target="17">
+      <module name="YuLookUp" target="14" />
+      <module name="YuLookUp.main" target="14" />
+      <module name="YuLookUp.test" target="14" />
+    </bytecodeTargetLevel>
   </component>
 </project>
