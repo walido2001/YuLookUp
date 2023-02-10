@@ -22,7 +22,8 @@ import java.util.List;
 public class mainScraper {
 
     public static void main(String[] args) {
-        System.out.println("Hello");
+//        System.out.println("Hello");
+//        navigateToCourseList();
         ArrayList<Course> courses = getCourseList();
 
         for (Course course : courses)
@@ -30,6 +31,8 @@ public class mainScraper {
             System.out.println(course.getCode() + " | " + course.getName());
 //            System.out.println(course.getDescription());
         }
+
+
     }
 
     public static void momentaryPause(int val)
@@ -130,9 +133,9 @@ public class mainScraper {
                         WebElement courseDescriptionElement = driver2.findElement(By.xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/p[3]"));
 
                         String combined = courseCodeTitle.getText();
-                        String name = combined.split("  ")[0];
+                        String code = combined.split("  ")[0];
                         String description = courseDescriptionElement.getText();
-                        String code = combined.split("  ")[1];
+                        String name = combined.split("  ")[1];
 
                         Course newCourse = new Course(code, name, description);
                         courseList.add(newCourse);
