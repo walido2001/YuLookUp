@@ -22,14 +22,17 @@ import java.util.List;
 public class mainScraper {
 
     public static void main(String[] args) {
-        System.out.println("Hello");
-        ArrayList<Course> courses = getCourseList();
+//        System.out.println("Hello");
+        navigateToCourseList();
+//        ArrayList<Course> courses = getCourseList();
+//
+//        for (Course course : courses)
+//        {
+//            System.out.println(course.getCode() + " | " + course.getName());
+////            System.out.println(course.getDescription());
+//        }
 
-        for (Course course : courses)
-        {
-            System.out.println(course.getCode() + " | " + course.getName());
-//            System.out.println(course.getDescription());
-        }
+
     }
 
     public static void momentaryPause(int val)
@@ -52,10 +55,12 @@ public class mainScraper {
         WebDriver driver2 = new ChromeDriver();
         driver2.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
 
-        String[] FacultyXpaths = {"/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[7]",
-                "/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[8]",
-                "/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[9]",
-                "/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[10]"};
+//        String[] FacultyXpaths = {"/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[7]",
+//                "/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[8]",
+//                "/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[9]",
+//                "/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[10]"};
+        String[] FacultyXpaths = {"/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[8]",
+        "/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[2]/td[2]/select/option[11]"};
         String courseCampusSelectOption = "/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/table/tbody/tr[4]/td[2]/select[2]/option[3]";
         String courseSearchButtonClick = "/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/form/input";
 
@@ -71,8 +76,8 @@ public class mainScraper {
 
             WebElement facultySelect = driver.findElement(By.xpath(xpath));
             facultySelect.click();
-
-            momentaryPause(500);
+            System.out.println("Looking at Faculty: " + xpath);
+//            momentaryPause(500);
 
             WebElement subjectForm = driver.findElement(By.id("subjectSelect"));
             int subjectFormOptionsCount = subjectForm.findElements(By.tagName("option")).size();
@@ -97,7 +102,7 @@ public class mainScraper {
                     WebElement courseCampusSelect = driver.findElement(By.xpath(courseCampusSelectOption));
                     courseCampusSelect.click();
 
-                    momentaryPause(1000);
+//                    momentaryPause(1000);
 
                     WebElement searchCourseButton = driver.findElement(By.xpath(courseSearchButtonClick));
                     searchCourseButton.click();
@@ -117,7 +122,9 @@ public class mainScraper {
                         }
                         catch (Exception e)
                         {
-                            System.out.println(e.getMessage());
+//                            System.out.println(e.getMessage());
+                            System.out.println("Error encountered getting course link");
+
                         }
 
                     }
@@ -130,9 +137,9 @@ public class mainScraper {
                         WebElement courseDescriptionElement = driver2.findElement(By.xpath("/html/body/table/tbody/tr[2]/td[2]/table/tbody/tr[2]/td/table/tbody/tr/td/p[3]"));
 
                         String combined = courseCodeTitle.getText();
-                        String name = combined.split("  ")[0];
+                        String code = combined.split("  ")[0];
                         String description = courseDescriptionElement.getText();
-                        String code = combined.split("  ")[1];
+                        String name = combined.split("  ")[1];
 
                         Course newCourse = new Course(code, name, description);
                         courseList.add(newCourse);
@@ -140,7 +147,7 @@ public class mainScraper {
                 }
                 catch (Exception e)
                 {
-                    System.out.println(e.getMessage());
+                    System.out.println("Error encountered while navigating a course");
                 }
             }
 
@@ -149,22 +156,18 @@ public class mainScraper {
             {
                 System.out.println(course.getCode() + " | " + course.getName());
             }
-            momentaryPause(1000);
-
-            GsonBuilder builder = new GsonBuilder();
-            Gson gson = builder.create();
-            try
-            {
-                FileWriter writer = new FileWriter("courses.json");
-                writer.write(gson.toJson(courseList));
-                writer.close();
-            }
-            catch (Exception e)
-            {
-                System.out.println(e.getMessage());
-            }
-
-            break;
+        }
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        try
+        {
+            FileWriter writer = new FileWriter("courses.json");
+            writer.write(gson.toJson(courseList));
+            writer.close();
+        }
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
         }
 
         driver.close();
