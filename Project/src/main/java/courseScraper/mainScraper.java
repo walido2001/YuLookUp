@@ -21,6 +21,8 @@ import java.util.List;
 
 public class mainScraper {
 
+
+
     public static void main(String[] args) {
 //        System.out.println("Hello");
         navigateToCourseList();

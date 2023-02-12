@@ -3,25 +3,64 @@ package courseStructures;
 import java.util.ArrayList;
 
 public class Course {
+    private String full_code;
     private String code;
     private String name;
+    private int level;
+    private String faculty;
+    private double credit;
     private String description;
     private ArrayList<Course> prerequisites;
 
     public Course(String code, String name, String description)
     {
-        this.code = code;
+        this.full_code = code;
+        this.code = code.substring(3, code.length()-5); //setCode(code);
         this.name = name;
+        this.level = Character.getNumericValue(code.charAt(code.length()-9)); //setLevel(code);
+        this.faculty = code.substring(0, 2); //setFalulty(code);
+        this.credit = Character.getNumericValue(code.charAt(code.length()-4)); //setCredit(code);
         this.description = description;
         this.prerequisites = new ArrayList<Course>();
     }
 
+    public String getFullCode() {
+        return full_code;
+    }
+
     public String getCode() {
-        return code;
+        return this.code;
     }
 
     public void setCode(String code) {
-        this.code = code;
+        this.code = code.substring(3, code.length()-5);
+    }
+
+    public int getLevel(){
+        return level;
+    }
+
+    public void setLevel(String code){
+        char c = code.charAt(code.length()-10);
+        int level = Character.getNumericValue(c);
+        this.level = level;
+    }
+
+    public String getFaculty(){
+        return faculty;
+    }
+
+    public void setFalulty(String code) {
+        this.faculty = code.substring(0, 2);
+    }
+
+    public double getCredit() {
+        return credit;
+    }
+
+    public void setCredit(String code) {
+        char c = code.charAt(code.length()-2);
+        this.credit = Character.getNumericValue(c);
     }
 
     public String getName() {
