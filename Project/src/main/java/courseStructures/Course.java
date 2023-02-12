@@ -12,14 +12,13 @@ public class Course {
     private String description;
     private ArrayList<Course> prerequisites;
 
-    public Course(String code, String name, String description)
-    {
+    public Course(String code, String name, String description) {
         this.full_code = code;
-        this.code = code.substring(3, code.length()-5); //setCode(code);
+        this.code = code.substring(3, code.length()-5);
         this.name = name;
-        this.level = Character.getNumericValue(code.charAt(code.length()-9)); //setLevel(code);
-        this.faculty = code.substring(0, 2); //setFalulty(code);
-        this.credit = Character.getNumericValue(code.charAt(code.length()-4)); //setCredit(code);
+        this.level = Character.getNumericValue(code.charAt(code.length()-9));
+        this.faculty = code.substring(0, 2);
+        this.credit = Character.getNumericValue(code.charAt(code.length()-4));
         this.description = description;
         this.prerequisites = new ArrayList<Course>();
     }

@@ -1,20 +1,18 @@
 package gui;
 
-import courseScraper.mainScraper;
 import courseStructures.Course;
 import courseStructures.Major;
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
 
 
 // following the tutorial found at https://docs.oracle.com/javafx/2/layout/LayoutSample.java.html
@@ -41,7 +39,7 @@ public class CourseTableGui extends Application{
         HBox hbox = majorsBar();
         border.setTop(hbox);
         setCourseColumnsView();
-        primaryStage.setScene(new Scene(border, 500, 400));
+        primaryStage.setScene(new Scene(border, 1000, 700));
         primaryStage.show();
     }
 
@@ -59,7 +57,27 @@ public class CourseTableGui extends Application{
             columns.setHgrow(colYear3, Priority.ALWAYS);
             columns.setHgrow(colYear4, Priority.ALWAYS);
             border.setCenter(columns);
+            columns.setMinWidth(600);
         }
+    }
+
+    public void courseDescription(Course course){
+        border.setRight(null);
+        VBox description = new VBox();
+        description.setPadding(new Insets(5, 15, 5, 15));
+        description.setSpacing(5);
+
+        Text title = new Text(course.getName());
+        title.setFont(Font.font("Verdana", FontWeight.BOLD, 20));
+        Text credit = new Text("Credits: "+ course.getCredit());
+        credit.setFont(Font.font(14));
+        Text summary = new Text(course.getDescription());
+        summary.setFont(Font.font(12));
+        Text prereqs = new Text("Prerequisites: "+course.getPrerequisites().toString());
+        prereqs.setFont(Font.font(12));
+
+        description.getChildren().addAll(title, credit, summary, prereqs);
+        border.setRight(description);
     }
 
     public VBox yearCol(int year, ArrayList<Button> buttons){
@@ -70,6 +88,9 @@ public class CourseTableGui extends Application{
         for(Course course : major.getMajor().get(year)){
             Button btn = createButton(course.getCode(), 100, 30);
             buttons.add(btn);
+            btn.setOnAction(event -> {
+                courseDescription(course);
+            });
             stack.getChildren().add(btn);
         }
         return stack;
@@ -77,8 +98,6 @@ public class CourseTableGui extends Application{
 
     public Button createButton(String text, double width, double height){
         Button btn = new Button(text);
-//        btn.setMinWidth(width);
-//        btn.setMinHeight(height);
         btn.setMaxWidth(Double.MAX_VALUE);
         return btn;
     }
@@ -127,14 +146,14 @@ public class CourseTableGui extends Application{
             setCourseColumnsView();
         });
 
-        Button aeroMajButton = new Button("Space");
-        aeroMajButton.setPrefSize(100, 20);
-        aeroMajButton.setOnAction(event -> {
+        Button spaceMajButton = new Button("Space");
+        spaceMajButton.setPrefSize(100, 20);
+        spaceMajButton.setOnAction(event -> {
             major = new Major("Space Engineering");
             setCourseColumnsView();
         });
 
-        hbox.getChildren().addAll(civilMajButton, mechMajButton, elecMajButton, aeroMajButton, softMajButton);
+        hbox.getChildren().addAll(civilMajButton, compMajButton, elecMajButton, mechMajButton, softMajButton, spaceMajButton);
 
         return hbox;
     }
