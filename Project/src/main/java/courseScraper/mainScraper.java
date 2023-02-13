@@ -18,6 +18,10 @@ import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+
+import static courseSearch.courseSearchMethods.searchCourse;
+import static java.lang.Character.compare;
 
 public class mainScraper {
 
@@ -25,15 +29,29 @@ public class mainScraper {
 
     public static void main(String[] args) {
 //        System.out.println("Hello");
-        navigateToCourseList();
+//        navigateToCourseList();
 //        ArrayList<Course> courses = getCourseList();
-//
-//        for (Course course : courses)
+//        System.out.println(courses.get(0).getCode());
+//        ArrayList<Course> coursePrereqs = courses.get(0).getCoursePrerequisites();
+//        System.out.println("Course Name Prerequisites: ");
+//        for (String courseName: courses.get(0).getPrerequisites())
 //        {
-//            System.out.println(course.getCode() + " | " + course.getName());
-////            System.out.println(course.getDescription());
+//            System.out.println(courseName);
+//        }
+//        System.out.println("Course Prerequisites: ");
+//        for (Course course : coursePrereqs)
+//        {
+//            System.out.println(course.toString());
 //        }
 
+//        String search = "ENG";
+//        ArrayList<Course> results = searchCourse(search, getCourseList());
+//
+//        System.out.println("Search Result: " + search);
+//        for (Course course: results)
+//        {
+//            System.out.println("-> " + course.getCode() + " | " + course.getName());
+//        }
 
     }
 
@@ -143,7 +161,7 @@ public class mainScraper {
                         String description = courseDescriptionElement.getText();
                         String name = combined.split("  ")[1];
 
-                        Course newCourse = new Course(code, name, description);
+                        Course newCourse = new Course(code, name, description, setPrerequisites(description, name));
                         courseList.add(newCourse);
                     }
                 }
@@ -190,5 +208,61 @@ public class mainScraper {
         return returnable;
     }
 
+    private static ArrayList<Integer> findInstancesOf(char target, String sample)
+    {
+        ArrayList<Integer> returnable = new ArrayList<>();
+        for (int i = 0 ; i < sample.length(); i++)
+        {
+            char curr = sample.charAt(i);
+            if (compare(curr, target) == 0)
+            {
+                returnable.add(i);
+            }
+        }
+        return returnable;
+    }
+
+    public static ArrayList<String> setPrerequisites(String desc, String name)
+    {
+        int PrereqIndex = desc.toLowerCase(Locale.ROOT).lastIndexOf("prerequisite");
+        int CourseExclIndex = desc.toLowerCase(Locale.ROOT).lastIndexOf("course credit exclusion");
+        System.out.println("Course: "+name+" | PrereqIndex: " + PrereqIndex + " | CourseExclIndex: " + CourseExclIndex);
+        ArrayList<String> returnable = new ArrayList<>();
+
+        boolean go1 = true;
+        if (CourseExclIndex != -1 && PrereqIndex >= CourseExclIndex)
+        {
+            System.out.println("Course: " + name + " | Has exclusions before Prereqs");
+            go1 = false;
+        }
+
+        if (PrereqIndex != -1)
+        {
+            if (go1)
+            {
+                String prereqDesc = (CourseExclIndex == -1) ? desc.substring(PrereqIndex) : desc.substring(PrereqIndex, CourseExclIndex);
+
+                ArrayList<Integer> slashCourseLocations = findInstancesOf('/', prereqDesc);
+
+                for (int i : slashCourseLocations)
+                {
+                    if (i >= 2 && i <= prereqDesc.length()-14)
+                    {
+                        String courseName = prereqDesc.substring(i-2, i) + prereqDesc.substring(i, i+14);
+                        returnable.add(courseName);
+                    }
+                    else {
+                        System.out.println("Index out of bounds for course " + name);
+                    }
+                }
+            }
+        }
+        else
+        {
+            return new ArrayList<String>();
+        }
+
+        return returnable;
+    }
 
 }
