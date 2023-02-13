@@ -10,7 +10,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import javax.crypto.spec.PSource;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -21,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static courseSearch.courseSearchMethods.searchCourse;
 import static java.lang.Character.compare;
 
 public class mainScraper {
@@ -29,19 +29,34 @@ public class mainScraper {
 //        System.out.println("Hello");
 //        navigateToCourseList();
         ArrayList<Course> courses = getCourseList();
-        System.out.println(courses.get(0).getCode());
-        ArrayList<Course> coursePrereqs = courses.get(0).getCoursePrerequisites();
-        System.out.println("Course Name Prerequisites: ");
-        for (String courseName: courses.get(0).getPrerequisites())
+        for (int i = 0 ; i <= 50; i += 10)
         {
-            System.out.println(courseName);
+            Course curr = courses.get(i);
+            System.out.println("Original Description: " + curr.getDescription());
+            System.out.println("Cut Description: " + curr.getDescriptionWithoutPrereq());
+            System.out.println("\n");
         }
-        System.out.println("Course Prerequisites: ");
-        for (Course course : coursePrereqs)
-        {
-            System.out.println(course.toString());
-        }
-
+//        System.out.println(courses.get(0).getCode());
+//        ArrayList<Course> coursePrereqs = courses.get(0).getCoursePrerequisites();
+//        System.out.println("Course Name Prerequisites: ");
+//        for (String courseName: courses.get(0).getPrerequisites())
+//        {
+//            System.out.println(courseName);
+//        }
+//        System.out.println("Course Prerequisites: ");
+//        for (Course course : coursePrereqs)
+//        {
+//            System.out.println(course.toString());
+//        }
+//        ArrayList<Course> courses = getCourseList();
+//        String search = "ENG 1102";
+//        ArrayList<Course> results = searchCourse(search, getCourseList());
+//
+//        System.out.println("Search Result: " + search);
+//        for (Course course: results)
+//        {
+//            System.out.println("-> " + course.getCode() + " | " + course.getName());
+//        }
 
     }
 
