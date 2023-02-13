@@ -1,22 +1,41 @@
 package GUIControllers;
 
 import courseStructures.Course;
+import gui.CourseTableGui;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import static courseScraper.mainScraper.getCourseList;
 import static courseSearch.courseSearchMethods.searchCourse;
 
 public class courseSearchController {
+
     public TextField userSearch;
     public Label courseCodeLabel;
     public Label courseNameLabel;
     public Label courseDescriptionLabel;
     public ListView<Course> resultsList;
+    public Button majorsListViewButton;
+
+    public void handleMajorsListViewButton(ActionEvent e){
+        CourseTableGui majorsListObject = new CourseTableGui();
+        Scene majorsListScene = majorsListObject.getMajorsListScene();
+
+        Stage newStage = new Stage();
+        newStage.setScene(majorsListScene);
+        newStage.show();
+    }
 
     public void handleSearchClick(ActionEvent e)
     {
@@ -39,4 +58,6 @@ public class courseSearchController {
             courseDescriptionLabel.setText(newVal.getDescription());
         });
     }
+
+
 }

@@ -26,13 +26,14 @@
             </Label>
          </children>
       </VBox>
-      <Button layoutX="478.0" layoutY="69.0" mnemonicParsing="false" onAction="#handleSearchClick" prefHeight="26.0" prefWidth="77.0" text="Search" />
-      <TextField fx:id="userSearch" layoutX="154.0" layoutY="69.0" prefHeight="26.0" prefWidth="324.0" />
+      <Button layoutX="423.0" layoutY="69.0" mnemonicParsing="false" onAction="#handleSearchClick" prefHeight="26.0" prefWidth="77.0" text="Search" />
+      <TextField fx:id="userSearch" layoutX="99.0" layoutY="69.0" prefHeight="26.0" prefWidth="324.0" />
       <Label fx:id="yuLabel" layoutX="236.0" layoutY="7.0" text="YULookUp" textFill="WHITE">
          <font>
             <Font name="Impact" size="50.0" />
          </font>
       </Label>
       <ListView fx:id="resultsList" layoutX="13.0" layoutY="123.0" prefHeight="489.0" prefWidth="324.0" />
+      <Button fx:id="majorsListViewButton" layoutX="500.0" layoutY="69.0" mnemonicParsing="false" onAction="#handleMajorsListViewButton" prefHeight="26.0" prefWidth="106.0" text="Majors List View" />
    </children>
 </AnchorPane>

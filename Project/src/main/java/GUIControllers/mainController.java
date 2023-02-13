@@ -12,26 +12,27 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class mainController extends Application { // controller class
-
+    private Stage window;
     //    public AnchorPane paneMain;
-//    public AnchorPane paneRed;
+    //    public AnchorPane paneRed;
     public TextField searchBar;
     public Button homeSearchButton;
-//    public Label yuLabel;
+    //    public Label yuLabel;
 
     @Override
     public void start(Stage stage) throws IOException {
+        this.window = stage;
 
-//        Parent homeView = FXMLLoader.load(getClass().getClassLoader().getResource("searchGUI.fxml"));
-//        Parent searchView = FXMLLoader.load(getClass().getClassLoader().getResource("2ndCourseSearchView.fxml"));
-        CourseTableGui majorsListObject = new CourseTableGui();
-        Scene majorsListScene = majorsListObject.getMajorsListScene();
+        //        Parent homeView = FXMLLoader.load(getClass().getClassLoader().getResource("searchGUI.fxml"));
+        Parent searchView = FXMLLoader.load(getClass().getClassLoader().getResource("2ndCourseSearchView.fxml"));
+        //        CourseTableGui majorsListObject = new CourseTableGui();
+        //        Scene majorsListScene = majorsListObject.getMajorsListScene();
 
-//        Scene homeViewScene = new Scene(homeView);
-//        Scene searchViewScene = new Scene();
+        Scene homeViewScene = new Scene(searchView);
+        //        Scene searchViewScene = new Scene();
 
         stage.setTitle("YULookUp");
-        stage.setScene(majorsListScene);
+        stage.setScene(homeViewScene);
         stage.show();
 
     }
@@ -39,5 +40,4 @@ public class mainController extends Application { // controller class
     public static void main(String[] args) { // main class
         launch(args);
     }
-
 }
