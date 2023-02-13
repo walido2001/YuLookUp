@@ -80,7 +80,7 @@ public class Course {
 
     public String toString()
     {
-        return this.code + this.name;
+        return this.code + " | "+ this.name;
     }
 //    public ArrayList<Course> getPrerequisites() {
 //        return prerequisites;

@@ -28,3 +28,5 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+mainClassName = "GUIControllers.courseSearchController"
