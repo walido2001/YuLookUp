@@ -4,6 +4,7 @@ import courseStructures.Course;
 import courseStructures.Major;
 import javafx.application.Application;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -41,12 +42,13 @@ public class CourseTableGui extends Application{
         HBox hbox = majorsBar();
         border.setTop(hbox);
         setCourseColumnsView();
-        primaryStage.setScene(new Scene(border, 1200, 820));
+        primaryStage.setScene(new Scene(border, 1150, 820));
         primaryStage.show();
     }
 
     public void setCourseColumnsView(){
         border.setCenter(null);
+        border.setRight(null);
         if(major!=null) {
             HBox columns = new HBox();
             VBox colYear1 = yearCol(1, buttonsList);
@@ -66,23 +68,24 @@ public class CourseTableGui extends Application{
         description.setSpacing(5);
 
         Text title = new Text(course.getName());
-        title.setFont(Font.font("Verdana", FontWeight.LIGHT, 25));
+        title.setFont(Font.font("Arial", FontWeight.LIGHT, 28));
         title.setWrappingWidth(400);
 
         Text credit = new Text("Credits: "+ getCredit(course));
-        credit.setFont(Font.font(14));
+        credit.setFont(Font.font(16));
 
         Text summary = new Text(course.getDescription());
-        summary.setFont(Font.font("Helvetica", FontWeight.LIGHT,13));
+        summary.setFont(Font.font("Arial", FontWeight.LIGHT,14)); //"Helvetica"
         summary.setWrappingWidth(400);
 
         Text prereqs = new Text("Prerequisites: "+course.getPrerequisites().toString());
-        prereqs.setFont(Font.font("Helvetica", FontWeight.LIGHT,13));
+        prereqs.setFont(Font.font("Arial", FontWeight.LIGHT,14));
         prereqs.setWrappingWidth(400);
 
         description.getChildren().addAll(title, credit, summary, prereqs);
         frame.getChildren().addAll(description);
         frame.setHgrow(description, Priority.ALWAYS);
+        description.setStyle("-fx-background-color: #FFFFFF");
         border.setRight(description);
     }
 
@@ -92,7 +95,7 @@ public class CourseTableGui extends Application{
         stack.setSpacing(5);
 
         for(Course course : major.getMajor().get(year)){
-            Button btn = createButton(getShortCode(course), 150, 40);
+            Button btn = createButton(getShortCode(course), 150, 35);
             btn.setStyle("-fx-background-color: #FFFFFF");
             buttons.put(getShortCode(course), btn);
             btn.setOnAction(event -> {
@@ -123,6 +126,7 @@ public class CourseTableGui extends Application{
 
     public Button createButton(String text, double width, double height){
         Button btn = new Button(text);
+        btn.setStyle("-fx-background-color: #FFFFFF");
         btn.setPrefSize(width, height);
         return btn;
     }
@@ -140,56 +144,44 @@ public class CourseTableGui extends Application{
         text.setFont(Font.font("Verdana", FontWeight.NORMAL, 14));
         text.setFill(Color.WHITE);
 
-        Button civilMajButton = new Button("Civil");
-        civilMajButton.setStyle("-fx-background-color: #FFFFFF");
-        civilMajButton.setPrefSize(100, 20);
+        Button civilMajButton = createButton("Civil", 100, 20);
         civilMajButton.setOnAction(event -> {
             major = new Major("Civil Engineering");
             setCourseColumnsView();
         });
 
-        Button compMajButton = new Button("Computer");
-        compMajButton.setStyle("-fx-background-color: #FFFFFF");
-        compMajButton.setPrefSize(100, 20);
+        Button compMajButton = createButton("Computer", 100, 20);
         compMajButton.setOnAction(event -> {
             major = new Major("Computer Engineering");
             setCourseColumnsView();
         });
 
-        Button elecMajButton = new Button("Electrical");
-        elecMajButton.setStyle("-fx-background-color: #FFFFFF");
-        elecMajButton.setPrefSize(100, 20);
+        Button elecMajButton = createButton("Electrical", 100, 20);
         elecMajButton.setOnAction(event -> {
             major = new Major("Electrical Engineering");
             setCourseColumnsView();
         });
 
-        Button mechMajButton = new Button("Mechanical");
-        mechMajButton.setStyle("-fx-background-color: #FFFFFF");
-        mechMajButton.setPrefSize(100, 20);
+        Button mechMajButton = createButton("Mechanical", 100, 20);
         mechMajButton.setOnAction(event -> {
             major = new Major("Mechanical Engineering");
             setCourseColumnsView();
         });
 
-        Button softMajButton = new Button("Software");
-        softMajButton.setStyle("-fx-background-color: #FFFFFF");
-        softMajButton.setPrefSize(100, 20);
-        softMajButton.setOnAction(event -> {
-            major = new Major("Software Engineering");
-            setCourseColumnsView();
-        });
+//        Button softMajButton = createButton("Software", 100, 20);
+//        softMajButton.setOnAction(event -> {
+//            major = new Major("Software Engineering");
+//            setCourseColumnsView();
+//        });
+//
+//        Button spaceMajButton = createButton("Space", 100, 20);
+//        spaceMajButton.setOnAction(event -> {
+//            major = new Major("Space Engineering");
+//            setCourseColumnsView();
+//        });
 
-        Button spaceMajButton = new Button("Space");
-        spaceMajButton.setStyle("-fx-background-color: #FFFFFF");
-        spaceMajButton.setPrefSize(100, 20);
-        spaceMajButton.setOnAction(event -> {
-            major = new Major("Space Engineering");
-            setCourseColumnsView();
-        });
-
-        hbox.getChildren().addAll(text, civilMajButton, compMajButton, elecMajButton, mechMajButton, softMajButton, spaceMajButton);
-
+        hbox.getChildren().addAll(text, civilMajButton, compMajButton, elecMajButton, mechMajButton/*, softMajButton, spaceMajButton*/);
+        hbox.setAlignment(Pos.BASELINE_CENTER);
         return hbox;
     }
 
