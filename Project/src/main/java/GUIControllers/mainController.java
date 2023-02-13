@@ -1,5 +1,6 @@
 package GUIControllers;
 
+import gui.CourseTableGui;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -22,13 +23,15 @@ public class mainController extends Application { // controller class
     public void start(Stage stage) throws IOException {
 
 //        Parent homeView = FXMLLoader.load(getClass().getClassLoader().getResource("searchGUI.fxml"));
-        Parent searchView = FXMLLoader.load(getClass().getClassLoader().getResource("2ndCourseSearchView.fxml"));
+//        Parent searchView = FXMLLoader.load(getClass().getClassLoader().getResource("2ndCourseSearchView.fxml"));
+        CourseTableGui majorsListObject = new CourseTableGui();
+        Scene majorsListScene = majorsListObject.getMajorsListScene();
 
 //        Scene homeViewScene = new Scene(homeView);
-        Scene searchViewScene = new Scene(searchView);
+//        Scene searchViewScene = new Scene();
 
         stage.setTitle("YULookUp");
-        stage.setScene(searchViewScene);
+        stage.setScene(majorsListScene);
         stage.show();
 
     }

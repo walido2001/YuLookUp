@@ -21,7 +21,7 @@ import java.util.Map;
 // following the tutorial found at https://docs.oracle.com/javafx/2/layout/LayoutSample.java.html
 
 
-public class CourseTableGui extends Application{
+public class CourseTableGui{
     Major major;
     BorderPane border;
 
@@ -30,20 +30,21 @@ public class CourseTableGui extends Application{
 //    HashMap<String, Button> buttonsYear3 = new HashMap<>();
 //    HashMap<String, Button> buttonsYear4 = new HashMap<>();
 
-    public static void main(String[] args) {
-        launch(args);
-    }
+//    public static void main(String[] args) {
+//        launch(args);
+//    }
 
-    @Override
-    public void start(Stage primaryStage) {
-        primaryStage.setTitle("Courses By Major");
+
+    public Scene getMajorsListScene() {
+//        primaryStage.setTitle("Courses By Major");
 
         border = new BorderPane();
         HBox hbox = majorsBar();
         border.setTop(hbox);
         setCourseColumnsView();
-        primaryStage.setScene(new Scene(border, 1150, 820));
-        primaryStage.show();
+        return new Scene (border, 1150, 820);
+//        primaryStage.setScene(new Scene(border, 1150, 820));
+//        primaryStage.show();
     }
 
     public void setCourseColumnsView(){
