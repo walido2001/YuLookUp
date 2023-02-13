@@ -28,7 +28,14 @@ public class mainScraper {
     public static void main(String[] args) {
 //        System.out.println("Hello");
 //        navigateToCourseList();
-//        ArrayList<Course> courses = getCourseList();
+        ArrayList<Course> courses = getCourseList();
+        for (int i = 0 ; i <= 50; i += 10)
+        {
+            Course curr = courses.get(i);
+            System.out.println("Original Description: " + curr.getDescription());
+            System.out.println("Cut Description: " + curr.getDescriptionWithoutPrereq());
+            System.out.println("\n");
+        }
 //        System.out.println(courses.get(0).getCode());
 //        ArrayList<Course> coursePrereqs = courses.get(0).getCoursePrerequisites();
 //        System.out.println("Course Name Prerequisites: ");
@@ -41,8 +48,8 @@ public class mainScraper {
 //        {
 //            System.out.println(course.toString());
 //        }
-
-//        String search = "ENG";
+//        ArrayList<Course> courses = getCourseList();
+//        String search = "ENG 1102";
 //        ArrayList<Course> results = searchCourse(search, getCourseList());
 //
 //        System.out.println("Search Result: " + search);
