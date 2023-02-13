@@ -1497,12 +1497,12 @@
     "description": "Introductory tensor algebra and calculus. Stress and strain analysis. Symmetry of stress tensor, equilibrium conditions. Lagrangian and Eulerian descriptions of strain. Physical interpretation of stress, strain and strain rate tensors. Conservation laws in continua. Consistency and compatibility considerations. Constitutive relations. Prerequisites: LE/EECS 1011 3.00 or LE/EECS1541 3.00; SC/MATH 1025 3.00; SC/MATH 2015 3.00; SC/PHYS 1012 3.00; or SC/PHYS 1010 6.00; or SC/PHYS1801 3.00; or any of the following acceptable substitutes: SC/ISCI 1310 6.00; or SC/ISCI 1302 3.00; or any of the following with a minimum grade of C in each course: SC/PHYS 1410 6.00; SC/PHYS 1420 6.00; SC/PHYS 1412 3.00; SC/PHYS 1422 3.00.",
     "prerequisites": [
       "LE/EECS 1011 3.00",
-      "LE/EECS1541 3.00",
+      "LE/EECS 1541 3.00",
       "SC/MATH 1025 3.00",
       "SC/MATH 2015 3.00",
       "SC/PHYS 1012 3.00",
       "SC/PHYS 1010 6.00",
-      "SC/PHYS1801 3.00",
+      "SC/PHYS 1801 3.00",
       "SC/ISCI 1310 6.00",
       "SC/ISCI 1302 3.00",
       "SC/PHYS 1410 6.00",
@@ -1652,7 +1652,7 @@
     "description": "Functional models of measurements. Statistical testing and assessment of observations, parameters and mathematical models. Optimal design. Generalized least squares problems with constraints and singularities, step-by-step procedures. Application in control networks. Prerequisites: LE/ESSE 2640 3.00, LE/ESSE3610 3.00; or permission of instructor",
     "prerequisites": [
       "LE/ESSE 2640 3.00",
-      "LE/ESSE3610 3.00"
+      "LE/ESSE 3610 3.00"
     ]
   },
   {

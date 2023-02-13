@@ -269,10 +269,12 @@ public class Major {
 
         for(int i = 0; i<majorCourses.length; i++){
             Course course = courses.get(majorCourses[i]);
-            if(course.getLevel()==1) level1.add(course);
-            else if(course.getLevel()==2) level2.add(course);
-            else if(course.getLevel()==3) level3.add(course);
-            else if(course.getLevel()==4) level4.add(course);
+            if(course!=null) {
+                if (getCourseLevel(course) == 1) level1.add(course);
+                else if (getCourseLevel(course) == 2) level2.add(course);
+                else if (getCourseLevel(course) == 3) level3.add(course);
+                else if (getCourseLevel(course) == 4) level4.add(course);
+            }
         }
         major.put(1, level1);
         major.put(2, level2);
@@ -288,11 +290,20 @@ public class Major {
     public void setAllCourses(ArrayList<Course> list){
         LinkedHashMap<String, Course> hashMap = new LinkedHashMap<>();
         for (int i= 0; i<list.size(); i++)
-            hashMap.put((list.get(i).getCode()), list.get(i));
+            hashMap.put(getShortCode(list.get(i)), list.get(i));
         this.courses = hashMap;
     }
 
     public String getName() {
         return name;
+    }
+
+    private String getShortCode(Course course) {
+        return course.getCode().substring(3, course.getCode().length()-5);
+    }
+
+    private int getCourseLevel(Course course){
+        String code = getShortCode(course);
+        return Character.getNumericValue(code.charAt(code.length()-4));
     }
 }
