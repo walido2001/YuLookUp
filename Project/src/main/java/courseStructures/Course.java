@@ -1,6 +1,7 @@
 package courseStructures;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import static courseScraper.mainScraper.getCourseList;
 import static courseScraper.mainScraper.setPrerequisites;
@@ -46,6 +47,13 @@ public class Course {
         return description;
     }
 
+    public String getDescriptionWithoutPrereq()
+    {
+        int PrereqIndex = this.description.toLowerCase(Locale.ROOT).lastIndexOf("prerequisite");
+
+        return (PrereqIndex != -1) ? this.description.substring(0, PrereqIndex) : this.description;
+    }
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -72,7 +80,7 @@ public class Course {
 
     public String toString()
     {
-        return this.code + this.name;
+        return this.code + " | "+ this.name;
     }
 //    public ArrayList<Course> getPrerequisites() {
 //        return prerequisites;
