@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import static courseSearch.courseSearchMethods.searchCourse;
 import static java.lang.Character.compare;
 
 public class mainScraper {
@@ -27,20 +28,28 @@ public class mainScraper {
     public static void main(String[] args) {
 //        System.out.println("Hello");
 //        navigateToCourseList();
-        ArrayList<Course> courses = getCourseList();
-        System.out.println(courses.get(0).getCode());
-        ArrayList<Course> coursePrereqs = courses.get(0).getCoursePrerequisites();
-        System.out.println("Course Name Prerequisites: ");
-        for (String courseName: courses.get(0).getPrerequisites())
-        {
-            System.out.println(courseName);
-        }
-        System.out.println("Course Prerequisites: ");
-        for (Course course : coursePrereqs)
-        {
-            System.out.println(course.toString());
-        }
+//        ArrayList<Course> courses = getCourseList();
+//        System.out.println(courses.get(0).getCode());
+//        ArrayList<Course> coursePrereqs = courses.get(0).getCoursePrerequisites();
+//        System.out.println("Course Name Prerequisites: ");
+//        for (String courseName: courses.get(0).getPrerequisites())
+//        {
+//            System.out.println(courseName);
+//        }
+//        System.out.println("Course Prerequisites: ");
+//        for (Course course : coursePrereqs)
+//        {
+//            System.out.println(course.toString());
+//        }
 
+//        String search = "ENG";
+//        ArrayList<Course> results = searchCourse(search, getCourseList());
+//
+//        System.out.println("Search Result: " + search);
+//        for (Course course: results)
+//        {
+//            System.out.println("-> " + course.getCode() + " | " + course.getName());
+//        }
 
     }
 
