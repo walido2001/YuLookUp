@@ -6,22 +6,15 @@ import static courseScraper.mainScraper.getCourseList;
 import static courseScraper.mainScraper.setPrerequisites;
 
 public class Course {
-    private String full_code;
     private String code;
     private String name;
-    private int level;
-    private String faculty;
-    private double credit;
     private String description;
     private ArrayList<String> prerequisites;
 
-    public Course(String code, String name, String description) {
-        this.full_code = code;
-        this.code = code.substring(3, code.length()-5);
+    public Course(String code, String name, String description)
+    {
+        this.code = code;
         this.name = name;
-        this.level = Character.getNumericValue(code.charAt(code.length()-9));
-        this.faculty = code.substring(0, 2);
-        this.credit = Character.getNumericValue(code.charAt(code.length()-4));
         this.description = description;
     }
 
@@ -33,43 +26,12 @@ public class Course {
         this.prerequisites = prerequisites;
     }
 
-    public String getFullCode() {
-        return full_code;
-    }
-
     public String getCode() {
-        return this.code;
+        return code;
     }
 
     public void setCode(String code) {
-        this.code = code.substring(3, code.length()-5);
-    }
-
-    public int getLevel(){
-        return level;
-    }
-
-    public void setLevel(String code){
-        char c = code.charAt(code.length()-10);
-        int level = Character.getNumericValue(c);
-        this.level = level;
-    }
-
-    public String getFaculty(){
-        return faculty;
-    }
-
-    public void setFalulty(String code) {
-        this.faculty = code.substring(0, 2);
-    }
-
-    public double getCredit() {
-        return credit;
-    }
-
-    public void setCredit(String code) {
-        char c = code.charAt(code.length()-2);
-        this.credit = Character.getNumericValue(c);
+        this.code = code;
     }
 
     public String getName() {
