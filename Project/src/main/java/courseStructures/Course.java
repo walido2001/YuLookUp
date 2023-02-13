@@ -2,18 +2,28 @@ package courseStructures;
 
 import java.util.ArrayList;
 
+import static courseScraper.mainScraper.getCourseList;
+import static courseScraper.mainScraper.setPrerequisites;
+
 public class Course {
     private String code;
     private String name;
     private String description;
-    private ArrayList<Course> prerequisites;
+    private ArrayList<String> prerequisites;
 
     public Course(String code, String name, String description)
     {
         this.code = code;
         this.name = name;
         this.description = description;
-        this.prerequisites = new ArrayList<Course>();
+    }
+
+    public Course(String code, String name, String description, ArrayList<String> prerequisites)
+    {
+        this.code = code;
+        this.name = name;
+        this.description = description;
+        this.prerequisites = prerequisites;
     }
 
     public String getCode() {
@@ -40,21 +50,45 @@ public class Course {
         this.description = description;
     }
 
-    public ArrayList<Course> getPrerequisites() {
-        return prerequisites;
-    }
-
-    public void addPrerequisite(Course prereq)
+    public ArrayList<String> getPrerequisites()
     {
-        if (!prerequisites.contains(prereq))
-        {
-            this.prerequisites.add(prereq);
-        }
+        return this.prerequisites;
     }
 
-    public void setPrerequisites(ArrayList<Course> prerequisites) {
-        this.prerequisites = prerequisites;
+    public ArrayList<Course> getCoursePrerequisites()
+    {
+        ArrayList<Course> returnable = new ArrayList<>();
+        ArrayList<Course> courseList = getCourseList();
+        for (Course course : courseList)
+        {
+            if (this.prerequisites.contains(course.getCode()))
+            {
+                returnable.add(course);
+            }
+        }
+
+        return returnable;
     }
+
+    public String toString()
+    {
+        return this.code + this.name;
+    }
+//    public ArrayList<Course> getPrerequisites() {
+//        return prerequisites;
+//    }
+
+//    public void addPrerequisite(Course prereq)
+//    {
+//        if (!prerequisites.contains(prereq))
+//        {
+//            this.prerequisites.add(prereq);
+//        }
+//    }
+
+//    public void setPrerequisites(ArrayList<Course> prerequisites) {
+//        this.prerequisites = prerequisites;
+//    }
 
 
 
