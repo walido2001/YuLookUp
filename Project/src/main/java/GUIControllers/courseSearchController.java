@@ -29,12 +29,17 @@ public class courseSearchController {
     public ListView<Course> resultsList;
     public Button majorsListViewButton;
 
+    public void setUserSearch(String s) {
+        userSearch.setText(s);
+    }
+
     public void handleMajorsListViewButton(ActionEvent e){
         CourseTableGui majorsListObject = new CourseTableGui();
         Scene majorsListScene = majorsListObject.getMajorsListScene();
 
         Stage newStage = new Stage();
         newStage.setScene(majorsListScene);
+        newStage.setTitle("Courses by Major");
         newStage.show();
     }
 

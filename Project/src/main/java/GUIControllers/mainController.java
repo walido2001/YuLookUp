@@ -1,6 +1,5 @@
 package GUIControllers;
 
-import gui.CourseTableGui;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +16,10 @@ public class mainController extends Application { // controller class
     private Stage window;
     public TextField searchBar;
     public Button homeSearchButton;
+    public String searchInput;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -32,14 +35,18 @@ public class mainController extends Application { // controller class
 
     }
 
-    private Stage stage;
-    private Scene scene;
-    private Parent root;
+    public String getUserInput() {
+        return searchBar.getText();
+    }
 
     public void getSearchResultsScene(ActionEvent event) throws IOException {
+        searchInput = getUserInput();
         root = FXMLLoader.load(getClass().getClassLoader().getResource("searchReturnGUI.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
+
+       // courseSearchController var = new courseSearchController();
+       // var.setUserSearch(searchInput);
         stage.setScene(scene);
         stage.show();
     }
