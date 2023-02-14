@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="paneMain" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIControllers.mainController">
+<AnchorPane fx:id="paneMain" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIControllers.mainController">
    <children>
       <AnchorPane fx:id="paneRed" layoutX="22.0" layoutY="19.0" prefHeight="366.0" prefWidth="555.0" style="-fx-background-color: #e31837;">
          <children>
-            <Label fx:id="yuLabel" layoutX="178.0" layoutY="62.0" text="YULookUp" textFill="WHITE">
-               <font>
-                  <Font name="Impact" size="50.0" />
-               </font>
-            </Label>
-            <TextField fx:id="searchBar" layoutX="13.0" layoutY="171.0" prefHeight="26.0" prefWidth="459.0" promptText="enter your search here..." />
-            <Button fx:id="homeSearchButton" layoutX="475.0" layoutY="170.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="search" />
+            <ImageView fitHeight="415.0" fitWidth="401.0" layoutX="77.0" layoutY="-69.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@yulookuplogo.png" />
+               </image>
+            </ImageView>
+            <TextField fx:id="searchBar" layoutX="13.0" layoutY="256.0" prefHeight="26.0" prefWidth="459.0" promptText="enter your search here..." />
+            <Button fx:id="homeSearchButton" layoutX="475.0" layoutY="255.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="search" />
          </children>
       </AnchorPane>
    </children>
