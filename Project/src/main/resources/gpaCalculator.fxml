@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpaCalculator.gpaCalculator">
+<AnchorPane prefHeight="405.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpaCalculator.gpaCalculator">
    <children>
       <Button layoutX="29.0" layoutY="353.0" mnemonicParsing="false" onAction="#CalculateGPA" text="Calculate" />
       <Label layoutX="37.0" layoutY="61.0" prefHeight="34.0" prefWidth="48.0" text="Number" />
@@ -27,26 +27,30 @@
       <TextField layoutX="37.0" layoutY="200.0" prefHeight="25.0" prefWidth="48.0" />
       <TextField layoutX="37.0" layoutY="252.0" prefHeight="25.0" prefWidth="48.0" />
       <TextField layoutX="37.0" layoutY="297.0" prefHeight="25.0" prefWidth="48.0" />
-      <TextField layoutX="287.0" layoutY="99.0" prefHeight="25.0" prefWidth="48.0" />
-      <TextField layoutX="287.0" layoutY="151.0" prefHeight="25.0" prefWidth="48.0" />
-      <TextField layoutX="287.0" layoutY="200.0" prefHeight="25.0" prefWidth="48.0" />
-      <TextField layoutX="287.0" layoutY="252.0" prefHeight="25.0" prefWidth="48.0" />
-      <TextField layoutX="287.0" layoutY="297.0" prefHeight="25.0" prefWidth="48.0" />
-      <TextField layoutX="558.0" layoutY="99.0" prefHeight="25.0" prefWidth="65.0" />
-      <TextField layoutX="558.0" layoutY="151.0" prefHeight="25.0" prefWidth="65.0" />
-      <TextField layoutX="558.0" layoutY="200.0" prefHeight="25.0" prefWidth="65.0" />
-      <TextField layoutX="556.0" layoutY="252.0" prefHeight="25.0" prefWidth="65.0" />
-      <TextField layoutX="558.0" layoutY="297.0" prefHeight="25.0" prefWidth="65.0" />
+      <TextField fx:id="textFieldCW1" layoutX="287.0" layoutY="99.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="textFieldCW2" layoutX="287.0" layoutY="151.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="textFieldCW3" layoutX="287.0" layoutY="200.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="textFieldCW4" layoutX="287.0" layoutY="252.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="textFieldCW5" layoutX="287.0" layoutY="297.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField fx:id="textFieldGPV2" editable="false" layoutX="558.0" layoutY="151.0" prefHeight="25.0" prefWidth="65.0" />
+      <TextField fx:id="textFieldGPV3" editable="false" layoutX="558.0" layoutY="200.0" prefHeight="25.0" prefWidth="65.0" />
+      <TextField fx:id="textFieldGPV4" editable="false" layoutX="558.0" layoutY="252.0" prefHeight="25.0" prefWidth="65.0" />
+      <TextField fx:id="textFieldGPV5" editable="false" layoutX="558.0" layoutY="297.0" prefHeight="25.0" prefWidth="65.0" />
       <Label alignment="CENTER" layoutY="-1.0" prefHeight="41.0" prefWidth="674.0" style="-fx-background-color: e31837;" text="GPA Calculator" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
       <Button layoutX="115.0" layoutY="353.0" mnemonicParsing="false" onAction="#CalculateGPA" text="Clear" />
-      <ChoiceBox fx:id="choicebox1" layoutX="374.0" layoutY="99.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choicebox1" layoutX="374.0" layoutY="99.0" onDragDone="#GradeToGradePoint" onMouseDragEntered="#GradeToGradePoint" onMouseDragReleased="#GradeToGradePoint" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox2" layoutX="374.0" layoutY="151.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox3" layoutX="374.0" layoutY="200.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox4" layoutX="374.0" layoutY="252.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox5" layoutX="374.0" layoutY="297.0" prefWidth="150.0" />
+      <TextField fx:id="textFieldGPV1" editable="false" layoutX="558.0" layoutY="99.0" prefHeight="25.0" prefWidth="65.0" />
+      <TextField fx:id="textFieldGPA" editable="false" layoutX="550.0" layoutY="354.0" prefHeight="25.0" prefWidth="74.0" />
+      <Label alignment="CENTER" layoutX="507.0" layoutY="349.0" prefHeight="34.0" prefWidth="43.0" text="GPA" />
+      <TextField fx:id="textFieldCredits" editable="false" layoutX="433.0" layoutY="354.0" prefHeight="25.0" prefWidth="74.0" />
+      <Label alignment="CENTER" layoutX="359.0" layoutY="350.0" prefHeight="34.0" prefWidth="74.0" text="Total Credits" />
    </children>
 </AnchorPane>
