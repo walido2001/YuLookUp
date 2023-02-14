@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="paneMain" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="courseStructures.ui.searchGUI">
+<AnchorPane fx:id="paneMain" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIControllers.mainController">
    <children>
       <AnchorPane fx:id="paneRed" layoutX="22.0" layoutY="19.0" prefHeight="366.0" prefWidth="555.0" style="-fx-background-color: #e31837;">
          <children>
@@ -15,8 +15,8 @@
                   <Font name="Impact" size="50.0" />
                </font>
             </Label>
-            <TextField fx:id="searchBar" layoutX="13.0" layoutY="171.0" onAction="#getUserInput" prefHeight="26.0" prefWidth="459.0" promptText="enter your search here..." />
-            <Button fx:id="searchButton" layoutX="475.0" layoutY="170.0" mnemonicParsing="false" onAction="#getUserInput" prefHeight="26.0" prefWidth="66.0" text="search" />
+            <TextField fx:id="searchBar" layoutX="13.0" layoutY="171.0" prefHeight="26.0" prefWidth="459.0" promptText="enter your search here..." />
+            <Button fx:id="homeSearchButton" layoutX="475.0" layoutY="170.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="search" />
          </children>
       </AnchorPane>
    </children>

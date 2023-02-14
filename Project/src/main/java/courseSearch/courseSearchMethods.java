@@ -13,7 +13,7 @@ public class courseSearchMethods {
         HashSet<Course> checkedCourses = new HashSet<>();
 
         for (int i = search.length(); i >= search.length()/3; i--) {
-            String curr = search.substring(0, i);
+            String curr = search.substring(0, i).toLowerCase();
             for (Course course: directory)
             {
                 String name = course.getName();
@@ -21,7 +21,7 @@ public class courseSearchMethods {
 
                 if (!checkedCourses.contains(course))
                 {
-                    if (name.contains(curr) || code.contains(curr))
+                    if (name.toLowerCase().contains(curr) || code.toLowerCase().contains(curr))
                     {
                         returnable.add(course);
                         checkedCourses.add(course);
