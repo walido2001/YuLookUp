@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
+import javax.swing.*;
 import java.io.IOException;
 
 public class mainController extends Application { // controller class
@@ -50,7 +51,6 @@ public class mainController extends Application { // controller class
         stage.setScene(scene);
         stage.show();
     }
-
 
     public static void main(String[] args) { // main class
         launch(args);

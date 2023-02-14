@@ -48,5 +48,6 @@
       <ChoiceBox fx:id="choicebox3" layoutX="374.0" layoutY="200.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox4" layoutX="374.0" layoutY="252.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox5" layoutX="374.0" layoutY="297.0" prefWidth="150.0" />
+      <Button fx:id="backButton" layoutX="11.0" layoutY="7.0" mnemonicParsing="false" onAction="#getSearchResultsScene" prefHeight="9.0" prefWidth="48.0" text="Back" />
    </children>
 </AnchorPane>

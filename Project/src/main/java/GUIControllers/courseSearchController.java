@@ -4,6 +4,7 @@ import courseStructures.Course;
 import gui.CourseTableGui;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -28,6 +29,10 @@ public class courseSearchController {
     public Label courseDescriptionLabel;
     public ListView<Course> resultsList;
     public Button majorsListViewButton;
+    public Button gpaButton;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
 
     public void setUserSearch(String s) {
         userSearch.setText(s);
@@ -65,5 +70,11 @@ public class courseSearchController {
         });
     }
 
-
+    public void getGPACalculatorScene(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getClassLoader().getResource("gpaCalculator.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }
