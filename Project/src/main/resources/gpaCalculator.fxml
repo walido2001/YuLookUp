@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpaCalculator.gpaCalculator">
+   <children>
+      <Button layoutX="29.0" layoutY="353.0" mnemonicParsing="false" onAction="#CalculateGPA" text="Calculate" />
+      <Label layoutX="37.0" layoutY="61.0" prefHeight="34.0" prefWidth="48.0" text="Number" />
+      <Label layoutX="137.0" layoutY="61.0" prefHeight="34.0" prefWidth="72.0" text="Course Name" />
+      <Label layoutX="274.0" layoutY="61.0" prefHeight="34.0" prefWidth="74.0" text="Credit Weight" />
+      <Label layoutX="433.0" layoutY="61.0" prefHeight="34.0" prefWidth="32.0" text="Grade" />
+      <Label layoutX="535.0" layoutY="61.0" prefHeight="34.0" prefWidth="112.0" text="Grade Point Value" />
+      <ScrollBar layoutX="652.0" layoutY="84.0" orientation="VERTICAL" prefHeight="282.0" prefWidth="15.0" />
+      <TextField layoutX="105.0" layoutY="99.0" />
+      <TextField layoutX="105.0" layoutY="151.0" />
+      <TextField layoutX="105.0" layoutY="200.0" />
+      <TextField layoutX="105.0" layoutY="252.0" />
+      <TextField layoutX="105.0" layoutY="297.0" />
+      <TextField layoutX="37.0" layoutY="99.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="37.0" layoutY="151.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="37.0" layoutY="200.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="37.0" layoutY="252.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="37.0" layoutY="297.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="287.0" layoutY="99.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="287.0" layoutY="151.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="287.0" layoutY="200.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="287.0" layoutY="252.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="287.0" layoutY="297.0" prefHeight="25.0" prefWidth="48.0" />
+      <TextField layoutX="558.0" layoutY="99.0" prefHeight="25.0" prefWidth="65.0" />
+      <TextField layoutX="558.0" layoutY="151.0" prefHeight="25.0" prefWidth="65.0" />
+      <TextField layoutX="558.0" layoutY="200.0" prefHeight="25.0" prefWidth="65.0" />
+      <TextField layoutX="556.0" layoutY="252.0" prefHeight="25.0" prefWidth="65.0" />
+      <TextField layoutX="558.0" layoutY="297.0" prefHeight="25.0" prefWidth="65.0" />
+      <Label alignment="CENTER" layoutY="-1.0" prefHeight="41.0" prefWidth="674.0" style="-fx-background-color: e31837;" text="GPA Calculator" textAlignment="JUSTIFY" textFill="WHITE">
+         <font>
+            <Font size="22.0" />
+         </font>
+      </Label>
+      <Button layoutX="115.0" layoutY="353.0" mnemonicParsing="false" onAction="#CalculateGPA" text="Clear" />
+      <ChoiceBox fx:id="choicebox1" layoutX="374.0" layoutY="99.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choicebox2" layoutX="374.0" layoutY="151.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choicebox3" layoutX="374.0" layoutY="200.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choicebox4" layoutX="374.0" layoutY="252.0" prefWidth="150.0" />
+      <ChoiceBox fx:id="choicebox5" layoutX="374.0" layoutY="297.0" prefWidth="150.0" />
+   </children>
+</AnchorPane>
