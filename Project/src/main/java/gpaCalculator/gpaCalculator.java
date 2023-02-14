@@ -170,6 +170,7 @@ public class gpaCalculator implements Initializable {
         textFieldGPA.setText(""+gpa);
         textFieldCredits.setText(""+TotalCredits);
 
+
     }
 
 
