@@ -4,7 +4,10 @@ import courseStructures.Course;
 import gui.CourseTableGui;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,13 +30,33 @@ public class courseSearchController {
     public Label courseDescriptionLabel;
     public ListView<Course> resultsList;
     public Button majorsListViewButton;
+    public Button gpaButton;
+    private Stage stage;
+    private Scene scene;
+    private Parent root;
+
+    /**
+     * This method sets the text in the searchbar to the string s
+     * and calls the handleSearchClick method to search what is
+     * inputted as a string and return results
+     * @param s The string that is inputted into the searchbar
+     */
+    public void setUserSearch(String s) {
+        userSearch.setText(s);
+        ActionEvent event = new ActionEvent();
+        handleSearchClick(event);
+    }
 
     public void handleMajorsListViewButton(ActionEvent e){
         CourseTableGui majorsListObject = new CourseTableGui();
         Scene majorsListScene = majorsListObject.getMajorsListScene();
 
+        Stage stage = (Stage) majorsListViewButton.getScene().getWindow();
+        stage.close(); // closes previous stage
+
         Stage newStage = new Stage();
         newStage.setScene(majorsListScene);
+        newStage.setTitle("YULookUp");
         newStage.show();
     }
 
@@ -59,5 +82,12 @@ public class courseSearchController {
         });
     }
 
-
+    // This method switches to the gpa calculator scene
+    public void getGPACalculatorScene(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(getClass().getClassLoader().getResource("gpaCalculator.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 }

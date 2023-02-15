@@ -1,10 +1,13 @@
 package gui;
 
+import GUIControllers.courseSearchController;
 import courseStructures.Course;
 import courseStructures.Major;
-import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.*;
@@ -14,6 +17,7 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,6 +28,9 @@ import java.util.Map;
 public class CourseTableGui{
     Major major;
     BorderPane border;
+    Parent root;
+    Stage stage;
+    Scene scene;
 
     HashMap<String, Button> buttonsList = new HashMap<>();
 //    HashMap<String, Button> buttonsYear2 = new HashMap<>();
@@ -145,6 +152,25 @@ public class CourseTableGui{
         text.setFont(Font.font("Verdana", FontWeight.NORMAL, 14));
         text.setFill(Color.WHITE);
 
+        Button Back = createButton("Back", 60, 20);
+        Back.setOnAction(event -> {
+            FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("searchReturnGUI.fxml"));
+            try {
+                root = loader.load();
+                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.centerOnScreen();
+
+                courseSearchController var = loader.getController();
+                var.setUserSearch("");
+
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
         Button civilMajButton = createButton("Civil", 100, 20);
         civilMajButton.setOnAction(event -> {
             major = new Major("Civil Engineering");
@@ -181,7 +207,7 @@ public class CourseTableGui{
 //            setCourseColumnsView();
 //        });
 
-        hbox.getChildren().addAll(text, civilMajButton, compMajButton, elecMajButton, mechMajButton/*, softMajButton, spaceMajButton*/);
+        hbox.getChildren().addAll(Back, text, civilMajButton, compMajButton, elecMajButton, mechMajButton/*, softMajButton, spaceMajButton*/);
         hbox.setAlignment(Pos.BASELINE_CENTER);
         return hbox;
     }

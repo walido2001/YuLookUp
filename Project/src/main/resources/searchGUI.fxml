@@ -15,8 +15,8 @@
                   <Image url="@yulookuplogo.png" />
                </image>
             </ImageView>
-            <TextField fx:id="searchBar" layoutX="13.0" layoutY="256.0" prefHeight="26.0" prefWidth="459.0" promptText="enter your search here..." />
-            <Button fx:id="homeSearchButton" layoutX="475.0" layoutY="255.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" text="search" />
+            <TextField fx:id="searchBar" layoutX="13.0" layoutY="256.0" onAction="#getSearchResultsScene" prefHeight="26.0" prefWidth="459.0" promptText="enter your search here..." />
+            <Button fx:id="homeSearchButton" layoutX="475.0" layoutY="255.0" mnemonicParsing="false" onAction="#getSearchResultsScene" prefHeight="26.0" prefWidth="66.0" text="Search" />
          </children>
       </AnchorPane>
    </children>
