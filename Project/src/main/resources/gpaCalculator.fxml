@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="405.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gpaCalculator.gpaCalculator">
+<AnchorPane prefHeight="405.0" prefWidth="674.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PresentationLayer.gpaCalculatorController">
    <children>
       <Button layoutX="29.0" layoutY="353.0" mnemonicParsing="false" onAction="#CalculateGPA" text="Calculate" />
       <Label layoutX="37.0" layoutY="61.0" prefHeight="34.0" prefWidth="48.0" text="Number" />

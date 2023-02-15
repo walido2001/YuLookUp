@@ -1,10 +1,17 @@
 package courseSearchTest;
 
+import BusinessLogicLayer.Course;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+
+import static PersistenceLayer.mainScraper.getCourseList;
 
 class courseSearchMethodsTest {
     @Test
-    public void
+    public void courseSearch_test_01()
+    {
+        ArrayList<Course> courseList = getCourseList();
+
+    }
 }

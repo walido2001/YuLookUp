@@ -1,8 +1,7 @@
-package gui;
+package PresentationLayer;
 
-import GUIControllers.courseSearchController;
-import courseStructures.Course;
-import courseStructures.Major;
+import BusinessLogicLayer.Course;
+import BusinessLogicLayer.Major;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -25,7 +24,7 @@ import java.util.Map;
 // following the tutorial found at https://docs.oracle.com/javafx/2/layout/LayoutSample.java.html
 
 
-public class CourseTableGui{
+public class courseTableGUIController {
     Major major;
     BorderPane border;
     Parent root;

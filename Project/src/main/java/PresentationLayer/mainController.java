@@ -1,4 +1,4 @@
-package GUIControllers;
+package PresentationLayer;
 
 import javafx.application.Application;
 import javafx.event.ActionEvent;

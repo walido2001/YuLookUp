@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="paneMain" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUIControllers.mainController">
+<AnchorPane fx:id="paneMain" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PresentationLayer.mainController">
    <children>
       <AnchorPane fx:id="paneRed" layoutX="22.0" layoutY="19.0" prefHeight="366.0" prefWidth="555.0" style="-fx-background-color: #e31837;">
          <children>

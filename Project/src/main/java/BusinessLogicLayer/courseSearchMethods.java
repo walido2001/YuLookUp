@@ -1,6 +1,6 @@
-package courseSearch;
+package BusinessLogicLayer;
 
-import courseStructures.Course;
+import BusinessLogicLayer.Course;
 
 import java.util.ArrayList;
 import java.util.HashSet;

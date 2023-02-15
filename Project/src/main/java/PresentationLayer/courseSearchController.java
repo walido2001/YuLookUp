@@ -1,11 +1,7 @@
-package GUIControllers;
+package PresentationLayer;
 
-import courseStructures.Course;
-import gui.CourseTableGui;
-import javafx.application.Application;
+import BusinessLogicLayer.Course;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -19,8 +15,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static courseScraper.mainScraper.getCourseList;
-import static courseSearch.courseSearchMethods.searchCourse;
+import static PersistenceLayer.mainScraper.getCourseList;
+import static BusinessLogicLayer.courseSearchMethods.searchCourse;
 
 public class courseSearchController {
 
@@ -48,7 +44,7 @@ public class courseSearchController {
     }
 
     public void handleMajorsListViewButton(ActionEvent e){
-        CourseTableGui majorsListObject = new CourseTableGui();
+        courseTableGUIController majorsListObject = new courseTableGUIController();
         Scene majorsListScene = majorsListObject.getMajorsListScene();
 
         Stage stage = (Stage) majorsListViewButton.getScene().getWindow();

@@ -1,10 +1,9 @@
-package courseStructures;
+package BusinessLogicLayer;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static courseScraper.mainScraper.getCourseList;
-import static courseScraper.mainScraper.setPrerequisites;
+import static PersistenceLayer.mainScraper.getCourseList;
 
 public class Course {
     private String code;
@@ -31,16 +30,8 @@ public class Course {
         return code;
     }
 
-    public void setCode(String code) {
-        this.code = code;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public String getDescription() {
@@ -52,10 +43,6 @@ public class Course {
         int PrereqIndex = this.description.toLowerCase(Locale.ROOT).lastIndexOf("prerequisite");
 
         return (PrereqIndex != -1) ? this.description.substring(0, PrereqIndex) : this.description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public ArrayList<String> getPrerequisites()

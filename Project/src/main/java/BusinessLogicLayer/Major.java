@@ -1,11 +1,9 @@
-package courseStructures;
+package BusinessLogicLayer;
 
-import courseScraper.mainScraper;
+import PersistenceLayer.mainScraper;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Map;
 
 public class Major {
     private LinkedHashMap<String, Course> courses;
@@ -298,11 +296,11 @@ public class Major {
         return name;
     }
 
-    private String getShortCode(Course course) {
+    public String getShortCode(Course course) {
         return course.getCode().substring(3, course.getCode().length()-5);
     }
 
-    private int getCourseLevel(Course course){
+    public int getCourseLevel(Course course){
         String code = getShortCode(course);
         return Character.getNumericValue(code.charAt(code.length()-4));
     }
