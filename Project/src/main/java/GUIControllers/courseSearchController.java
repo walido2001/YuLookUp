@@ -35,6 +35,12 @@ public class courseSearchController {
     private Scene scene;
     private Parent root;
 
+    /**
+     * This method sets the text in the searchbar to the string s
+     * and calls the handleSearchClick method to search what is
+     * inputted as a string and return results
+     * @param s The string that is inputted into the searchbar
+     */
     public void setUserSearch(String s) {
         userSearch.setText(s);
         ActionEvent event = new ActionEvent();
@@ -44,6 +50,9 @@ public class courseSearchController {
     public void handleMajorsListViewButton(ActionEvent e){
         CourseTableGui majorsListObject = new CourseTableGui();
         Scene majorsListScene = majorsListObject.getMajorsListScene();
+
+        Stage stage = (Stage) majorsListViewButton.getScene().getWindow();
+        stage.close(); // closes previous stage
 
         Stage newStage = new Stage();
         newStage.setScene(majorsListScene);
@@ -73,6 +82,7 @@ public class courseSearchController {
         });
     }
 
+    // This method switches to the gpa calculator scene
     public void getGPACalculatorScene(ActionEvent event) throws IOException {
         root = FXMLLoader.load(getClass().getClassLoader().getResource("gpaCalculator.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();

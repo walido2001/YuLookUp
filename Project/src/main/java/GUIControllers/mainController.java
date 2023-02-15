@@ -9,12 +9,10 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-
-import javax.swing.*;
 import java.io.IOException;
 
 public class mainController extends Application { // controller class
-    private Stage window;
+
     public TextField searchBar;
     public Button homeSearchButton;
     private Stage stage;
@@ -23,7 +21,6 @@ public class mainController extends Application { // controller class
 
     @Override
     public void start(Stage stage) throws IOException {
-        this.window = stage;
 
         Parent searchView = FXMLLoader.load(getClass().getClassLoader().getResource("searchGUI.fxml"));
 
@@ -31,6 +28,7 @@ public class mainController extends Application { // controller class
 
         stage.setTitle("YULookUp");
         stage.setScene(homeViewScene);
+        stage.centerOnScreen();
         stage.show();
 
     }
@@ -47,6 +45,7 @@ public class mainController extends Application { // controller class
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.centerOnScreen();
         stage.show();
     }
 

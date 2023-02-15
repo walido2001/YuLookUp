@@ -1,6 +1,6 @@
 package gpaCalculator;
 
-import GUIControllers.mainController;
+import GUIControllers.courseSearchController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -52,12 +52,19 @@ public class gpaCalculator {
         System.out.println("please");
     }
 
+    FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("searchReturnGUI.fxml"));
 
     public void getSearchResultsScene(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("searchReturnGUI.fxml"));
+
+        root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.centerOnScreen();
+
+        courseSearchController var = loader.getController();
+        var.setUserSearch("");
+
         stage.show();
     }
 }
