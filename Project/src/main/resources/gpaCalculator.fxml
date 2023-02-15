@@ -52,5 +52,6 @@
       <Label alignment="CENTER" layoutX="507.0" layoutY="349.0" prefHeight="34.0" prefWidth="43.0" text="GPA" />
       <TextField fx:id="textFieldCredits" editable="false" layoutX="433.0" layoutY="354.0" prefHeight="25.0" prefWidth="74.0" />
       <Label alignment="CENTER" layoutX="359.0" layoutY="350.0" prefHeight="34.0" prefWidth="74.0" text="Total Credits" />
+      <Button fx:id="backButton" layoutX="11.0" layoutY="7.0" mnemonicParsing="false" onAction="#getSearchResultsScene" text="Back" />
    </children>
 </AnchorPane>
