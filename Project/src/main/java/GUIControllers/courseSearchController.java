@@ -56,7 +56,7 @@ public class courseSearchController {
 
         Stage newStage = new Stage();
         newStage.setScene(majorsListScene);
-        newStage.setTitle("Courses by Major");
+        newStage.setTitle("YULookUp");
         newStage.show();
     }
 
