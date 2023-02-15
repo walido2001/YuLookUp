@@ -17,7 +17,6 @@ public class mainController extends Application { // controller class
     private Stage window;
     public TextField searchBar;
     public Button homeSearchButton;
-    public String searchInput;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -36,18 +35,17 @@ public class mainController extends Application { // controller class
 
     }
 
-    public String getUserInput() {
-        return searchBar.getText();
-    }
-
     public void getSearchResultsScene(ActionEvent event) throws IOException {
-        searchInput = getUserInput();
-        root = FXMLLoader.load(getClass().getClassLoader().getResource("searchReturnGUI.fxml"));
+
+        String firstInput = searchBar.getText();
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("searchReturnGUI.fxml"));
+        root = loader.load();
+
+        courseSearchController var = loader.getController();
+        var.setUserSearch(firstInput);
+
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
-
-       // courseSearchController var = new courseSearchController();
-       // var.setUserSearch(searchInput);
         stage.setScene(scene);
         stage.show();
     }

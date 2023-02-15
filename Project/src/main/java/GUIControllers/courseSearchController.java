@@ -4,6 +4,7 @@ import courseStructures.Course;
 import gui.CourseTableGui;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -36,6 +37,8 @@ public class courseSearchController {
 
     public void setUserSearch(String s) {
         userSearch.setText(s);
+        ActionEvent event = new ActionEvent();
+        handleSearchClick(event);
     }
 
     public void handleMajorsListViewButton(ActionEvent e){
