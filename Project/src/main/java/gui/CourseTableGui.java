@@ -86,11 +86,11 @@ public class CourseTableGui{
         summary.setFont(Font.font("Arial", FontWeight.LIGHT,14)); //"Helvetica"
         summary.setWrappingWidth(400);
 
-        Text prereqs = new Text("Prerequisites: "+course.getPrerequisites().toString());
-        prereqs.setFont(Font.font("Arial", FontWeight.LIGHT,14));
-        prereqs.setWrappingWidth(400);
+//        Text prereqs = new Text("Prerequisites: "+course.getPrerequisites().toString());
+//        prereqs.setFont(Font.font("Arial", FontWeight.LIGHT,14));
+//        prereqs.setWrappingWidth(400);
 
-        description.getChildren().addAll(title, credit, summary, prereqs);
+        description.getChildren().addAll(title, credit, summary /*,prereqs*/);
         frame.getChildren().addAll(description);
         frame.setHgrow(description, Priority.ALWAYS);
         description.setStyle("-fx-background-color: #FFFFFF");
@@ -109,6 +109,7 @@ public class CourseTableGui{
             btn.setOnAction(event -> {
                 courseDescription(course);
                 clearPrerequisites();
+                btn.setStyle("-fx-background-color: #e31837");
                 showPrerequisites(btn, course);
             });
             stack.getChildren().add(btn);
@@ -121,7 +122,7 @@ public class CourseTableGui{
         for(int i = 0; i<course.getCoursePrerequisites().size(); i++) {
             String code = getShortCode(course.getCoursePrerequisites().get(i));
             if(buttonsList.containsKey(code)){
-                buttonsList.get(code).setStyle("-fx-background-color: #e31837");
+                buttonsList.get(code).setStyle("-fx-background-color: #dedede");
                 showPrerequisites(buttonsList.get(code), course.getCoursePrerequisites().get(i));
             }
         }
@@ -134,6 +135,7 @@ public class CourseTableGui{
 
     public Button createButton(String text, double width, double height){
         Button btn = new Button(text);
+        btn.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 1px;");
         btn.setStyle("-fx-background-color: #FFFFFF");
         btn.setPrefSize(width, height);
         return btn;
