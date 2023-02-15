@@ -12,6 +12,5 @@ class courseSearchMethodsTest {
     public void courseSearch_test_01()
     {
         ArrayList<Course> courseList = getCourseList();
-
     }
 }
