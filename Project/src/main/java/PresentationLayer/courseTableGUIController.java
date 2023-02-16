@@ -48,7 +48,7 @@ public class courseTableGUIController {
         HBox hbox = majorsBar();
         border.setTop(hbox);
         setCourseColumnsView();
-        return new Scene (border, 1150, 820);
+        return new Scene (border, 1150, 730);
 //        primaryStage.setScene(new Scene(border, 1150, 820));
 //        primaryStage.show();
     }
