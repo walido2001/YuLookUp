@@ -47,11 +47,16 @@ public class Course {
 
     public ArrayList<String> getPrerequisites()
     {
-        return this.prerequisites;
+        return (prerequisites == null) ? new ArrayList<>() : this.prerequisites;
     }
 
     public ArrayList<Course> getCoursePrerequisites()
     {
+        if (this.prerequisites == null || this.prerequisites.size() == 0)
+        {
+            return new ArrayList<>();
+        }
+
         ArrayList<Course> returnable = new ArrayList<>();
         ArrayList<Course> courseList = getCourseList();
         for (Course course : courseList)
