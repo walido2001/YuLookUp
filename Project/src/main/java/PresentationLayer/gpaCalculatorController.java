@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -59,9 +60,25 @@ public class gpaCalculatorController implements Initializable {
     private TextField textFieldCW4;
     @FXML
     private TextField textFieldCW5;
+    @FXML
+    private TextField textFieldCourseName1;
+    @FXML
+    private TextField textFieldCourseName2;
+    @FXML
+    private TextField textFieldCourseName3;
+    @FXML
+    private TextField textFieldCourseName4;
+    @FXML
+    private TextField textFieldCourseName5;
+    @FXML
+    private TextArea textAreaCourses;
+    private static int courses;
     private Map<ChoiceBox<String>,TextField> gradeToNumber= new HashMap<ChoiceBox<String>, TextField>();
     private ArrayList<TextField> creditWeightFields = new ArrayList<TextField>();
     private ArrayList<TextField> gradePointFields =new ArrayList<TextField>();
+    private ArrayList<TextField> courseNames =new ArrayList<TextField>();
+    private ArrayList<ChoiceBox> grades =new ArrayList<ChoiceBox>();
+    private ArrayList<TextField> gradePoints =new ArrayList<TextField>();
 
 
 
@@ -103,6 +120,21 @@ public class gpaCalculatorController implements Initializable {
         gradePointFields.add(textFieldGPV3);
         gradePointFields.add(textFieldGPV4);
         gradePointFields.add(textFieldGPV5);
+        courseNames.add(textFieldCourseName1);
+        courseNames.add(textFieldCourseName2);
+        courseNames.add(textFieldCourseName3);
+        courseNames.add(textFieldCourseName4);
+        courseNames.add(textFieldCourseName5);
+        gradePoints.add(gradeToNumber.get(choicebox1));
+        gradePoints.add(gradeToNumber.get(choicebox2));
+        gradePoints.add(gradeToNumber.get(choicebox3));
+        gradePoints.add(gradeToNumber.get(choicebox4));
+        gradePoints.add(gradeToNumber.get(choicebox5));
+        grades.add(choicebox1);
+        grades.add(choicebox2);
+        grades.add(choicebox3);
+        grades.add(choicebox4);
+        grades.add(choicebox5);
     }
     @FXML
     public void GradeToGradePoint(ActionEvent event){
@@ -161,6 +193,10 @@ public class gpaCalculatorController implements Initializable {
                             Integer.parseInt(gradePointFields.get(i).getText()) *
                                     Integer.parseInt(creditWeightFields.get(i).getText());
                     TotalCredits = TotalCredits + Integer.parseInt(creditWeightFields.get(i).getText());
+                    courses++;
+                    textAreaCourses.appendText(courses+". "+courseNames.get(i).getText()+" Weight: "+creditWeightFields.get(i).getText()
+                        +" Grade: "+grades.get(i).getValue()+" Point Value: "+gradePoints.get(i).getText()+".0\n");
+                  //  textAreaCourses.getText().contains(null); use this to check if a course name has already been added
 
             }
 
