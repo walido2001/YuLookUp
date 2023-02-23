@@ -83,10 +83,7 @@ public class gpaCalculatorController implements Initializable {
     private ArrayList<ChoiceBox> grades =new ArrayList<ChoiceBox>();
     private ArrayList<TextField> gradePoints =new ArrayList<TextField>();
 
-
-
-
-
+    @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         //Initializing choice box values associated with grades
@@ -139,58 +136,7 @@ public class gpaCalculatorController implements Initializable {
         grades.add(choicebox4);
         grades.add(choicebox5);
     }
-    @FXML
-    public void initialize(){
-        //Initializing choice box values associated with grades
-        choicebox1.setValue("Grade");
-        choicebox1.setItems(gradeOptionsList);
-        choicebox1.setOnAction(this::GradeToGradePoint);
-        choicebox2.setValue("Grade");
-        choicebox2.setItems(gradeOptionsList);
-        choicebox2.setOnAction(this::GradeToGradePoint);
-        choicebox3.setValue("Grade");
-        choicebox3.setItems(gradeOptionsList);
-        choicebox3.setOnAction(this::GradeToGradePoint);
-        choicebox4.setValue("Grade");
-        choicebox4.setItems(gradeOptionsList);
-        choicebox4.setOnAction(this::GradeToGradePoint);
-        choicebox5.setValue("Grade");
-        choicebox5.setItems(gradeOptionsList);
-        choicebox5.setOnAction(this::GradeToGradePoint);
 
-        //mapping each choice box to its associated Grade Point Value text field
-        gradeToNumber.put(choicebox1,textFieldGPV1);
-        gradeToNumber.put(choicebox2,textFieldGPV2);
-        gradeToNumber.put(choicebox3,textFieldGPV3);
-        gradeToNumber.put(choicebox4,textFieldGPV4);
-        gradeToNumber.put(choicebox5,textFieldGPV5);
-        //adding all credit weight fields
-        creditWeightFields.add(textFieldCW1);
-        creditWeightFields.add(textFieldCW2);
-        creditWeightFields.add(textFieldCW3);
-        creditWeightFields.add(textFieldCW4);
-        creditWeightFields.add(textFieldCW5);
-        gradePointFields.add(textFieldGPV1);
-        gradePointFields.add(textFieldGPV2);
-        gradePointFields.add(textFieldGPV3);
-        gradePointFields.add(textFieldGPV4);
-        gradePointFields.add(textFieldGPV5);
-        courseNames.add(textFieldCourseName1);
-        courseNames.add(textFieldCourseName2);
-        courseNames.add(textFieldCourseName3);
-        courseNames.add(textFieldCourseName4);
-        courseNames.add(textFieldCourseName5);
-        gradePoints.add(gradeToNumber.get(choicebox1));
-        gradePoints.add(gradeToNumber.get(choicebox2));
-        gradePoints.add(gradeToNumber.get(choicebox3));
-        gradePoints.add(gradeToNumber.get(choicebox4));
-        gradePoints.add(gradeToNumber.get(choicebox5));
-        grades.add(choicebox1);
-        grades.add(choicebox2);
-        grades.add(choicebox3);
-        grades.add(choicebox4);
-        grades.add(choicebox5);
-    }
     @FXML
     public void GradeToGradePoint(ActionEvent event){
         try {
