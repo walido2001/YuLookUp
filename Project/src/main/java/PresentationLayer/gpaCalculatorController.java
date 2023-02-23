@@ -22,7 +22,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class gpaCalculatorController implements Initializable {
-
+    int GradePoints=0;
+    int TotalCredits=0;
+    double gpa=0;
     @FXML
     ObservableList<String> gradeOptionsList = FXCollections.observableArrayList("A+","A",
             "B+","B","C+","C","D+","D","E","F","..");
@@ -73,6 +75,7 @@ public class gpaCalculatorController implements Initializable {
     @FXML
     private TextArea textAreaCourses;
     private static int courses;
+    private ArrayList<String> coursesAdded = new ArrayList<String>();
     private Map<ChoiceBox<String>,TextField> gradeToNumber= new HashMap<ChoiceBox<String>, TextField>();
     private ArrayList<TextField> creditWeightFields = new ArrayList<TextField>();
     private ArrayList<TextField> gradePointFields =new ArrayList<TextField>();
@@ -86,6 +89,58 @@ public class gpaCalculatorController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        //Initializing choice box values associated with grades
+        choicebox1.setValue("Grade");
+        choicebox1.setItems(gradeOptionsList);
+        choicebox1.setOnAction(this::GradeToGradePoint);
+        choicebox2.setValue("Grade");
+        choicebox2.setItems(gradeOptionsList);
+        choicebox2.setOnAction(this::GradeToGradePoint);
+        choicebox3.setValue("Grade");
+        choicebox3.setItems(gradeOptionsList);
+        choicebox3.setOnAction(this::GradeToGradePoint);
+        choicebox4.setValue("Grade");
+        choicebox4.setItems(gradeOptionsList);
+        choicebox4.setOnAction(this::GradeToGradePoint);
+        choicebox5.setValue("Grade");
+        choicebox5.setItems(gradeOptionsList);
+        choicebox5.setOnAction(this::GradeToGradePoint);
+
+        //mapping each choice box to its associated Grade Point Value text field
+        gradeToNumber.put(choicebox1,textFieldGPV1);
+        gradeToNumber.put(choicebox2,textFieldGPV2);
+        gradeToNumber.put(choicebox3,textFieldGPV3);
+        gradeToNumber.put(choicebox4,textFieldGPV4);
+        gradeToNumber.put(choicebox5,textFieldGPV5);
+        //adding all credit weight fields
+        creditWeightFields.add(textFieldCW1);
+        creditWeightFields.add(textFieldCW2);
+        creditWeightFields.add(textFieldCW3);
+        creditWeightFields.add(textFieldCW4);
+        creditWeightFields.add(textFieldCW5);
+        gradePointFields.add(textFieldGPV1);
+        gradePointFields.add(textFieldGPV2);
+        gradePointFields.add(textFieldGPV3);
+        gradePointFields.add(textFieldGPV4);
+        gradePointFields.add(textFieldGPV5);
+        courseNames.add(textFieldCourseName1);
+        courseNames.add(textFieldCourseName2);
+        courseNames.add(textFieldCourseName3);
+        courseNames.add(textFieldCourseName4);
+        courseNames.add(textFieldCourseName5);
+        gradePoints.add(gradeToNumber.get(choicebox1));
+        gradePoints.add(gradeToNumber.get(choicebox2));
+        gradePoints.add(gradeToNumber.get(choicebox3));
+        gradePoints.add(gradeToNumber.get(choicebox4));
+        gradePoints.add(gradeToNumber.get(choicebox5));
+        grades.add(choicebox1);
+        grades.add(choicebox2);
+        grades.add(choicebox3);
+        grades.add(choicebox4);
+        grades.add(choicebox5);
+    }
+    @FXML
+    public void initialize(){
         //Initializing choice box values associated with grades
         choicebox1.setValue("Grade");
         choicebox1.setItems(gradeOptionsList);
@@ -174,7 +229,7 @@ public class gpaCalculatorController implements Initializable {
                     gradeToNumber.get(choicebox).setText("0");
                     break;
                 default:
-                    System.out.println("Use drop down menu to input a grade");
+
             }
 
         }catch (Exception e){
@@ -183,20 +238,23 @@ public class gpaCalculatorController implements Initializable {
     }
     @FXML
     private void CalculateGPA(ActionEvent event){
-        int GradePoints=0;
-        int TotalCredits=0;
-        double gpa=0;
         try{
 
             for ( int i=0; i <gradePointFields.size(); i++){
-                    GradePoints = GradePoints +
-                            Integer.parseInt(gradePointFields.get(i).getText()) *
-                                    Integer.parseInt(creditWeightFields.get(i).getText());
-                    TotalCredits = TotalCredits + Integer.parseInt(creditWeightFields.get(i).getText());
-                    courses++;
-                    textAreaCourses.appendText(courses+". "+courseNames.get(i).getText()+" Weight: "+creditWeightFields.get(i).getText()
-                        +" Grade: "+grades.get(i).getValue()+" Point Value: "+gradePoints.get(i).getText()+".0\n");
-                  //  textAreaCourses.getText().contains(null); use this to check if a course name has already been added
+                    if (coursesAdded.indexOf(courseNames.get(i).getText()) != -1){
+                        continue;
+                    }
+                    else {
+                        coursesAdded.add(courseNames.get(i).getText());
+                        GradePoints = GradePoints +
+                                Integer.parseInt(gradePointFields.get(i).getText()) *
+                                        Integer.parseInt(creditWeightFields.get(i).getText());
+                        TotalCredits = TotalCredits + Integer.parseInt(creditWeightFields.get(i).getText());
+                        courses++;
+                        textAreaCourses.appendText(courses + ". " + courseNames.get(i).getText() + " Weight: " + creditWeightFields.get(i).getText()
+                                + " Grade: " + grades.get(i).getValue() + " Point Value: " + gradePoints.get(i).getText() + ".0\n");
+                    }
+                    //  textAreaCourses.getText().contains(null); use this to check if a course name has already been added
 
             }
 
@@ -208,7 +266,29 @@ public class gpaCalculatorController implements Initializable {
         gpa = Math.round(gpa*100.0)/100.0;
         textFieldGPA.setText(""+gpa);
         textFieldCredits.setText(""+TotalCredits);
+    }
+    @FXML
+    private void AddCourses(ActionEvent event){
+        try{
+            for ( int i=0; i <gradePointFields.size(); i++){
+                courseNames.get(i).setText(null);
+                creditWeightFields.get(i).setText(null);
+                gradePointFields.get(i).setText(null);
+                grades.get(i).setValue("Grade");
 
+            }
+        }catch(Exception e) {
+
+        }
+    }
+    @FXML
+    private void Clear(ActionEvent event) throws IOException {
+        courses = 0;
+        root = FXMLLoader.load(getClass().getClassLoader().getResource("gpaCalculator.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
 
     }
 

@@ -30,7 +30,7 @@
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="310.0" layoutY="354.0" mnemonicParsing="false" onAction="#CalculateGPA" text="Clear" />
+      <Button layoutX="310.0" layoutY="354.0" mnemonicParsing="false" onAction="#Clear" text="Clear" />
       <ChoiceBox fx:id="choicebox1" layoutX="360.0" layoutY="100.0" onDragDone="#GradeToGradePoint" onMouseDragEntered="#GradeToGradePoint" onMouseDragReleased="#GradeToGradePoint" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox2" layoutX="359.0" layoutY="152.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox3" layoutX="360.0" layoutY="198.0" prefWidth="150.0" />
@@ -48,7 +48,7 @@
          </font>
       </TextArea>
       <Label alignment="CENTER" layoutX="678.0" layoutY="63.0" prefHeight="34.0" prefWidth="112.0" text="Courses Added" />
-      <Button layoutX="105.0" layoutY="354.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="112.0" text="Add Courses" />
+      <Button layoutX="105.0" layoutY="354.0" mnemonicParsing="false" onAction="#AddCourses" prefHeight="25.0" prefWidth="112.0" text="Add Courses" />
       <TextField fx:id="textFieldCourseName2" alignment="CENTER" layoutX="31.0" layoutY="150.0" prefHeight="25.0" prefWidth="194.0" />
       <TextField fx:id="textFieldCourseName3" alignment="CENTER" layoutX="33.0" layoutY="197.0" prefHeight="25.0" prefWidth="194.0" />
       <TextField fx:id="textFieldCourseName4" alignment="CENTER" layoutX="31.0" layoutY="249.0" prefHeight="25.0" prefWidth="194.0" />
