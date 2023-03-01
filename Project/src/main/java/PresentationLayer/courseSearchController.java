@@ -16,7 +16,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import static PersistenceLayer.mainScraper.getCourseList;
-import static BusinessLogicLayer.courseSearchMethods.searchCourse;
+import static BusinessLogicLayer.courseSearchandFilterMethods.searchCourse;
 
 public class courseSearchController {
 
