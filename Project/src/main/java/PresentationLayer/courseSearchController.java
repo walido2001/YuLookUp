@@ -1,22 +1,20 @@
 package PresentationLayer;
 
 import BusinessLogicLayer.Course;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import static BusinessLogicLayer.courseSearchandFilterMethods.*;
 import static PersistenceLayer.mainScraper.getCourseList;
-import static BusinessLogicLayer.courseSearchandFilterMethods.searchCourse;
 
 public class courseSearchController {
 
@@ -27,6 +25,13 @@ public class courseSearchController {
     public ListView<Course> resultsList;
     public Button majorsListViewButton;
     public Button gpaButton;
+
+    //Filtering Components
+    public ChoiceBox facultyDropDown;
+    public ChoiceBox subjectDropDown;
+    public TextField courseLevelInput;
+    public TextField creditAmountInput;
+
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -60,6 +65,72 @@ public class courseSearchController {
     {
         String input = userSearch.getText();
         ArrayList<Course> results = searchCourse(input, getCourseList());
+
+        ArrayList<String> facultyOptions = new ArrayList<>();
+        ArrayList<String> subjectOptions = new ArrayList<>();
+
+        if (facultyDropDown.getValue() != null)
+        {
+            try
+            {
+                String facultyDropDownInput = (String) facultyDropDown.getValue();
+                results = filterDepartment(results, facultyDropDownInput);
+            }
+            catch(Exception error)
+            {}
+        }
+
+        if (subjectDropDown.getValue() != null)
+        {
+            try
+            {
+                String subjectDropDownInput = (String) subjectDropDown.getValue();
+                results = filterSubject(results, subjectDropDownInput);
+            }
+            catch(Exception error)
+            {}
+        }
+
+        for (Course course : results)
+        {
+            if (!facultyOptions.contains(course.getFacultyType()))
+            {
+                facultyOptions.add(course.getFacultyType());
+            }
+
+            if (!subjectOptions.contains(course.getSubjectType()))
+            {
+                subjectOptions.add(course.getSubjectType());
+            }
+        }
+
+        facultyDropDown.setItems(FXCollections.observableArrayList(facultyOptions));
+        subjectDropDown.setItems(FXCollections.observableArrayList(subjectOptions));
+
+        if (courseLevelInput.getText() != null && !courseLevelInput.getText().isEmpty())
+        {
+            try
+            {
+                int courseLevelInputVar = Integer.parseInt(courseLevelInput.getText());
+                results = filterYearLevel(results, courseLevelInputVar);
+            }
+            catch(Exception error)
+            {}
+        }
+
+        if (creditAmountInput.getText() != null && !creditAmountInput.getText().isEmpty())
+        {
+            try
+            {
+                int creditAmountInputVar = Integer.parseInt(creditAmountInput.getText());
+                results = filterCreditAmount(results, creditAmountInputVar);
+            }
+            catch(Exception error)
+            {}
+        }
+
+        courseLevelInput.clear();
+        creditAmountInput.clear();
 
         resultsList.getItems().clear();
         resultsList.getItems().addAll(results);
