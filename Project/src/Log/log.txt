@@ -61,3 +61,8 @@ Iteration 2
             3. Yearly schedule builder (outline of courses one has to take to graduate, adjustable when adding courses taken so far)
         - We split up the work, assigning each member to a specific task to ensure deadlines are met
     Wednesday March 1st 2023 - minutes
+    
+    Thursday March 2nd 2023 - 15 minutes
+    	Ali & Davyd Meeting
+	- Discussed implementation of schedule generator
+	- Resolved issues with accessing course information in schedule generator class
