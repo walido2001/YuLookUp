@@ -1,18 +1,16 @@
 package BusinessLogicLayer;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 
 import static PersistenceLayer.mainScraper.getCourseList;
 
 public class scheduleGenerator {
 
-    static String[] firstYear;
-    static String[] secondYear;
-    static String[] thirdYear;
-    static String[] fourthYear;
+    static ArrayList<Course> firstYear;
+    static ArrayList<Course> secondYear;
+    static ArrayList<Course> thirdYear;
+    static ArrayList<Course> fourthYear;
 
     static Major mechMajor = new Major("Mechanical Engineering");
     public static LinkedHashMap<Integer, ArrayList<Course>> mechCourses = mechMajor.getMajor();
@@ -27,11 +25,13 @@ public class scheduleGenerator {
 
         ArrayList<Course> courses = getCourseList();
 
-        setMajor("mechanical");
+        ArrayList<Course> taken = new ArrayList<>(courses);
+        taken.add(courses.get(0));
+        setMajor("civil", taken);
 
     }
 
-    static void setMajor(String major) {
+    static void setMajor(String major, ArrayList<Course> coursesTaken) {
 
         LinkedHashMap<Integer,ArrayList<Course>> majorCourses = null;
 
@@ -39,43 +39,42 @@ public class scheduleGenerator {
                 case "civil":
                     majorCourses = civilCourses;
                     break;
-
                 case "mechanical":
                     majorCourses = mechCourses;
                     break;
-
                 case "electrical":
                     majorCourses = elecCourses;
                     break;
-
                 case "computer":
                     majorCourses = compCourses;
                     break;
-
                 default:
                     break;
             }
 
+        System.out.println("\nFirst Year Courses:");
         for(int i=0; i<majorCourses.get(1).size(); i++) {
-            firstYear = new String[majorCourses.get(1).size()];
-            firstYear[i] = String.valueOf(majorCourses.get(1).get(i));
-            System.out.println(firstYear[i]);
+            firstYear = new ArrayList<>(majorCourses.get(1).size());
+            firstYear.add(majorCourses.get(1).get(i));
+            System.out.println(firstYear);
         }
+        System.out.println("\nSecond Year Courses:");
         for(int i=0; i<majorCourses.get(2).size(); i++) {
-            secondYear = new String[majorCourses.get(2).size()];
-            secondYear[i] = String.valueOf(majorCourses.get(2).get(i));
-            System.out.println(secondYear[i]);
+            secondYear = new ArrayList<>(majorCourses.get(2).size());
+            secondYear.add(majorCourses.get(2).get(i));
+            System.out.println(secondYear);
         }
+        System.out.println("\nThird Year Courses:");
         for(int i=0; i<majorCourses.get(3).size(); i++) {
-            thirdYear = new String[majorCourses.get(3).size()];
-            thirdYear[i] = String.valueOf(majorCourses.get(3).get(i));
-            System.out.println(thirdYear[i]);
+            thirdYear = new ArrayList<>(majorCourses.get(3).size());
+            thirdYear.add(majorCourses.get(3).get(i));
+            System.out.println(thirdYear);
         }
+        System.out.println("\nFourth Year Courses:");
         for(int i=0; i<majorCourses.get(4).size(); i++) {
-            fourthYear = new String[majorCourses.get(4).size()];
-            fourthYear[i] = String.valueOf(majorCourses.get(4).get(i));
-            System.out.println(fourthYear[i]);
+            fourthYear = new ArrayList<>(majorCourses.get(4).size());
+            fourthYear.add(majorCourses.get(4).get(i));
+            System.out.println(fourthYear);
         }
     }
-
 }
