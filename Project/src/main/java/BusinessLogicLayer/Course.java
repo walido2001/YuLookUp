@@ -89,8 +89,43 @@ public class Course {
 //    public void setPrerequisites(ArrayList<Course> prerequisites) {
 //        this.prerequisites = prerequisites;
 //    }
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+        if(obj == null) return false;
+        if(this.getClass() != obj.getClass()) return false;
 
+        Course c = (Course) obj;
 
+        if(this.getName() == null) {
+            if(c.getName() != null)
+                return false;
+        }
+        else if(!this.getName().equals(c.getName()))
+            return false;
 
+        if(this.getDescription() == null) {
+            if(c.getDescription() != null)
+                return false;
+        }
+        else if(!this.getDescription().equals(c.getDescription()))
+            return false;
+
+        if(this.getCode() == null) {
+            if(c.getCode() != null)
+                return false;
+        }
+        else if(!this.getCode().equals(c.getCode()))
+            return false;
+
+        if(this.getCoursePrerequisites() == null) {
+            if(c.getCoursePrerequisites() != null)
+                return false;
+        }
+        else if(!this.getCoursePrerequisites().equals(c.getCoursePrerequisites()))
+            return false;
+
+        return true;
+    }
 
 }
