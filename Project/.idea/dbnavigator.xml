@@ -15,14 +15,14 @@
     <connection id="78824bc2-8bfa-4db1-beec-3a7c73cd29f0">
       <console name="MySQL Connection" type="STANDARD" schema="YuLookUp" session="Main" />
     </connection>
-    <connection id="4a968ac5-952e-49c3-bed1-2ee5c8546b2d">
-      <console name="Connection 3" type="STANDARD" schema="yulookup" session="Main" />
+    <connection id="18f95907-57ee-46aa-ab31-9611aa6b7c3a">
+      <console name="Connection" type="STANDARD" schema="mysql" session="Main" />
     </connection>
-    <connection id="a52778e0-77d8-4db7-86a7-dbb0283e0dad">
-      <console name="Connection" type="STANDARD" schema="yulookup" session="Main" />
+    <connection id="4fd05149-0d5c-4804-ab6d-9a792f5d5473">
+      <console name="final" type="STANDARD" schema="mysql" session="Main" />
     </connection>
-    <connection id="c175bde8-0fbb-47ce-9d4a-e72cbe7d38ca">
-      <console name="Connection 1" type="STANDARD" schema="yulookup" session="Main" />
+    <connection id="60a83c1c-6e13-496c-8423-33d2d2d6992d">
+      <console name="Connection 1" type="STANDARD" schema="mysql" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseEditorStateManager">
@@ -32,13 +32,12 @@
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files>
-      <object connection-id="c175bde8-0fbb-47ce-9d4a-e72cbe7d38ca" object-ref="schemas/yulookup/tables/courses" />
+      <object connection-id="60a83c1c-6e13-496c-8423-33d2d2d6992d" object-ref="schemas/yulookup/tables/courses" />
     </open-files>
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="c175bde8-0fbb-47ce-9d4a-e72cbe7d38ca" dataset="yulookup.courses" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="a52778e0-77d8-4db7-86a7-dbb0283e0dad" dataset="yulookup.courses" active-filter-id="EMPTY_FILTER" />
-    <filter-actions connection-id="4a968ac5-952e-49c3-bed1-2ee5c8546b2d" dataset="yulookup.courses" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="4fd05149-0d5c-4804-ab6d-9a792f5d5473" dataset="yulookup.courses" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="60a83c1c-6e13-496c-8423-33d2d2d6992d" dataset="yulookup.courses" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="78824bc2-8bfa-4db1-beec-3a7c73cd29f0" dataset="yulookup.courses" active-filter-id="EMPTY_FILTER" />
     <filter-actions connection-id="78824bc2-8bfa-4db1-beec-3a7c73cd29f0" dataset="example.orders" active-filter-id="" />
     <filter-actions connection-id="78824bc2-8bfa-4db1-beec-3a7c73cd29f0" dataset="example.order_details" active-filter-id="EMPTY_FILTER" />
@@ -144,91 +143,7 @@
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection id="4a968ac5-952e-49c3-bed1-2ee5c8546b2d" active="true" signed="true">
-        <database>
-          <name value="Connection 3" />
-          <description value="" />
-          <database-type value="MYSQL" />
-          <config-type value="BASIC" />
-          <database-version value="8.0" />
-          <driver-source value="EXTERNAL" />
-          <driver-library value="C:\Program Files (x86)\MySQL\Connector J 8.0\mysql-connector-j-8.0.32.jar" />
-          <driver value="com.mysql.cj.jdbc.Driver" />
-          <url-type value="DATABASE" />
-          <host value="localhost" />
-          <port value="3306" />
-          <database value="yulookup" />
-          <type value="USER" />
-          <user value="guest" />
-          <deprecated-pwd value="" />
-        </database>
-        <properties>
-          <auto-commit value="false" />
-        </properties>
-        <ssh-settings>
-          <active value="false" />
-          <proxy-host value="" />
-          <proxy-port value="22" />
-          <proxy-user value="" />
-          <deprecated-proxy-pwd value="" />
-          <auth-type value="PASSWORD" />
-          <key-file value="" />
-          <key-passphrase value="" />
-        </ssh-settings>
-        <ssl-settings>
-          <active value="false" />
-          <certificate-authority-file value="" />
-          <client-certificate-file value="" />
-          <client-key-file value="" />
-        </ssl-settings>
-        <details>
-          <charset value="UTF-8" />
-          <session-management value="true" />
-          <ddl-file-binding value="true" />
-          <database-logging value="true" />
-          <connect-automatically value="true" />
-          <restore-workspace value="true" />
-          <restore-workspace-deep value="false" />
-          <environment-type value="default" />
-          <connectivity-timeout value="10" />
-          <idle-time-to-disconnect value="30" />
-          <idle-time-to-disconnect-pool value="5" />
-          <credential-expiry-time value="10" />
-          <max-connection-pool-size value="7" />
-          <alternative-statement-delimiter value="" />
-        </details>
-        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
-          <object-type-filter>
-            <object-type name="SCHEMA" enabled="true" />
-            <object-type name="USER" enabled="true" />
-            <object-type name="ROLE" enabled="true" />
-            <object-type name="PRIVILEGE" enabled="true" />
-            <object-type name="CHARSET" enabled="true" />
-            <object-type name="TABLE" enabled="true" />
-            <object-type name="VIEW" enabled="true" />
-            <object-type name="MATERIALIZED_VIEW" enabled="true" />
-            <object-type name="NESTED_TABLE" enabled="true" />
-            <object-type name="COLUMN" enabled="true" />
-            <object-type name="INDEX" enabled="true" />
-            <object-type name="CONSTRAINT" enabled="true" />
-            <object-type name="DATASET_TRIGGER" enabled="true" />
-            <object-type name="DATABASE_TRIGGER" enabled="true" />
-            <object-type name="SYNONYM" enabled="true" />
-            <object-type name="SEQUENCE" enabled="true" />
-            <object-type name="PROCEDURE" enabled="true" />
-            <object-type name="FUNCTION" enabled="true" />
-            <object-type name="PACKAGE" enabled="true" />
-            <object-type name="TYPE" enabled="true" />
-            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
-            <object-type name="ARGUMENT" enabled="true" />
-            <object-type name="DIMENSION" enabled="true" />
-            <object-type name="CLUSTER" enabled="true" />
-            <object-type name="DBLINK" enabled="true" />
-          </object-type-filter>
-          <object-name-filters />
-        </object-filters>
-      </connection>
-      <connection id="a52778e0-77d8-4db7-86a7-dbb0283e0dad" active="true" signed="true">
+      <connection id="18f95907-57ee-46aa-ab31-9611aa6b7c3a" active="true" signed="true">
         <database>
           <name value="Connection" />
           <description value="" />
@@ -241,10 +156,10 @@
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="yulookup" />
-          <type value="USER" />
-          <user value="guest" />
-          <deprecated-pwd value="" />
+          <database value="mysql" />
+          <type value="USER_PASSWORD" />
+          <user value="root" />
+          <deprecated-pwd value="Q2FzaGJveTEyMTM=" />
         </database>
         <properties>
           <auto-commit value="false" />
@@ -312,7 +227,91 @@
           <object-name-filters />
         </object-filters>
       </connection>
-      <connection id="c175bde8-0fbb-47ce-9d4a-e72cbe7d38ca" active="true" signed="true">
+      <connection id="4fd05149-0d5c-4804-ab6d-9a792f5d5473" active="true" signed="true">
+        <database>
+          <name value="final" />
+          <description value="" />
+          <database-type value="MYSQL" />
+          <config-type value="BASIC" />
+          <database-version value="8.0" />
+          <driver-source value="EXTERNAL" />
+          <driver-library value="C:\Program Files (x86)\MySQL\Connector J 8.0\mysql-connector-j-8.0.32.jar" />
+          <driver value="com.mysql.cj.jdbc.Driver" />
+          <url-type value="DATABASE" />
+          <host value="localhost" />
+          <port value="3306" />
+          <database value="mysql" />
+          <type value="USER_PASSWORD" />
+          <user value="root" />
+          <deprecated-pwd value="Q2FzaGJveTEyMTM=" />
+        </database>
+        <properties>
+          <auto-commit value="false" />
+        </properties>
+        <ssh-settings>
+          <active value="false" />
+          <proxy-host value="" />
+          <proxy-port value="22" />
+          <proxy-user value="" />
+          <deprecated-proxy-pwd value="" />
+          <auth-type value="PASSWORD" />
+          <key-file value="" />
+          <key-passphrase value="" />
+        </ssh-settings>
+        <ssl-settings>
+          <active value="false" />
+          <certificate-authority-file value="" />
+          <client-certificate-file value="" />
+          <client-key-file value="" />
+        </ssl-settings>
+        <details>
+          <charset value="UTF-8" />
+          <session-management value="true" />
+          <ddl-file-binding value="true" />
+          <database-logging value="true" />
+          <connect-automatically value="true" />
+          <restore-workspace value="true" />
+          <restore-workspace-deep value="false" />
+          <environment-type value="default" />
+          <connectivity-timeout value="10" />
+          <idle-time-to-disconnect value="30" />
+          <idle-time-to-disconnect-pool value="5" />
+          <credential-expiry-time value="10" />
+          <max-connection-pool-size value="7" />
+          <alternative-statement-delimiter value="" />
+        </details>
+        <object-filters hide-empty-schemas="false" hide-pseudo-columns="false">
+          <object-type-filter>
+            <object-type name="SCHEMA" enabled="true" />
+            <object-type name="USER" enabled="true" />
+            <object-type name="ROLE" enabled="true" />
+            <object-type name="PRIVILEGE" enabled="true" />
+            <object-type name="CHARSET" enabled="true" />
+            <object-type name="TABLE" enabled="true" />
+            <object-type name="VIEW" enabled="true" />
+            <object-type name="MATERIALIZED_VIEW" enabled="true" />
+            <object-type name="NESTED_TABLE" enabled="true" />
+            <object-type name="COLUMN" enabled="true" />
+            <object-type name="INDEX" enabled="true" />
+            <object-type name="CONSTRAINT" enabled="true" />
+            <object-type name="DATASET_TRIGGER" enabled="true" />
+            <object-type name="DATABASE_TRIGGER" enabled="true" />
+            <object-type name="SYNONYM" enabled="true" />
+            <object-type name="SEQUENCE" enabled="true" />
+            <object-type name="PROCEDURE" enabled="true" />
+            <object-type name="FUNCTION" enabled="true" />
+            <object-type name="PACKAGE" enabled="true" />
+            <object-type name="TYPE" enabled="true" />
+            <object-type name="TYPE_ATTRIBUTE" enabled="true" />
+            <object-type name="ARGUMENT" enabled="true" />
+            <object-type name="DIMENSION" enabled="true" />
+            <object-type name="CLUSTER" enabled="true" />
+            <object-type name="DBLINK" enabled="true" />
+          </object-type-filter>
+          <object-name-filters />
+        </object-filters>
+      </connection>
+      <connection id="60a83c1c-6e13-496c-8423-33d2d2d6992d" active="true" signed="true">
         <database>
           <name value="Connection 1" />
           <description value="" />
@@ -325,10 +324,10 @@
           <url-type value="DATABASE" />
           <host value="localhost" />
           <port value="3306" />
-          <database value="yulookup" />
-          <type value="USER" />
-          <user value="guest" />
-          <deprecated-pwd value="" />
+          <database value="mysql" />
+          <type value="USER_PASSWORD" />
+          <user value="root" />
+          <deprecated-pwd value="Q2FzaGJveTEyMTM=" />
         </database>
         <properties>
           <auto-commit value="false" />

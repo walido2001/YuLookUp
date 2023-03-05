@@ -1,35 +1,79 @@
 package PersistenceLayer.Database;
 
 import BusinessLogicLayer.Course;
+import PersistenceLayer.mainScraper;
 import org.checkerframework.checker.units.qual.C;
 
 import java.sql.*;
+import java.util.ArrayList;
+
+import static BusinessLogicLayer.courseSearchMethods.searchCourse;
+import static PersistenceLayer.mainScraper.getCourseList;
 
 public class Database {
-    private static final String username ="guest";
-    private static final String connection="jdbc:mysql://localhost:3306/yulookup";
+
+    //change to YOUR username for you local mysql
+    private static final String username ="root";
+
+    //change to YOUR password for your local mysql
+    private static final String password="";
+
+    private static final String database="yulookup";
+    private static final String connection1="jdbc:mysql://localhost:3306/";
+    private static final String connection="jdbc:mysql://localhost:3306/"+database;
+
     //comment main method out later
     public static void main(String[] args) throws Exception {
-        Courses course = new Courses();
-        course.setCode("PHYS 2022");
-        course.setName("Electromagnetism for Engineers");
-        course.setDescription("software");
-        course.setPrerequistes("EECS 2311,EECS 2321, PHYS 2930");
 
-       // insertCourse(course);
-        Courses course1 = getRow(course.getCode());
-        if (course1 == null){
-            System.err.println("Row not found");
-            return;
+        // Opening a connection and creating database
+        try(Connection conn = DriverManager.getConnection(connection1, username, password);
+            Statement stmt = conn.createStatement();
+        ) {
+            String sql = "CREATE DATABASE "+database;
+            stmt.executeUpdate(sql);
+            System.out.println("Database created successfully...");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        course1.setPrerequistes("Hello");
-        course1.setName("Im");
-        course1.setDescription("dwumah");
-        if (updateCourse(course1)){
-            System.out.println("Succes!");
-        }else{
-            System.err.println("whoops!");
+
+        // creating table named courses
+        try(Connection conn = DriverManager.getConnection(connection, username, password);
+            Statement stmt = conn.createStatement();
+        ) {
+            String sql = "CREATE TABLE courses (" +
+                    "code VARCHAR(256), " +
+                    "name TEXT(8000), " +
+                    "description TEXT(8000), " +
+                    "prerequisites TEXT(8000), " +
+                    "PRIMARY KEY(code)" +
+                    ");";
+            stmt.executeUpdate(sql);
+            System.out.println("Table courses was created successfully...");
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
+        //altering number of tablerows in courses to 1200
+        try(Connection conn = DriverManager.getConnection(connection1, username, password);
+            Statement stmt = conn.createStatement();
+        ) {
+            String sql = "ALTER TABLE `yulookup`.`courses` " +
+                    "MAX_ROWS = 1200 ";
+            stmt.executeUpdate(sql);
+            System.out.println("rows altered successfully...");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //populating database with courses
+        for (int i=0; i< getCourseList().size();i++){
+            //deleteCourse(getCourseList().get(i).getCode());
+            insertCourse(getCourseList().get(i));
+        }
+
+        System.out.println("Total courses: "+getCourseList().size());
+
+
 
 
 
@@ -43,7 +87,7 @@ public class Database {
         String sql = "SELECT * FROM courses WHERE code = ?";
         ResultSet rs = null;
         try(
-                Connection conn = DriverManager.getConnection(connection, username, null);
+                Connection conn = DriverManager.getConnection(connection, username, password);
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 ){
             stmt.setString(1,code);
@@ -73,29 +117,20 @@ public class Database {
     /**
      * Inserts a course into the database
      * **/
-    public static boolean insertCourse(Courses course) throws Exception {
+    public static boolean insertCourse(Course course) throws Exception {
         String sql = "INSERT INTO yulookup.courses (code, name, description, prerequisites) " + "VALUES (?,?,?,?);";
         ResultSet keys = null;
         try (
-                Connection conn = DriverManager.getConnection(connection, username, null);
+                Connection conn = DriverManager.getConnection(connection, username, password);
                 PreparedStatement stmt = conn.prepareStatement(sql);
-                //PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
         ){
             stmt.setString(1,course.getCode());
             stmt.setString(2,course.getName());
             stmt.setString(3,course.getDescription());
-            stmt.setString(4,course.getPrerequisites());
+            stmt.setString(4,course.getPrerequisites().toString());
             int affected = stmt.executeUpdate();
-//            //row was inserted into database
-//            if (affected==1){
-//               keys = stmt.getGeneratedKeys();
-//               keys.next();// moving cursor to only row of data
-//                int newKey =  keys.getInt(1);
-//            }else{
-//                System.err.println("No rows affected");
-//                return false;
-//            }
+
         }
         catch (SQLException e) {
             System.err.println(e);
@@ -112,41 +147,38 @@ public class Database {
      * with new values for the decription, prerequisites and name
      * NOT THE COURSE code
      * **/
-    public static boolean updateCourse(Courses course) throws Exception{
-        String sql = "SELECT * FROM courses WHERE code = ?";
-        ResultSet rs = null;
-        try (
-                Connection conn = DriverManager.getConnection(connection,username,null);
-                PreparedStatement stmt = conn.prepareStatement(
-                        sql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
-                ){
+//    public static boolean updateCourse(Course course) throws Exception{
+//        String sql = "SELECT * FROM courses WHERE code = ?";
+//        ResultSet rs = null;
+//        try (
+//                Connection conn = DriverManager.getConnection(connection,username,password);
+//                PreparedStatement stmt = conn.prepareStatement(
+//                        sql,ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+//                ){
+//
 //            stmt.setString(1,course.getCode());
-//            stmt.setString(2,course.getName());
-//            stmt.setString(3,course.getDescription());
-//            stmt.setString(4,course.getPrerequisites());
-            stmt.setString(1,course.getCode());
-            rs = stmt.executeQuery();
-            if (rs.next()){
-                rs.updateString("code",course.getCode());
-                rs.updateString("name",course.getName());
-                rs.updateString("description",course.getDescription());
-                rs.updateString("prerequisites",course.getPrerequisites());
-                rs.updateRow();
-                return true;
-            }else{
-                return false;
-            }
-
-
-        }catch (SQLException e){
-            System.err.println(e);
-            return false;
-        }finally {
-            if (rs != null){
-                rs.close();
-            }
-        }
-    }
+//            rs = stmt.executeQuery();
+//            if (rs.next()){
+//                rs.updateString("code",course.getCode());
+//                rs.updateString("name",course.getName());
+//                rs.updateString("description",course.getDescription());
+//                rs.updateString("prerequisites",course.getPrerequisites().toString());
+//                rs.updateRow();
+//                return true;
+//            }else{
+//                return false;
+//            }
+//
+//
+//        }catch (SQLException e){
+//            System.err.println(e);
+//            return false;
+//        }finally {
+//            if (rs != null){
+//                rs.close();
+//            }
+//        }
+//    }
     /**
      * If given a valid course code it will find all instances of that course
      * in the database and delete them
@@ -154,7 +186,7 @@ public class Database {
     public static boolean deleteCourse(String code) throws Exception{
         String sql = "DELETE FROM courses WHERE code = ?";
         try(
-                Connection conn = DriverManager.getConnection(connection,username,null);
+                Connection conn = DriverManager.getConnection(connection,username,password);
                 PreparedStatement stmt = conn.prepareStatement(sql);
                 ){
             stmt.setString(1,code);

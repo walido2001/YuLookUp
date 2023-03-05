@@ -60,9 +60,16 @@ Iteration 2
             2. Filterable list (allowing the filtering of search results based on faculty,semester offerings, prerequisites and more)
             3. Yearly schedule builder (outline of courses one has to take to graduate, adjustable when adding courses taken so far)
         - We split up the work, assigning each member to a specific task to ensure deadlines are met
-    Wednesday March 1st 2023 - minutes
+	
+    Wednesday March 1st 2023 - 90 minutes
     
     Thursday March 2nd 2023 - 15 minutes
     	Ali & Davyd Meeting
 	- Discussed implementation of schedule generator
 	- Resolved issues with accessing course information in schedule generator class
+	
+    Saturday March 4nd 2023 - 90 minutes
+    	Ali & Davyd Meeting
+	- Discussed implementation of user profile
+	- Discussed schedule generator and implementation of course select for both GUIs
+	- Finalized decision on how selection will be implemented
