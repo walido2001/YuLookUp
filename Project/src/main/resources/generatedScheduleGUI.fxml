@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane fx:id="pane" prefHeight="730.0" prefWidth="1150.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PresentationLayer.scheduleGeneratorGUIController">
+   <children>
+      <ListView fx:id="fourthList" layoutX="864.0" layoutY="45.0" prefHeight="635.0" prefWidth="280.0" />
+      <ListView fx:id="thirdList" layoutX="578.0" layoutY="45.0" prefHeight="635.0" prefWidth="280.0" />
+      <ListView fx:id="secondList" layoutX="292.0" layoutY="45.0" prefHeight="635.0" prefWidth="280.0" />
+      <ListView fx:id="firstList" layoutX="6.0" layoutY="45.0" prefHeight="635.0" prefWidth="280.0" />
+      <Text fx:id="firstText" fill="WHITE" layoutX="98.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="First Year">
+         <font>
+            <Font name="Tahoma Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="secondText" fill="WHITE" layoutX="370.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Second Year">
+         <font>
+            <Font name="Tahoma Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="thirdText" fill="WHITE" layoutX="666.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Third Year">
+         <font>
+            <Font name="Tahoma Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="fourthText" fill="WHITE" layoutX="945.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fourth Year">
+         <font>
+            <Font name="Tahoma Bold" size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="backButton" layoutX="14.0" layoutY="691.0" mnemonicParsing="false" onAction="#getscheduleGenerator" text="Back" />
+   </children>
+</AnchorPane>
