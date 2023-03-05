@@ -7,10 +7,10 @@ import static PersistenceLayer.mainScraper.getCourseList;
 
 public class scheduleGenerator {
 
-    static ArrayList<Course> firstYear;
-    static ArrayList<Course> secondYear;
-    static ArrayList<Course> thirdYear;
-    static ArrayList<Course> fourthYear;
+    public static ArrayList<Course> firstYear;
+    public static ArrayList<Course> secondYear;
+    public static ArrayList<Course> thirdYear;
+    public static ArrayList<Course> fourthYear;
 
     static Major mechMajor = new Major("Mechanical Engineering");
     public static LinkedHashMap<Integer, ArrayList<Course>> mechCourses = mechMajor.getMajor();
@@ -26,19 +26,19 @@ public class scheduleGenerator {
         ArrayList<Course> courses = getCourseList();
 
         ArrayList<Course> taken = new ArrayList<>();
-        taken.add(courses.get(0));
-        taken.add(courses.get(1));
-        taken.add(courses.get(2));
-        taken.add(courses.get(3));
-        taken.add(courses.get(9));
-        taken.add(courses.get(10));
+//        taken.add(courses.get(0));
+//        taken.add(courses.get(1));
+//        taken.add(courses.get(2));
+//        taken.add(courses.get(3));
+//        taken.add(courses.get(9));
+//        taken.add(courses.get(10));
 
-        System.out.println(taken+"\n");
+        System.out.println("taken:\n" + taken + "\n");
         scheduleBuilder("civil", taken);
 
     }
 
-    static void scheduleBuilder(String major, ArrayList<Course> coursesTaken) {
+    public static void scheduleBuilder(String major, ArrayList<Course> coursesTaken) {
 
         LinkedHashMap<Integer,ArrayList<Course>> majorCourses = null;
 
@@ -60,39 +60,35 @@ public class scheduleGenerator {
             }
 
         System.out.println("\nFirst Year Courses:");
+        firstYear = new ArrayList<>(majorCourses.get(1).size());
         for(int i=0; i<majorCourses.get(1).size(); i++) {
-            firstYear = new ArrayList<>(majorCourses.get(1).size());
             firstYear.add(majorCourses.get(1).get(i));
             firstYear.removeAll(coursesTaken);
-            System.out.println(firstYear);
         }
+        System.out.println(firstYear);
+
         System.out.println("\nSecond Year Courses:");
+        secondYear = new ArrayList<>(majorCourses.get(2).size());
         for(int i=0; i<majorCourses.get(2).size(); i++) {
-            secondYear = new ArrayList<>(majorCourses.get(2).size());
             secondYear.add(majorCourses.get(2).get(i));
             secondYear.removeAll(coursesTaken);
-            System.out.println(secondYear);
         }
+        System.out.println(secondYear);
+
         System.out.println("\nThird Year Courses:");
+        thirdYear = new ArrayList<>(majorCourses.get(3).size());
         for(int i=0; i<majorCourses.get(3).size(); i++) {
-            thirdYear = new ArrayList<>(majorCourses.get(3).size());
             thirdYear.add(majorCourses.get(3).get(i));
             thirdYear.removeAll(coursesTaken);
-            System.out.println(thirdYear);
         }
+        System.out.println(thirdYear);
+
         System.out.println("\nFourth Year Courses:");
+        fourthYear = new ArrayList<>(majorCourses.get(4).size());
         for(int i=0; i<majorCourses.get(4).size(); i++) {
-            fourthYear = new ArrayList<>(majorCourses.get(4).size());
             fourthYear.add(majorCourses.get(4).get(i));
             fourthYear.removeAll(coursesTaken);
-            System.out.println(fourthYear);
         }
-
-        ArrayList<Course> firstSchedule = new ArrayList<>(10);
-        ArrayList<Course> secondSchedule = new ArrayList<>(10);
-        ArrayList<Course> thirdSchedule = new ArrayList<>(10);
-        ArrayList<Course> fourthSchedule = new ArrayList<>(10);
-
+        System.out.println(fourthYear);
     }
-
 }
