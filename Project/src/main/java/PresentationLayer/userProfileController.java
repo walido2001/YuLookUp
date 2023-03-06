@@ -128,6 +128,17 @@ public class userProfileController {
         newStage.show();
     }
 
-    public void openScheduleView(ActionEvent actionEvent) {
+    public void openScheduleView(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("scheduleGeneratorGUI.fxml"));
+        root = loader.load();
+
+        scheduleGeneratorGUIController var = loader.getController();
+        var.setUserSearch("");
+
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.centerOnScreen();
+        stage.show();
     }
 }

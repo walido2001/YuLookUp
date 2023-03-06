@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 
 import static BusinessLogicLayer.scheduleGenerator.*;
 import static PersistenceLayer.mainScraper.getCourseList;
-import static BusinessLogicLayer.courseSearchMethods.searchCourse;
+import static BusinessLogicLayer.courseSearchandFilterMethods.searchCourse;
 
 import java.io.IOException;
 import java.util.ArrayList;
