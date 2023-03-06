@@ -47,5 +47,6 @@
       <Label layoutX="501.0" layoutY="135.0" text="Credit Amount" />
       <TextField fx:id="courseLevelInput" layoutX="415.0" layoutY="131.0" prefHeight="26.0" prefWidth="67.0" />
       <TextField fx:id="creditAmountInput" layoutX="590.0" layoutY="131.0" prefHeight="26.0" prefWidth="67.0" />
+      <Button fx:id="userProfileButton" layoutX="566.0" layoutY="14.0" mnemonicParsing="false" onAction="#userProfileButtonOnClick" prefHeight="51.0" prefWidth="91.0" text="User Profile" />
    </children>
 </AnchorPane>

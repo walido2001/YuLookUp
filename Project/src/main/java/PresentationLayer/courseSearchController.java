@@ -23,8 +23,11 @@ public class courseSearchController {
     public Label courseNameLabel;
     public Label courseDescriptionLabel;
     public ListView<Course> resultsList;
+
+    //Other sections access
     public Button majorsListViewButton;
     public Button gpaButton;
+    public Button userProfileButton;
 
     //Filtering Components
     public ChoiceBox facultyDropDown;
@@ -46,6 +49,15 @@ public class courseSearchController {
         userSearch.setText(s);
         ActionEvent event = new ActionEvent();
         handleSearchClick(event);
+    }
+
+    public void userProfileButtonOnClick(ActionEvent event) throws IOException
+    {
+        root = FXMLLoader.load(getClass().getClassLoader().getResource("userProfile.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void handleMajorsListViewButton(ActionEvent e){

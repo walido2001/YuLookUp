@@ -7,8 +7,9 @@ import org.checkerframework.checker.units.qual.C;
 import java.sql.*;
 import java.util.ArrayList;
 
-import static BusinessLogicLayer.courseSearchMethods.searchCourse;
+import static BusinessLogicLayer.courseSearchandFilterMethods.searchCourse;
 import static PersistenceLayer.mainScraper.getCourseList;
+import static PersistenceLayer.mainScraper.getCourseListFromJSON;
 
 public class Database {
 
@@ -16,7 +17,7 @@ public class Database {
     private static final String username ="root";
 
     //change to YOUR password for your local mysql
-    private static final String password="";
+    private static final String password="1290";
 
     private static final String database="yulookup";
     private static final String connection1="jdbc:mysql://localhost:3306/";
@@ -66,16 +67,12 @@ public class Database {
         }
 
         //populating database with courses
-        for (int i=0; i< getCourseList().size();i++){
-            //deleteCourse(getCourseList().get(i).getCode());
-            insertCourse(getCourseList().get(i));
+        for (int i=0; i< getCourseListFromJSON().size();i++){
+            //deleteCourse(getCourseListFromJSON().get(i).getCode());
+            insertCourse(getCourseListFromJSON().get(i));
         }
 
-        System.out.println("Total courses: "+getCourseList().size());
-
-
-
-
+        System.out.println("Total courses: "+getCourseListFromJSON().size());
 
     }
 

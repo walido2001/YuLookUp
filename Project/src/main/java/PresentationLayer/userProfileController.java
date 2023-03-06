@@ -15,9 +15,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 import static PersistenceLayer.mainScraper.getCourseList;
-import static BusinessLogicLayer.courseSearchMethods.searchCourse;
+import static BusinessLogicLayer.courseSearchandFilterMethods.searchCourse;
 
-public class userProfileController{
+public class userProfileController {
     @FXML
     public TextField searchField;
     public Hyperlink loginLink, majorCourseViewLink, gpaCalculatorViewLink, scheduleViewLink;
@@ -35,7 +35,7 @@ public class userProfileController{
     private double gradePoint = 0;
     private int totalCredits = 0;
 
-    public void init() {
+    public void initialize() {
         TableColumn<TakenCourse,String> courseCol = new TableColumn<>("Course");
         TableColumn<TakenCourse,String> gradeCol = new TableColumn<>("Grade");
         courseCol.setCellValueFactory(new PropertyValueFactory<>("courseCode"));
