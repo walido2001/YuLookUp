@@ -14,6 +14,7 @@ public class TakenCourse {
         this.gradeVal = gradeVal;
         this.credit = Character.getNumericValue(getCourseCode().charAt(getCourseCode().length() - 4));
     }
+
     public Course getCourse() {
         return course;
     }
