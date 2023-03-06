@@ -102,7 +102,7 @@ public class Course {
         String[] seperatedString = this.code.split(" ");
         return (seperatedString != null && seperatedString.length == 3) ? Integer.parseInt(String.valueOf(seperatedString[1].charAt(0))) : -1;
     }
-    
+
     public int getCreditAmount()
     {
         // Format: FACULTY/DEP CODE CREDITSIZE
@@ -114,6 +114,35 @@ public class Course {
     public String toString()
     {
         return this.code + " | "+ this.name;
+    }
+//    public ArrayList<Course> getPrerequisites() {
+//        return prerequisites;
+//    }
+
+//    public void addPrerequisite(Course prereq)
+//    {
+//        if (!prerequisites.contains(prereq))
+//        {
+//            this.prerequisites.add(prereq);
+//        }
+//    }
+
+//    public void setPrerequisites(ArrayList<Course> prerequisites) {
+//        this.prerequisites = prerequisites;
+//    }
+    @Override
+    public boolean equals(Object obj) {
+        if(this == obj) return true;
+        if(obj == null) return false;
+        if(this.getClass() != obj.getClass()) return false;
+
+        Course c = (Course) obj;
+
+        boolean cond1 = this.getName() != null && c.getName() != null && c.getName().equals(this.getName());
+        boolean cond2 = this.getDescription() != null && c.getDescription() != null && c.getDescription().equals(this.getDescription());
+        boolean cond3 = this.getCode() != null && c.getCode() != null && c.getCode().equals(this.getCode());
+
+        return cond1 && cond2 && cond3;
     }
 
 }
