@@ -60,9 +60,26 @@ Iteration 2
             2. Filterable list (allowing the filtering of search results based on faculty,semester offerings, prerequisites and more)
             3. Yearly schedule builder (outline of courses one has to take to graduate, adjustable when adding courses taken so far)
         - We split up the work, assigning each member to a specific task to ensure deadlines are met
-    Wednesday March 1st 2023 - minutes
+	
+    Wednesday March 1st 2023 - 90 minutes
+    	- We met up during lecture time
+	- We revised big user story tasks and talked about the developer stories that we were going to implement for this iteration
+	- We discussed the the removal of two user stories; The visual schedule builder  and academic adivisor user story.
+	  this was done because they had low priority and we did not want to exceed the cost for the project.
+	- With the removal of the two user stories mentioned previously we decided to increase the cost of the User Profiles big user story as 
+	  it has a much higher priority
     
     Thursday March 2nd 2023 - 15 minutes
     	Ali & Davyd Meeting
 	- Discussed implementation of schedule generator
 	- Resolved issues with accessing course information in schedule generator class
+    Saturday March 4th 2023 - 10 minutes
+    	Dwumah and Walid Meeting
+	- Discussed how I was suppose to interact with one of the classes he created
+	- We also went into greater detail about the expected features of the database class
+	
+    Saturday March 4nd 2023 - 90 minutes
+    	Ali & Davyd Meeting
+	- Discussed implementation of user profile
+	- Discussed schedule generator and implementation of course select for both GUIs
+	- Finalized decision on how selection will be implemented
