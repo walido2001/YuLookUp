@@ -21,22 +21,22 @@ public class scheduleGenerator {
     static Major elecMajor = new Major("Electrical Engineering");
     public static LinkedHashMap<Integer, ArrayList<Course>> elecCourses = elecMajor.getMajor();
 
-    public static void main(String[] args) {
-
-        ArrayList<Course> courses = getCourseList();
-
-        ArrayList<Course> taken = new ArrayList<>();
-//        taken.add(courses.get(0));
-//        taken.add(courses.get(1));
-//        taken.add(courses.get(2));
-//        taken.add(courses.get(3));
-//        taken.add(courses.get(9));
-//        taken.add(courses.get(10));
-
-        System.out.println("taken:\n" + taken + "\n");
-        scheduleBuilder("civil", taken);
-
-    }
+//    public static void main(String[] args) {
+//
+//        ArrayList<Course> courses = getCourseList();
+//
+//        ArrayList<Course> taken = new ArrayList<>();
+////        taken.add(courses.get(0));
+////        taken.add(courses.get(1));
+////        taken.add(courses.get(2));
+////        taken.add(courses.get(3));
+////        taken.add(courses.get(9));
+////        taken.add(courses.get(10));
+//
+//        System.out.println("taken:\n" + taken + "\n");
+//        scheduleBuilder("civil", taken);
+//
+//    }
 
     public static void scheduleBuilder(String major, ArrayList<Course> coursesTaken) {
 

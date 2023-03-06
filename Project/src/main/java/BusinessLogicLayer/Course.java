@@ -138,35 +138,11 @@ public class Course {
 
         Course c = (Course) obj;
 
-        if(this.getName() == null) {
-            if(c.getName() != null)
-                return false;
-        }
-        else if(!this.getName().equals(c.getName()))
-            return false;
+        boolean cond1 = this.getName() != null && c.getName() != null && c.getName().equals(this.getName());
+        boolean cond2 = this.getDescription() != null && c.getDescription() != null && c.getDescription().equals(this.getDescription());
+        boolean cond3 = this.getCode() != null && c.getCode() != null && c.getCode().equals(this.getCode());
 
-        if(this.getDescription() == null) {
-            if(c.getDescription() != null)
-                return false;
-        }
-        else if(!this.getDescription().equals(c.getDescription()))
-            return false;
-
-        if(this.getCode() == null) {
-            if(c.getCode() != null)
-                return false;
-        }
-        else if(!this.getCode().equals(c.getCode()))
-            return false;
-
-        if(this.getCoursePrerequisites() == null) {
-            if(c.getCoursePrerequisites() != null)
-                return false;
-        }
-        else if(!this.getCoursePrerequisites().equals(c.getCoursePrerequisites()))
-            return false;
-
-        return true;
+        return cond1 && cond2 && cond3;
     }
 
 }
