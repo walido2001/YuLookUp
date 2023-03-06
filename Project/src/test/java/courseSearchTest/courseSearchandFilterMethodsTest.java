@@ -1,7 +1,7 @@
 package courseSearchTest;
 
 import BusinessLogicLayer.Course;
-import BusinessLogicLayer.courseSearchMethods;
+import BusinessLogicLayer.courseSearchandFilterMethods;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import static PersistenceLayer.mainScraper.getCourseList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class courseSearchMethodsTest {
+class courseSearchandFilterMethodsTest {
 
     @Test
     public void searchCourse_test_01()
@@ -18,7 +18,7 @@ class courseSearchMethodsTest {
         ArrayList<Course> courseList = getCourseList();
         String input = "EECS";
 
-        ArrayList<Course> courseSearchResult = courseSearchMethods.searchCourse(input, courseList);
+        ArrayList<Course> courseSearchResult = courseSearchandFilterMethods.searchCourse(input, courseList);
 
         assertEquals(courseSearchResult.get(0).getCode(), "LE/EECS 1001 1.00");
         assertEquals(courseSearchResult.get(0).getName(), "Research Directions in Computing");
@@ -31,7 +31,7 @@ class courseSearchMethodsTest {
         ArrayList<Course> courseList = getCourseList();
         String input = "eecs";
 
-        ArrayList<Course> courseSearchResult = courseSearchMethods.searchCourse(input, courseList);
+        ArrayList<Course> courseSearchResult = courseSearchandFilterMethods.searchCourse(input, courseList);
 
         assertEquals(courseSearchResult.get(0).getCode(), "LE/EECS 1001 1.00");
         assertEquals(courseSearchResult.get(0).getName(), "Research Directions in Computing");
@@ -46,7 +46,7 @@ class courseSearchMethodsTest {
         String expectedResultCode = "LE/EECS 1011 3.00";
         String expectedResultName = "Computational Thinking through Mechatronics";
 
-        ArrayList<Course> courseSearchResult = courseSearchMethods.searchCourse(input, courseList);
+        ArrayList<Course> courseSearchResult = courseSearchandFilterMethods.searchCourse(input, courseList);
 
         assertEquals(courseSearchResult.get(0).getCode(), expectedResultCode);
         assertEquals(courseSearchResult.get(0).getName(), expectedResultName);
@@ -59,7 +59,7 @@ class courseSearchMethodsTest {
         ArrayList<Course> courseList = getCourseList();
         String input = "/";
 
-        ArrayList<Course> courseSearchResult = courseSearchMethods.searchCourse(input, courseList);
+        ArrayList<Course> courseSearchResult = courseSearchandFilterMethods.searchCourse(input, courseList);
 
         assertTrue(courseSearchResult.size() == courseList.size());
     }

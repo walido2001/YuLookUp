@@ -24,7 +24,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'commons-io:commons-io:2.6'
     implementation "mysql:mysql-connector-java:8.0.32"
-    //implementation 'org.mariadb.jdbc:mariadb-java-client:2.1.2'
 }
 
 test {

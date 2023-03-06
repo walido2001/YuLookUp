@@ -147,7 +147,7 @@ public class courseTableGUIController {
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(15, 15, 15, 15));
         hbox.setSpacing(10);
-        hbox.setStyle("-fx-background-color: #e31837;");
+        hbox.setStyle("-fx-background-color: #e31837; -fx-background-radius: 0 0 10 10");
 
         Text text = new Text("Engineering Major:");
         text.setFont(Font.font("Verdana", FontWeight.NORMAL, 14));
@@ -196,19 +196,19 @@ public class courseTableGUIController {
             setCourseColumnsView();
         });
 
-//        Button softMajButton = createButton("Software", 100, 20);
-//        softMajButton.setOnAction(event -> {
-//            major = new Major("Software Engineering");
-//            setCourseColumnsView();
-//        });
-//
-//        Button spaceMajButton = createButton("Space", 100, 20);
-//        spaceMajButton.setOnAction(event -> {
-//            major = new Major("Space Engineering");
-//            setCourseColumnsView();
-//        });
+        Button softMajButton = createButton("Software", 100, 20);
+        softMajButton.setOnAction(event -> {
+            major = new Major("Software Engineering");
+            setCourseColumnsView();
+        });
 
-        hbox.getChildren().addAll(Back, text, civilMajButton, compMajButton, elecMajButton, mechMajButton/*, softMajButton, spaceMajButton*/);
+        Button spaceMajButton = createButton("Space", 100, 20);
+        spaceMajButton.setOnAction(event -> {
+            major = new Major("Space Engineering");
+            setCourseColumnsView();
+        });
+
+        hbox.getChildren().addAll(Back, text, civilMajButton, compMajButton, elecMajButton, mechMajButton, softMajButton, spaceMajButton);
         hbox.setAlignment(Pos.BASELINE_CENTER);
         return hbox;
     }

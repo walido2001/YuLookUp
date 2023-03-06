@@ -70,6 +70,47 @@ public class Course {
         return returnable;
     }
 
+    public String getSubjectType()
+    {
+        // Format: FACULTY/DEP CODE CREDITSIZE
+        String[] seperatedString = this.code.split(" ");
+        if(seperatedString.length > 0)
+        {
+            // Format: FACULTY/DEP
+            String[] facultyDep = seperatedString[0].split("/");
+            return facultyDep[1];
+        }
+        return "";
+    }
+
+    public String getFacultyType()
+    {
+        // Format: FACULTY/DEP CODE CREDITSIZE
+        String[] seperatedString = this.code.split(" ");
+        if(seperatedString != null && seperatedString.length > 0)
+        {
+            // Format: FACULTY/DEP
+            String[] facultyDep = seperatedString[0].split("/");
+            return facultyDep[0];
+        }
+        return "";
+    }
+
+    public int getLevel()
+    {
+        // Format: FACULTY/DEP CODE CREDITSIZE
+        String[] seperatedString = this.code.split(" ");
+        return (seperatedString != null && seperatedString.length == 3) ? Integer.parseInt(String.valueOf(seperatedString[1].charAt(0))) : -1;
+    }
+
+    public int getCreditAmount()
+    {
+        // Format: FACULTY/DEP CODE CREDITSIZE
+        String[] seperatedString = this.code.split(" ");
+        return (seperatedString != null && seperatedString.length == 3) ? Integer.parseInt(String.valueOf(seperatedString[2].charAt(0))) : -1;
+    }
+
+
     public String toString()
     {
         return this.code + " | "+ this.name;
