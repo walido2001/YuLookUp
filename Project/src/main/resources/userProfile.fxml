@@ -23,7 +23,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="yulookuplogo.png" />
+                  <Image url="user-icon.png" />
                </image>
                <VBox.margin>
                   <Insets top="50.0" />
