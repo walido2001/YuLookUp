@@ -180,6 +180,20 @@ public class mainScraper {
         return returnable;
     }
 
+    public static ArrayList<Course> getCourseListFromJSON()
+    {
+        Gson gson = new Gson();
+        String jsonString="";
+        try {
+            jsonString = FileUtils.readFileToString(new File("courses.json"), StandardCharsets.UTF_8);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Type listType = new TypeToken<ArrayList<Course>>(){}.getType();
+        ArrayList<Course> returnable = gson.fromJson(jsonString, listType);
+        return returnable;
+    }
+
     private static ArrayList<Integer> findInstancesOf(char target, String sample)
     {
         ArrayList<Integer> returnable = new ArrayList<>();
