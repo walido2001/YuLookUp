@@ -7,10 +7,11 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static PersistenceLayer.mainScraper.getCourseList;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static PersistenceLayer.mainScraper.getCourseListFromJSON;
+import static org.junit.jupiter.api.Assertions.*;
 
 class courseSearchandFilterMethodsTest {
+
 
     @Test
     public void searchCourse_test_01()

@@ -1,9 +1,11 @@
 package PersistenceLayer;
 
+import BusinessLogicLayer.Constants;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import BusinessLogicLayer.Course;
+import io.netty.util.Constant;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -15,16 +17,26 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
+import java.sql.*;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Locale;
 
 import static java.lang.Character.compare;
 
 public class mainScraper {
+    private static ArrayList<Course> courseList = null;
 
 //    public static void main(String[] args) {
-//
+//        getCourseList();
+////        String sample = "[hello, there]";
+////        sample = sample.substring(1, sample.length()-1);
+////
+////        String[] sampleArray = sample.split(",");
+////        ArrayList<String> sampleArrayList = new ArrayList<>(Arrays.asList(sampleArray));
+////        System.out.println(sampleArrayList.toString());
 //    }
 
     public static void momentaryPause(int val)
@@ -166,18 +178,60 @@ public class mainScraper {
         driver2.close();
     }
 
+    //Get course list from the database
     public static ArrayList<Course> getCourseList()
     {
-        Gson gson = new Gson();
-        String jsonString="";
+        if (courseList != null)
+        {
+            return courseList;
+        }
+
+        ArrayList<Course> returnable = new ArrayList<>();
+
         try {
-            jsonString = FileUtils.readFileToString(new File("courses.json"), StandardCharsets.UTF_8);
-        } catch (IOException e) {
+            Connection conn = DriverManager.getConnection(Constants.CONNECTION, Constants.USERNAME, Constants.PASSWORD);
+            Statement statement = conn.createStatement();
+            String query = "SELECT * FROM courses";
+            ResultSet results = statement.executeQuery(query);
+            while (results.next())
+            {
+                String code = results.getString("code");
+                String name = results.getString("name");
+                String description = results.getString("description");
+                String prerequisites = results.getString("prerequisites");
+                ArrayList<String> prerequisitesList = new ArrayList<>();
+                prerequisites = prerequisites.substring(1, prerequisites.length()-1);
+                prerequisitesList = new ArrayList<>(Arrays.asList(prerequisites.split(",")));
+
+                for (int i = 0 ; i < prerequisitesList.size(); i++)
+                {
+                    prerequisitesList.set(i, prerequisitesList.get(i).trim());
+                }
+
+                Course newCourse = new Course(code, name, description, prerequisitesList);
+                returnable.add(newCourse);
+            }
+
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-        Type listType = new TypeToken<ArrayList<Course>>(){}.getType();
-        ArrayList<Course> returnable = gson.fromJson(jsonString, listType);
+
+//        for (Course course: returnable)
+//        {
+//            System.out.println(course.toString());
+//        }
+
         return returnable;
+//        Gson gson = new Gson();
+//        String jsonString="";
+//        try {
+//            jsonString = FileUtils.readFileToString(new File("courses.json"), StandardCharsets.UTF_8);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//        Type listType = new TypeToken<ArrayList<Course>>(){}.getType();
+//        ArrayList<Course> returnable = gson.fromJson(jsonString, listType);
+//        return returnable;
     }
 
     public static ArrayList<Course> getCourseListFromJSON()

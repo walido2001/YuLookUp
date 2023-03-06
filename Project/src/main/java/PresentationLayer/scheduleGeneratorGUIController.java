@@ -27,7 +27,6 @@ import java.util.ArrayList;
 
 public class scheduleGeneratorGUIController extends Application {
 
-
     public ListView courseList;
     public ListView takenList;
     public Button addButton;
