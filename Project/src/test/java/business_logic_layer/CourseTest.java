@@ -1,6 +1,5 @@
-package courseSearchTest;
+package business_logic_layer;
 
-import BusinessLogicLayer.Course;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;

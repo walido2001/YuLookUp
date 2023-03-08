@@ -28,6 +28,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+//    filter {
+//        //specific test method
+//        includeTestsMatching "BusinessLayerTest.courseSearchandFilterMethodsTest"
+////        includeTestsMatching "YuLookUp.src.main.java.BusinessLayerTest.courseSearchandFilterMethodsTest"
+//
+//    }
 }
 
 mainClassName = "PresentationLayer.Main"

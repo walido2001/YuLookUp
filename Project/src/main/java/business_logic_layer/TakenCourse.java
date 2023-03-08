@@ -1,6 +1,4 @@
-package BusinessLogicLayer;
-
-import javafx.event.ActionEvent;
+package business_logic_layer;
 
 public class TakenCourse {
     private Course course;

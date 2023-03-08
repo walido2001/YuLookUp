@@ -1,6 +1,5 @@
-package PresentationLayer;
+package presentation_layer;
 
-import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
 import javafx.application.Preloader;
 import javafx.event.ActionEvent;
@@ -13,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 
-import static Database.Database.formDatabase;
+import static database.Database.formDatabase;
 
 public class mainController extends Application { // controller class
 

@@ -1,7 +1,7 @@
-package PresentationLayer;
+package presentation_layer;
 
-import BusinessLogicLayer.Course;
-import BusinessLogicLayer.TakenCourse;
+import business_logic_layer.Course;
+import business_logic_layer.TakenCourse;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -14,8 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import static PersistenceLayer.mainScraper.getCourseList;
-import static BusinessLogicLayer.courseSearchandFilterMethods.searchCourse;
+import static persistence_layer.mainScraper.getCourseList;
+import static business_logic_layer.courseSearchandFilterMethods.searchCourse;
 
 public class userProfileController {
     @FXML

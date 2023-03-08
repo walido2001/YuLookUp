@@ -1,18 +1,13 @@
-package courseSearchTest;
+package business_logic_layer;
 
-import BusinessLogicLayer.Course;
-import BusinessLogicLayer.courseSearchandFilterMethods;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static PersistenceLayer.mainScraper.getCourseList;
-import static PersistenceLayer.mainScraper.getCourseListFromJSON;
+import static persistence_layer.mainScraper.getCourseList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class courseSearchandFilterMethodsTest {
-
-
     @Test
     public void searchCourse_test_01()
     {
@@ -23,7 +18,6 @@ class courseSearchandFilterMethodsTest {
 
         assertEquals(courseSearchResult.get(0).getCode(), "LE/EECS 1001 1.00");
         assertEquals(courseSearchResult.get(0).getName(), "Research Directions in Computing");
-
     }
 
     @Test

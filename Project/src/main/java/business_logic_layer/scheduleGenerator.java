@@ -1,9 +1,7 @@
-package BusinessLogicLayer;
+package business_logic_layer;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-
-import static PersistenceLayer.mainScraper.getCourseList;
 
 public class scheduleGenerator {
 

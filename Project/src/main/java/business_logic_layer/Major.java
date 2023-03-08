@@ -1,6 +1,6 @@
-package BusinessLogicLayer;
+package business_logic_layer;
 
-import PersistenceLayer.mainScraper;
+import persistence_layer.mainScraper;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

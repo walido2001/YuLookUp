@@ -1,4 +1,4 @@
-package BusinessLogicLayer;
+package business_logic_layer;
 
 public class Constants {
     //change to YOUR username for you local mysql

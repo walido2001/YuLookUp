@@ -1,16 +1,11 @@
-package Database;
+package database;
 
-import BusinessLogicLayer.Constants;
-import BusinessLogicLayer.Course;
-import PersistenceLayer.mainScraper;
-import org.checkerframework.checker.units.qual.C;
+import business_logic_layer.Constants;
+import business_logic_layer.Course;
 
 import java.sql.*;
-import java.util.ArrayList;
 
-import static BusinessLogicLayer.courseSearchandFilterMethods.searchCourse;
-import static PersistenceLayer.mainScraper.getCourseList;
-import static PersistenceLayer.mainScraper.getCourseListFromJSON;
+import static persistence_layer.mainScraper.getCourseListFromJSON;
 
 public class Database {
 

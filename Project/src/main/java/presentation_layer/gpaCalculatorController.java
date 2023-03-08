@@ -1,4 +1,4 @@
-package PresentationLayer;
+package presentation_layer;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

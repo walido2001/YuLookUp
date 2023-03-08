@@ -1,11 +1,10 @@
-package PersistenceLayer;
+package persistence_layer;
 
-import BusinessLogicLayer.Constants;
+import business_logic_layer.Constants;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import BusinessLogicLayer.Course;
-import io.netty.util.Constant;
+import business_logic_layer.Course;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +20,6 @@ import java.sql.*;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Locale;
 
 import static java.lang.Character.compare;

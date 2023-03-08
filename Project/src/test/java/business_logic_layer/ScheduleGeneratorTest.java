@@ -1,15 +1,11 @@
-package courseSearchTest;
+package business_logic_layer;
 
-import BusinessLogicLayer.Course;
-import BusinessLogicLayer.scheduleGenerator;
-import PresentationLayer.courseTableGUIController;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static BusinessLogicLayer.scheduleGenerator.*;
-import static PersistenceLayer.mainScraper.getCourseList;
+import static business_logic_layer.scheduleGenerator.*;
+import static persistence_layer.mainScraper.getCourseList;
 import static org.testng.AssertJUnit.*;
 
 public class ScheduleGeneratorTest {

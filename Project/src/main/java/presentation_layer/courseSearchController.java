@@ -1,6 +1,6 @@
-package PresentationLayer;
+package presentation_layer;
 
-import BusinessLogicLayer.Course;
+import business_logic_layer.Course;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import static BusinessLogicLayer.courseSearchandFilterMethods.*;
-import static PersistenceLayer.mainScraper.getCourseList;
+import static business_logic_layer.courseSearchandFilterMethods.*;
+import static persistence_layer.mainScraper.getCourseList;
 
 public class courseSearchController {
 

@@ -1,7 +1,7 @@
-package PresentationLayer;
+package presentation_layer;
 
-import BusinessLogicLayer.Course;
-import BusinessLogicLayer.Major;
+import business_logic_layer.Course;
+import business_logic_layer.Major;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

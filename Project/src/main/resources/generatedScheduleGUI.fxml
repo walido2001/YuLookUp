@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<AnchorPane fx:id="pane" prefHeight="730.0" prefWidth="1150.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PresentationLayer.scheduleGeneratorGUIController">
+<AnchorPane fx:id="pane" prefHeight="730.0" prefWidth="1150.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation_layer.scheduleGeneratorGUIController">
    <children>
       <ListView fx:id="fourthList" layoutX="864.0" layoutY="45.0" prefHeight="635.0" prefWidth="280.0" />
       <ListView fx:id="thirdList" layoutX="578.0" layoutY="45.0" prefHeight="635.0" prefWidth="280.0" />

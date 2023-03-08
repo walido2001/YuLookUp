@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="694.0" prefWidth="671.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="PresentationLayer.courseSearchController">
+<AnchorPane prefHeight="694.0" prefWidth="671.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation_layer.courseSearchController">
    <children>
       <ImageView fx:id="yuLogo" fitHeight="150.0" fitWidth="200.0" layoutX="261.0" layoutY="-33.0" pickOnBounds="true" preserveRatio="true">
          <image>

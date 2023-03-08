@@ -1,8 +1,6 @@
-package courseSearchTest;
+package business_logic_layer;
 
-import BusinessLogicLayer.Course;
-import BusinessLogicLayer.TakenCourse;
-import PersistenceLayer.mainScraper;
+import persistence_layer.mainScraper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
