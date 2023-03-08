@@ -31,9 +31,7 @@
     </last-used-providers>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="60a83c1c-6e13-496c-8423-33d2d2d6992d" object-ref="schemas/yulookup/tables/courses" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="4fd05149-0d5c-4804-ab6d-9a792f5d5473" dataset="yulookup.courses" active-filter-id="EMPTY_FILTER" />

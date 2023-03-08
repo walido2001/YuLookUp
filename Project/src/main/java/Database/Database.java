@@ -54,7 +54,7 @@ public class Database {
             e.printStackTrace();
         }
 
-        //altering number of tablerows in courses to 1200
+        //altering number of table rows in courses to 1200
         try (Connection conn = DriverManager.getConnection(connection1, username, password);
              Statement stmt = conn.createStatement();
         ) {
@@ -68,7 +68,6 @@ public class Database {
 
         //populating database with courses
         for (int i = 0; i < getCourseListFromJSON().size(); i++) {
-            //deleteCourse(getCourseListFromJSON().get(i).getCode());
             insertCourse(getCourseListFromJSON().get(i));
         }
 
