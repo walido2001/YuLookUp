@@ -30,4 +30,4 @@ test {
     useJUnitPlatform()
 }
 
-mainClassName = "PresentationLayer.mainController"
+mainClassName = "PresentationLayer.Main"

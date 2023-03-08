@@ -1,6 +1,8 @@
 package PresentationLayer;
 
+import com.sun.javafx.application.LauncherImpl;
 import javafx.application.Application;
+import javafx.application.Preloader;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -11,6 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import java.io.IOException;
 
+import static Database.Database.formDatabase;
+
 public class mainController extends Application { // controller class
 
     public TextField searchBar;
@@ -18,6 +22,14 @@ public class mainController extends Application { // controller class
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @Override
+    public void init() throws Exception
+    {
+        formDatabase();
+        notifyPreloader(new Preloader.StateChangeNotification(
+                Preloader.StateChangeNotification.Type.BEFORE_START));
+    }
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -49,7 +61,7 @@ public class mainController extends Application { // controller class
         stage.show();
     }
 
-    public static void main(String[] args) { // main class
-        launch(args);
-    }
+//    public static void main(String[] args) { // main class
+////        launch(args);
+//    }
 }
