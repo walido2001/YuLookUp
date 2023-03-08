@@ -65,7 +65,7 @@ public class userProfileController {
             cgpaVal = gradePoint/totalCredits;
             updateUserStats();
 
-            coursesTakenTable.getItems().add(new TakenCourse(selectedCourse, (String) selectGrade.getValue(), grade));
+            coursesTakenTable.getItems().add(new TakenCourse(selectedCourse, (String) selectGrade.getValue()));
         }
     }
 
