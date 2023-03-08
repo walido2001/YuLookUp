@@ -1,0 +1,344 @@
+<diagram program="umletino" version="15.0.0"><zoom_level>2</zoom_level><help_text>Space for diagram notes</help_text><element><id>UMLClass</id><coordinates><x>646</x><y>378</y><w>80</w><h>62</h></coordinates><panel_attributes>Course
+--
+- code: String
+- name: String
+- description: String
+- prerequisites: ArrayList&lt;String&gt;
+--
++ Course(code: String, name: String, description: String): constructor
++ Course(code: String, name: String, description: String)
++ getCode(): String
++ getName(): String
++ getDescription(): String
++ getDescriptionWithoutPrereq(): String
++ getPrerequisites(): ArrayList&lt;String&gt;
++ getCoursePrerequisites(): ArrayList&lt;Course&gt;
++ getSubjectType(): String
++ getFacultyType(): String
++ getLevel(): int
++ getCreditAmount(): int
++ toString(): String
++ equals(obj: Obj): Boolean</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>648</x><y>466</y><w>74</w><h>76</h></coordinates><panel_attributes>Major
+--
+- courses: LinkedHashMap&lt;String, Course&gt;
+- name: String
+- civilCourses: String[]
+- computerCourses: String[]
+- electricalCourses: String[]
+- mechanicalCourses: String[]
+- softwareCourses: String[]
+- spaceCourses: String[]
+- major: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;
+- civilMajor: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;
+- computerMajor: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;
+- electricalMajor: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;
+- mechanicalMajor: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;
+- softwareMajor: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;
+- spaceMajor: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;
+--
++ Major(name: String): constructor
++ setMajor(): LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;
++ getMajor(): LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;
++ setAllCourses(list: ArrayList&lt;Course&gt;): void
++ getName(): String
++ getShortCode(): String
++ getCourseLevel(): int
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>802</x><y>466</y><w>78</w><h>28</h></coordinates><panel_attributes>MainScraper
+--
+_+ momentaryPause(val: int): void_
+_+ navigateToCourseList(): void_
+_+ getCourseList(): ArrayList&lt;Course&gt;_
+_+ getCourseListFromJson(): ArrayList&lt;Course&gt;_
+_+ findInstancesOf(target: Char, sample: String): ArrayList&lt;Integer&gt;_
+_ + setPrerequisites(): ArrayList&lt;String&gt;_</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>480</x><y>394</y><w>62</w><h>50</h></coordinates><panel_attributes>courseSearchController
+--
++ userSearch: TextField
++ courseCodeLabel: Label
++ coiurseNameLabel: Label
++ courseDescriptionLabel: Label
++ resultsList: ListView&lt;Course&gt;
++ majorsListViewButton: Button
++ gpaButton: Button
+- stage: Stage
+- scene: Scene
+-root: Parent
+--
++ setUserSearch(s: String): void
++ handleMajorsListViewButton(e: ActionEvent): void
++ handleSearchClick(e: ActionEvent): void
++ getGPACalculatorScene(event: ActionEvent): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>474</x><y>450</y><w>80</w><h>62</h></coordinates><panel_attributes>courseTableGUIController
+--
++ major: Major
++ broder: BorderPane
++ root: Parent
++ stage: Stage
++ scene: Scene
++ buttonsList: HashMap&lt;String, Button&gt;
+--
++ getMajorsListScene(): Scene
++ setCourseColumnsView(): void
++ courseDescription(course: Course): void
++ yearCol(year: int, buttons: HashMap&lt;String, Button&gt;): VBox
++ showPrerequisites(btn: Button, course: Course): void
++ clearPrerequisites(): void
++ createButton(text: String, width: Double, height: Double): Button
++ setCourses(): void
++ majorsBar(): HBox
++ getShortCode(course: Course): String
++ getCredit(course: Course): double</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>478</x><y>518</y><w>70</w><h>90</h></coordinates><panel_attributes>scheduleGeneratorGUIController
+--
+- textFieldGPA: TextField
+- textFieldCredits: TextField
+- choiceBox1: ChoiceBox&lt;String&gt;
+- choiceBox2: ChoiceBox&lt;String&gt;
+- choiceBox3: ChoiceBox&lt;String&gt;
+- choiceBox4: ChoiceBox&lt;String&gt;
+- choiceBox5: ChoiceBox&lt;String&gt;
+- textFieldGPV1: TextField
+- textFieldGPV2: TextField
+- textFieldGPV3: TextField
+- textFieldGPV4: TextField
+- textFieldGPV5: TextField
+- textFieldCW1: TextField
+- textFieldCW2: TextField
+- textFieldCW3: TextField
+- textFieldCW4: TextField
+- textFieldCW5: TextField
+- gradeToNumber: Map&lt;ChoiceBox&lt;String&gt;, TextField&gt;
+- creditWeightFields: ArrayList&lt;TextField&gt;
+- gradePointFields: ArrayList&lt;TextField&gt;
+- root: Parent
+- stage: Stage
+- scene: Scene
+--
++ initialize(location: URL, resources: ResourceBundle): void
++ GradeToGradePoint(event: ActionEvent): void
++ CalculateGPA(event: ActionEvent): void
++ getSearchResultsScene(event: ActionEvent): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>944</x><y>424</y><w>44</w><h>34</h></coordinates><panel_attributes>Local Database (mySQL)
+_umletcode=
+//cloud
+
+//DrawConfig Parameters (bg: bgColor?, fg: fgColor?, lt: lineType?, lw: lineWidth?, transparency: transparencyValue?)
+var cloudConfig = {fg: '#00BFFF', lt: '-', lw: 2}
+
+//Parameters (x, y, width, height, start, extent, open, drawConfig?)
+drawArc(60,70,50,50,30,130,true, cloudConfig)
+drawArc(36,83,49,50,70,100,true, cloudConfig)
+drawArc(73,83,50,30,-100,180,true, cloudConfig)
+drawArc(36,84,60,40,180,180,true, cloudConfig)
+var innerCloudConfig= {fg: '#87CEFA', lt: '-', lw: 2}
+drawArc(45,87,40,30,170,180,true, innerCloudConfig)
+drawArc(75,79,20,20,30,130,true, innerCloudConfig)
+
+//server
+//Parameters (x, y, width, height, radius, drawConfig?)
+drawRectangleRound(140,50,60,90,5, {bg: 'gray', fg: 'black', lt: '-', lw: 2})
+
+//Parameters (x, y, width, height, drawConfig?)
+drawRectangle(150,60,40,8)
+drawRectangle(150,80,40,8)
+drawRectangle(150,100,40,8)
+
+//Parameters (x, y, radius, drawConfig?)
+drawCircle(170,125,5)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>724</x><y>410</y><w>82</w><h>68</h></coordinates><panel_attributes>lt=-&gt;
+request CourseList from database</panel_attributes><additional_attributes>10;10;390;320</additional_attributes></element><element><id>Relation</id><coordinates><x>684</x><y>438</y><w>8</w><h>32</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>20;10;10;140</additional_attributes></element><element><id>UMLClass</id><coordinates><x>634</x><y>558</y><w>108</w><h>24</h></coordinates><panel_attributes>CourseSearchandFilterMethods
+--
+_+ searchCourse(search: String, directory: ArrayList&lt;Course&gt; directory)_
+_+ filterDepartment(currentResults: ArrayList&lt;Course&gt;, dep: String): ArrayList&lt;Course&gt;_
+_+ filterSubject(currentResults: ArrayList&lt;Course&gt;, Subject: String): ArrayList&lt;Course&gt;_
+_+ filterYearLevel(currentResults: ArrayList&lt;Course&gt;, yearLevel: integer): ArrayList&lt;Course&gt;_
+_+ filterCreditAmount(currentResults: ArrayList&lt;Course&gt;, creditAmount: int): ArrayList&lt;Course&gt;_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>690</x><y>432</y><w>50</w><h>130</h></coordinates><panel_attributes>lt=-</panel_attributes><additional_attributes>180;10;220;10;230;590;10;590;10;630</additional_attributes></element><element><id>Relation</id><coordinates><x>540</x><y>412</y><w>98</w><h>156</h></coordinates><panel_attributes>lt=&lt;&lt;-
+uses</panel_attributes><additional_attributes>470;760;440;760;430;10;10;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>370</x><y>468</y><w>60</w><h>38</h></coordinates><panel_attributes>mainController
+--
++ searchBar: TextField
++ homeSearchButton: Button
+- stage: Stage
+- scene: Scene
+- root: Parent
+--
++ init(): void
++ start(stage: Stage): void
++ getSearchResultsScene(event: ActionEvent): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>428</x><y>414</y><w>56</w><h>74</h></coordinates><panel_attributes>lt=-
+displays
+m1=1
+m2=1</panel_attributes><additional_attributes>10;340;60;340;60;10;260;10</additional_attributes></element><element><id>Relation</id><coordinates><x>428</x><y>482</y><w>50</w><h>10</h></coordinates><panel_attributes>lt=-
+m1=1
+displays
+m2=1
+</panel_attributes><additional_attributes>10;20;230;20</additional_attributes></element><element><id>Relation</id><coordinates><x>428</x><y>488</y><w>54</w><h>84</h></coordinates><panel_attributes>lt=-
+m1= 1
+displays
+m2=1</panel_attributes><additional_attributes>10;10;70;10;80;390;250;390</additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>364</x><y>366</y><w>208</w><h>396</h></coordinates><panel_attributes>Presentation Architecture Component (GUI)</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>608</x><y>366</y><w>144</w><h>400</h></coordinates><panel_attributes>Business Logic Architecture Component</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLGeneric</id><coordinates><x>790</x><y>366</y><w>94</w><h>398</h></coordinates><panel_attributes>Persistence Architecture Component</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>944</x><y>478</y><w>42</w><h>18</h></coordinates><panel_attributes>Database
+--
+--
++ formDatabase(): void
++ insertCourse(): Boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>964</x><y>456</y><w>14</w><h>26</h></coordinates><panel_attributes>lt=&lt;-
+creates</panel_attributes><additional_attributes>10;10;10;110</additional_attributes></element><element><id>UMLClass</id><coordinates><x>944</x><y>524</y><w>44</w><h>34</h></coordinates><panel_attributes>Stub Database(courses.json)
+_umletcode=
+//cloud
+
+//DrawConfig Parameters (bg: bgColor?, fg: fgColor?, lt: lineType?, lw: lineWidth?, transparency: transparencyValue?)
+var cloudConfig = {fg: '#00BFFF', lt: '-', lw: 2}
+
+//Parameters (x, y, width, height, start, extent, open, drawConfig?)
+drawArc(60,70,50,50,30,130,true, cloudConfig)
+drawArc(36,83,49,50,70,100,true, cloudConfig)
+drawArc(73,83,50,30,-100,180,true, cloudConfig)
+drawArc(36,84,60,40,180,180,true, cloudConfig)
+var innerCloudConfig= {fg: '#87CEFA', lt: '-', lw: 2}
+drawArc(45,87,40,30,170,180,true, innerCloudConfig)
+drawArc(75,79,20,20,30,130,true, innerCloudConfig)
+
+//server
+//Parameters (x, y, width, height, radius, drawConfig?)
+drawRectangleRound(140,50,60,90,5, {bg: 'gray', fg: 'black', lt: '-', lw: 2})
+
+//Parameters (x, y, width, height, drawConfig?)
+drawRectangle(150,60,40,8)
+drawRectangle(150,80,40,8)
+drawRectangle(150,100,40,8)
+
+//Parameters (x, y, radius, drawConfig?)
+drawCircle(170,125,5)
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>964</x><y>494</y><w>38</w><h>34</h></coordinates><panel_attributes>lt=-&gt;
+utilize to populate database</panel_attributes><additional_attributes>10;10;10;150</additional_attributes></element><element><id>Relation</id><coordinates><x>878</x><y>480</y><w>70</w><h>10</h></coordinates><panel_attributes>lt=-&gt;
+request from Local Database</panel_attributes><additional_attributes>10;10;330;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>690</x><y>590</y><w>42</w><h>24</h></coordinates><panel_attributes>Constants
+--
+_ + USERNAME: String_
+_ + PASSWORD: String_
+_ + DATABASE: String_
+_ + CONNECTION1: String_
+_ + CONNECTION: String_
+--
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>730</x><y>494</y><w>218</w><h>112</h></coordinates><panel_attributes>lt=-&gt;
+request mySQL setup details</panel_attributes><additional_attributes>1070;10;880;540;10;540</additional_attributes></element><element><id>UMLClass</id><coordinates><x>296</x><y>482</y><w>44</w><h>16</h></coordinates><panel_attributes>Main
+--
+--
++ main: void
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>338</x><y>484</y><w>36</w><h>10</h></coordinates><panel_attributes>lt=&lt;-
+calls</panel_attributes><additional_attributes>160;20;10;30</additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>624</y><w>82</w><h>16</h></coordinates><panel_attributes>customPreloader
+--
+--
++ start(stage: Stage): void
++ handleStateChangeNotification(evt: StateChangeNotification): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>470</x><y>648</y><w>82</w><h>100</h></coordinates><panel_attributes>scheduleGeneratorGUIController
+--
++ courseList: ListView
++ takenList: ListView
++ addButton: Button
++ removeButton: Button
++ civilButton: Button
++ mechanicalButton: Button
++ electricalButton: Button
++ computerButton: Button
++ searchButton: Button
++ backButton: Button
++ textBox: Text
++ searchBar: TextField
++ major: String
++ fourthText: Text
++ secondText: Text
++ firstText: Text
+--
++ start(stage: Stage): void
++ addCourse(event: ActionEvent): Event
++ removeCourse(event: ActionEvent): void
++ setCivilMajor(event: ActionEvent): void
++ setMechanicalMajor(event: ActionEvent): void
++ setElectricalMajor(event: ActionEvent): void
++ setComputerMajor(event: ActionEvent): void
++ handleSearch(event: ActionEvent): void
++ fillSchedule(event: ActionEvent): void
++ fill(): void
++ getScheduleGenerator(event: ActionEvent): void
++ getSearchResultsScreen(event: ActionEvent): void
++ setUserSearch(s: string): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>378</x><y>608</y><w>82</w><h>148</h></coordinates><panel_attributes>userProfileController
+--
++ searchField: TextField
++ loginLink: HyperLink
++ majorCourseViewLink: HyperLink
++ gpaCalculatorViewLink: HyperLink
++ scheduleViewLink: HyperLink
++ studentName: Label
++ studentId: Label
++ studentMajor: Label
++ creditsEarned: Label
++ cgpa: Label
++ coursesTakenTable: TableView&lt;TakenCourse&gt;
++ deleteButton: Button
++ searchButton: Button
++ addCourseButton: Button
++ resultList: ListView&lt;Course&gt;
++ selectGrade: ComboBox
+- stage: Stage
+- scene: Scene
+- root: Parent
+- selectedCourse: Course
+- grade: int
+- cgpaVal: double
+- gradePoint: double
+- totalCredits: double
+--
++ initialize(): void
++ addCourse(event: ActionEvent): Event
++ removeCourse(event: ActionEvent): void
++ setCivilMajor(event: ActionEvent): void
++ setMechanicalMajor(event: ActionEvent): void
++ setElectricalMajor(event: ActionEvent): void
++ setComputerMajor(event: ActionEvent): void
++ handleSearch(event: ActionEvent): void
++ fillSchedule(event: ActionEvent): void
++ fill(): void
++ getScheduleGenerator(event: ActionEvent): void
++ getSearchResultsScreen(event: ActionEvent): void
++ setUserSearch(s: string): void
++ searchCourseHandler(event: ActionEvent): void
++ addCourseHandler(event: ActionEvent): void
++ gradeSelectionHandler(event: ActionEvent): void
++ deleteCourseHandler(event: ActionEvent): void
++ updateUserStats(): void
++ contains(table: TableView&lt;TakenCourse&gt;, obj: Course): Boolean
++ openGpaCalc(event: ActionEvent): void
++ openMajorCourseView(event: ActionEvent): void
++ openScheduleView(event: ActionEvent): void</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>392</x><y>504</y><w>24</w><h>108</h></coordinates><panel_attributes>lt=-
+m1= 1
+displays
+m2=1</panel_attributes><additional_attributes>10;10;100;520</additional_attributes></element><element><id>Relation</id><coordinates><x>416</x><y>504</y><w>66</w><h>124</h></coordinates><panel_attributes>lt=-
+m1= 1
+displays
+m2=1</panel_attributes><additional_attributes>10;10;140;380;310;600</additional_attributes></element><element><id>Relation</id><coordinates><x>408</x><y>506</y><w>66</w><h>160</h></coordinates><panel_attributes>lt=-
+m1= 1
+displays
+m2=1</panel_attributes><additional_attributes>10;10;150;390;280;520;310;780</additional_attributes></element><element><id>UMLClass</id><coordinates><x>620</x><y>622</y><w>84</w><h>48</h></coordinates><panel_attributes>scheduleGenerator
+--
+_ + firstYear: ArrayList&lt;Course&gt;_
+_ + secondYear: ArrayList&lt;Course&gt;_
+_ + thirdYear: ArrayList&lt;Course&gt;_
+_ + fourthYear: ArrayList&lt;Course&gt;_
+_ + mechMajor: Major_
+_ + compMajor: Major_
+_ + civilMajor: Major_
+_ + elecMajor: Major_
+_ + mechCourses: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;_
+_ + compCourses: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;_
+_ + civilCourses: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;_
+_ + elecCourses: LinkedHashMap&lt;Integer, ArrayList&lt;Course&gt;&gt;_
+--
+_ + scheduleBuilder(major: String, coursesTaken: ArrayList&lt;Course&gt;): void_</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>550</x><y>640</y><w>74</w><h>58</h></coordinates><panel_attributes>lt=&lt;&lt;-
+uses</panel_attributes><additional_attributes>350;10;10;270</additional_attributes></element><element><id>UMLClass</id><coordinates><x>646</x><y>686</y><w>80</w><h>40</h></coordinates><panel_attributes>TakenCourse
+--
+- course: Course
+- courseCode: String
+- grade: String
+- gradeVal: int
+- credit: Double
+--
++ takenCourse(course: Course, grade: String, gradeVal: int): void
++ getCourseCode(): String
++ getGrade(): String
++ getGradeVal(): int
++ getCredit(): double
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>684</x><y>396</y><w>94</w><h>294</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>210;10;420;20;450;1390;10;1410;10;1450</additional_attributes></element></diagram>
