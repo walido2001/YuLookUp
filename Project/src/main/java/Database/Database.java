@@ -1,5 +1,6 @@
 package Database;
 
+import BusinessLogicLayer.Constants;
 import BusinessLogicLayer.Course;
 import PersistenceLayer.mainScraper;
 import org.checkerframework.checker.units.qual.C;
@@ -13,24 +14,14 @@ import static PersistenceLayer.mainScraper.getCourseListFromJSON;
 
 public class Database {
 
-    //change to YOUR username for you local mysql
-    private static final String username = "root";
-
-    //change to YOUR password for your local mysql
-    private static final String password = "1290";
-
-    private static final String database = "yulookup";
-    private static final String connection1 = "jdbc:mysql://localhost:3306/";
-    private static final String connection = "jdbc:mysql://localhost:3306/" + database;
-
     //comment main method out later
     public static void formDatabase() throws Exception {
 
         // Opening a connection and creating database
-        try (Connection conn = DriverManager.getConnection(connection1, username, password);
+        try (Connection conn = DriverManager.getConnection(Constants.CONNECTION1, Constants.USERNAME, Constants.PASSWORD);
              Statement stmt = conn.createStatement();
         ) {
-            String sql = "CREATE DATABASE " + database;
+            String sql = "CREATE DATABASE " + Constants.DATABASE;
             stmt.executeUpdate(sql);
             System.out.println("Database created successfully...");
         } catch (SQLException e) {
@@ -38,7 +29,7 @@ public class Database {
         }
 
         // creating table named courses
-        try (Connection conn = DriverManager.getConnection(connection, username, password);
+        try (Connection conn = DriverManager.getConnection(Constants.CONNECTION, Constants.USERNAME, Constants.PASSWORD);
              Statement stmt = conn.createStatement();
         ) {
             String sql = "CREATE TABLE courses (" +
@@ -55,7 +46,7 @@ public class Database {
         }
 
         //altering number of tablerows in courses to 1200
-        try (Connection conn = DriverManager.getConnection(connection1, username, password);
+        try (Connection conn = DriverManager.getConnection(Constants.CONNECTION1, Constants.USERNAME, Constants.PASSWORD);
              Statement stmt = conn.createStatement();
         ) {
             String sql = "ALTER TABLE `yulookup`.`courses` " +
@@ -83,7 +74,7 @@ public class Database {
         String sql = "INSERT INTO yulookup.courses (code, name, description, prerequisites) " + "VALUES (?,?,?,?);";
         ResultSet keys = null;
         try (
-                Connection conn = DriverManager.getConnection(connection, username, password);
+                Connection conn = DriverManager.getConnection(Constants.CONNECTION, Constants.USERNAME, Constants.PASSWORD);
                 PreparedStatement stmt = conn.prepareStatement(sql);
 
         ) {
