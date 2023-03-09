@@ -1,0 +1,92 @@
+Team Members: Davyd Zinkiv, Walid AlDari, Ali Saheb, Dwumah Anokye
+
+Iteration 1
+    Wednesday February 8th 2023 - 70 MINUTES
+	    - We delegated Tasks
+		- Dwumah was given the implementation of the GPA Calculator
+		    (Big User Story: User Profiles - GPA Calculator,
+            Detailed User Story:Display Total GPA)
+		    Time allocated:  4 days	Actual time: 3 days
+        - Jasraj was given the user interface implementation of the GPA Calculator
+		        (Big User Story: User Profiles, Detailed User Story: GPA Calculator)
+		        Time allocated: 2 days	Actual time: N/A, student dropped course
+        - Ali was given the implementation of the course search feature GUI
+		        (Big User Story: Course Search,  Detailed User Story: View course
+                 Info and prerequisites quickly)
+                Time allocated: 12 days	Actual time: 3 days
+        - Davyd was given the implementation of the major list’s view UI
+                (Big User Story: View course Majors List,  Detailed User Story: Quickly
+                Determine course prerequisites, Course overview)
+                Majors List)
+		        Time allocated: 4 days	Actual time: 5 days
+		- Walid was given the task of gathering the data about courses and
+                prerequisites from the York university website
+		        (Big User Story: Course Search,  Detailed User Story: View course
+                Majors List, View course Info and prerequisites quickly)
+		        Time allocated: 12 days	Actual time: 2 days
+
+        - Team member Jasraj dropped the course, his tasks were reassigned
+          to Dwumah
+
+    Saturday February 11th, 2023 - 30 MINUTES
+        Davyd & Ali Meeting
+        Discussed implementation of JavaFX compared to Java Swing (finalised decision to use JavaFX and removed Swing UI)
+        Imported libraries through maven (issues with Gradle)
+
+    Sunday February 12th 2023 - 90 minutes
+        We got on a group call to do more project planning and also update each other about our progress so far
+        The business logic layer was implemented resulting in the addition of three classes: course, course search methods, and major.
+        The presentation layer’s details were discussed and the different GUI views were assigned: the view for all the majors, the view for the GPA Calculator, and course search
+
+    Monday February 13th, 2023 - 40 minutes
+        Ali & Walid Meeting
+        Finalised library implementation and correct importing through Gradle
+        Ensured project is executable from a fresh machine
+        Discussed final search bar GUI and results screen
+        Assigned Ali to connect all scenes through buttons to provide more of a unified/finalised app feel
+
+    Wednesday February 15th 2023 - 80 minutes
+        - We met up in class to get each other up to date on what we have done so far and we merged each of our contributions in git.
+        - We resolved merge conflicts that were overwriting other team member’s contribution
+        - We discussed the testing of our software i.e which classes we were going to test and who was going to create that test
+        - Walid finalised the UML Class diagram and architecture of our project
+
+Iteration 2
+    Sunday February 26th 2023 - 40 minutes
+        - We met up to plan our approach for iteration 2
+        - We talked about how we were going to implement the database through MySQL
+        - We talked about the User stories that we were going to develop further
+            1. User profiles ( implementing profiles for individual users to store data specific to them)
+            2. Filterable list (allowing the filtering of search results based on faculty,semester offerings, prerequisites and more)
+            3. Yearly schedule builder (outline of courses one has to take to graduate, adjustable when adding courses taken so far)
+        - We split up the work, assigning each member to a specific task to ensure deadlines are met
+	
+    Wednesday March 1st 2023 - 90 minutes
+    	- We met up during lecture time
+	- We revised big user story tasks and talked about the developer stories that we were going to implement for this iteration
+	- We discussed the the removal of two user stories; The visual schedule builder  and academic adivisor user story.
+	  this was done because they had low priority and we did not want to exceed the cost for the project.
+	- With the removal of the two user stories mentioned previously we decided to increase the cost of the User Profiles big user story as 
+	  it has a much higher priority
+    
+    Thursday March 2nd 2023 - 15 minutes
+    	Ali & Davyd Meeting
+	- Discussed implementation of schedule generator
+	- Resolved issues with accessing course information in schedule generator class
+    Saturday March 4th 2023 - 10 minutes
+    	Dwumah and Walid Meeting
+	- Discussed how I was suppose to interact with one of the classes he created
+	- We also went into greater detail about the expected features of the database class
+	
+    Saturday March 4nd 2023 - 90 minutes
+    	Ali & Davyd Meeting
+	- Discussed implementation of user profile
+	- Discussed schedule generator and implementation of course select for both GUIs
+	- Finalized decision on how selection will be implemented
+
+     Wednesday March 8th 2023 - 90 minutes
+	    Group Meeting during class time
+	- Discussed the documents that needed to be completed ahead of iteration 2 deadline
+	- We refined our big user stories and detailed user stories while adding the actual cost of completed stories
+	- Merged all of our code to the main branch on Github and resolved merge conflicts as they occured
+	- We talked about what needed to be implemented ahead of iteration 3

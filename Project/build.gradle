@@ -23,10 +23,17 @@ dependencies {
     implementation 'org.seleniumhq.selenium:selenium-java:4.8.0'
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'commons-io:commons-io:2.6'
+    implementation "mysql:mysql-connector-java:8.0.32"
 }
 
 test {
     useJUnitPlatform()
+//    filter {
+//        //specific test method
+//        includeTestsMatching "BusinessLayerTest.courseSearchandFilterMethodsTest"
+////        includeTestsMatching "YuLookUp.src.main.java.BusinessLayerTest.courseSearchandFilterMethodsTest"
+//
+//    }
 }
 
-mainClassName = "PresentationLayer.mainController"
+mainClassName = "presentation.layer.Main"
