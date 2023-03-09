@@ -1,6 +1,6 @@
-package presentation_layer;
+package presentation.layer;
 
-import business_logic_layer.Course;
+import business.logic.layer.Course;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
@@ -15,9 +15,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import static business_logic_layer.scheduleGenerator.*;
-import static persistence_layer.mainScraper.getCourseList;
-import static business_logic_layer.courseSearchandFilterMethods.searchCourse;
+import static business.logic.layer.scheduleGenerator.*;
+import static persistence.layer.mainScraper.getCourseList;
+import static business.logic.layer.courseSearchandFilterMethods.searchCourse;
 
 import java.io.IOException;
 import java.util.ArrayList;

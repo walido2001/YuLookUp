@@ -1,4 +1,4 @@
-package presentation_layer;
+package presentation.layer;
 import javafx.application.Preloader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;

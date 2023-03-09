@@ -1,32 +1,36 @@
-package database;
+package persistence.layer;
 
 import business.logic.layer.Course;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeTest;
 
 import java.util.ArrayList;
 
 import static database.Database.formDatabase;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 import static persistence.layer.mainScraper.getCourseList;
 import static persistence.layer.mainScraper.getCourseListFromJSON;
 
-class DatabaseTest {
+class mainScraperTest {
 
-    @Test
-    static void initialize() throws Exception {
+    @BeforeAll
+    static void setupDB() throws Exception {
         formDatabase();
     }
 
     @Test
-    static void databaseContentTest_01() {
+    void getCourseList_Test01() {
         assertNotNull(getCourseList());
     }
 
-    //Database is populated from JSON. Therefore this test checks whether the DB contains all of the JSON values.
     @Test
-    void databaseContentTest_02() {
+    void getCourseListFromJSON_Test02() {
+        assertNotNull(getCourseListFromJSON());
+    }
+
+    @Test
+    void databaseIntegrationTest_01() {
         ArrayList<Course> fromDB = getCourseList();
         ArrayList<Course> fromJSON = getCourseListFromJSON();
 
@@ -45,6 +49,5 @@ class DatabaseTest {
         }
 
     }
-
 
 }

@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="pane" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation_layer.scheduleGeneratorGUIController">
+<AnchorPane fx:id="pane" prefHeight="550.0" prefWidth="800.0" style="-fx-background-color: #e31837;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.layer.scheduleGeneratorGUIController">
    <children>
       <ImageView fx:id="yuLogo" fitHeight="141.0" fitWidth="140.0" layoutX="333.0" layoutY="-20.0" pickOnBounds="true" preserveRatio="true">
          <image>

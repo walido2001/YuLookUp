@@ -1,11 +1,11 @@
-package business_logic_layer;
+package business.logic.layer;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static business_logic_layer.scheduleGenerator.*;
-import static persistence_layer.mainScraper.getCourseList;
+import static business.logic.layer.scheduleGenerator.*;
+import static persistence.layer.mainScraper.getCourseList;
 import static org.testng.AssertJUnit.*;
 
 public class ScheduleGeneratorTest {

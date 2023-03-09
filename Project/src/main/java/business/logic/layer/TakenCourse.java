@@ -1,4 +1,4 @@
-package business_logic_layer;
+package business.logic.layer;
 
 public class TakenCourse {
     private Course course;

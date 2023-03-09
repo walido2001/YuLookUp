@@ -1,4 +1,4 @@
-package business_logic_layer;
+package business.logic.layer;
 
 import java.util.ArrayList;
 import java.util.LinkedHashMap;

@@ -1,4 +1,4 @@
-package business_logic_layer;
+package business.logic.layer;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

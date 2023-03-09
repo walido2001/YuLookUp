@@ -1,10 +1,10 @@
-package business_logic_layer;
+package business.logic.layer;
 
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static persistence_layer.mainScraper.getCourseList;
+import static persistence.layer.mainScraper.getCourseList;
 import static org.junit.jupiter.api.Assertions.*;
 
 class courseSearchandFilterMethodsTest {

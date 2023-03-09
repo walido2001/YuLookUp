@@ -1,4 +1,4 @@
-package presentation_layer;
+package presentation.layer;
 
 import javafx.application.Application;
 import javafx.application.Preloader;

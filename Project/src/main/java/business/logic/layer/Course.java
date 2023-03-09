@@ -1,9 +1,9 @@
-package business_logic_layer;
+package business.logic.layer;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-import static persistence_layer.mainScraper.getCourseList;
+import static persistence.layer.mainScraper.getCourseList;
 
 public class Course {
     private String code;

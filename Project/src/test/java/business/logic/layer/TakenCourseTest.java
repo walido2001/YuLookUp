@@ -1,6 +1,6 @@
-package business_logic_layer;
+package business.logic.layer;
 
-import persistence_layer.mainScraper;
+import persistence.layer.mainScraper;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

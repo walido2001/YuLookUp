@@ -1,11 +1,11 @@
 package database;
 
-import business_logic_layer.Constants;
-import business_logic_layer.Course;
+import business.logic.layer.Constants;
+import business.logic.layer.Course;
 
 import java.sql.*;
 
-import static persistence_layer.mainScraper.getCourseListFromJSON;
+import static persistence.layer.mainScraper.getCourseListFromJSON;
 
 public class Database {
 

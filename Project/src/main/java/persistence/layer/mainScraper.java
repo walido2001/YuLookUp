@@ -1,10 +1,10 @@
-package persistence_layer;
+package persistence.layer;
 
-import business_logic_layer.Constants;
+import business.logic.layer.Constants;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import business_logic_layer.Course;
+import business.logic.layer.Course;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

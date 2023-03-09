@@ -36,4 +36,4 @@ test {
 //    }
 }
 
-mainClassName = "PresentationLayer.Main"
+mainClassName = "presentation.layer.Main"
