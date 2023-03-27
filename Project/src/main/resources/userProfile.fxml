@@ -9,7 +9,6 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -17,28 +16,27 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
+<?import javafx.scene.image.Image?>
 <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.layer.userProfileController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="700.0" prefWidth="250.0" style="-fx-background-color: E31837; -fx-background-radius: 0 10 10 0;">
          <children>
             <ImageView fitHeight="150.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="user-icon.png" />
+                  <Image url="user-icon.png"/>
                </image>
                <VBox.margin>
                   <Insets top="50.0" />
                </VBox.margin>
             </ImageView>
-            <Hyperlink fx:id="loginLink" text="Log in" textFill="WHITE">
-               <VBox.margin>
-                  <Insets top="10.0" />
-               </VBox.margin>
-               <font>
-                  <Font name="Damascus Regular" size="16.0" />
-               </font>
-            </Hyperlink>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
                <children>
+                  <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Button fx:id="importButton" mnemonicParsing="false" onAction="#importButtonHandle" text="Import" />
+                        <Button fx:id="exportButton" mnemonicParsing="false" onAction="#exportButtonHandle" text="Export" />
+                     </children>
+                  </HBox>
                   <Hyperlink fx:id="majorCourseViewLink" onAction="#openMajorCourseView" text="Major Course View" textFill="WHITE">
                      <font>
                         <Font name="Damascus Regular" size="16.0" />
@@ -79,26 +77,50 @@
       </VBox>
       <VBox prefHeight="700.0" prefWidth="750.0">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0">
+            <VBox prefHeight="185.0" prefWidth="404.0">
                <children>
-                  <Label fx:id="studentName" text="Name: ">
-                     <font>
-                        <Font name="Damascus Regular" size="33.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="studentId" text="Student Number:">
-                     <font>
-                        <Font name="Damascus Regular" size="16.0" />
-                     </font>
-                     <VBox.margin>
-                        <Insets top="15.0" />
-                     </VBox.margin>
-                  </Label>
-                  <Label fx:id="studentMajor" text="Major:">
-                     <font>
-                        <Font name="Damascus Regular" size="16.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="48.0" prefWidth="720.0">
+                     <children>
+                        <Label fx:id="studentName" text="Name: ">
+                           <font>
+                              <Font name="Damascus Regular" size="33.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="nameField" prefHeight="45.0" prefWidth="578.0">
+                           <font>
+                              <Font name="Damascus Regular" size="33.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="studentId" text="Student Number:">
+                           <font>
+                              <Font name="Damascus Regular" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="studentNumberField" prefHeight="34.0" prefWidth="563.0">
+                           <font>
+                              <Font name="Damascus Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0">
+                     <children>
+                        <Label fx:id="studentMajor" text="Major:">
+                           <font>
+                              <Font name="Damascus Regular" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="majorField" prefHeight="34.0" prefWidth="642.0">
+                           <font>
+                              <Font name="Damascus Regular" size="16.0" />
+                           </font>
+                        </TextField>
+                     </children>
+                  </HBox>
                   <Label fx:id="creditsEarned" text="Credits:">
                      <font>
                         <Font name="Damascus Regular" size="16.0" />

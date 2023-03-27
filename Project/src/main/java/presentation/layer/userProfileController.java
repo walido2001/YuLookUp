@@ -2,6 +2,10 @@ package presentation.layer;
 
 import business.logic.layer.Course;
 import business.logic.layer.TakenCourse;
+import business.logic.layer.UserProfile;
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,8 +15,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import org.apache.commons.io.FileUtils;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Type;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import static persistence.layer.mainScraper.getCourseList;
 import static business.logic.layer.courseSearchandFilterMethods.searchCourse;
@@ -35,6 +44,10 @@ public class userProfileController {
     private double gradePoint = 0;
     private int totalCredits = 0;
 
+    public TextField nameField, studentNumberField, majorField;
+    private UserProfile currAccount;
+//    private String nameFieldValue, studentNumberFieldValue, majorFieldValue;
+
     public void initialize() {
         TableColumn<TakenCourse,String> courseCol = new TableColumn<>("Course");
         TableColumn<TakenCourse,String> gradeCol = new TableColumn<>("Grade");
@@ -42,6 +55,23 @@ public class userProfileController {
         gradeCol.setCellValueFactory(new PropertyValueFactory<>("grade"));
         coursesTakenTable.getColumns().setAll(courseCol, gradeCol);
         selectGrade.getItems().addAll("A+","A","B+","B","C+","C","D+","D","E","F");
+
+        this.currAccount = new UserProfile();
+
+        importButtonHandle();
+        nameField.setText(this.currAccount.getName());
+        studentNumberField.setText(this.currAccount.getStudentID());
+        majorField.setText(this.currAccount.getMajor());
+
+        nameField.textProperty().addListener((obselete, obselete2, newText) -> {
+            this.currAccount.setName(newText);
+        });
+        studentNumberField.textProperty().addListener((obselete, obselete2, newText) -> {
+            this.currAccount.setStudentID(newText);
+        });
+        majorField.textProperty().addListener((obselete, obselete2, newText) -> {
+            this.currAccount.setMajor(newText);
+        });
     }
 
     public void searchCourseHandler(ActionEvent actionEvent) {
@@ -94,6 +124,7 @@ public class userProfileController {
             updateUserStats();
         }
     }
+
     public void updateUserStats(){
         creditsEarned.setText("Credits: " + totalCredits);
         String cgpaString = String.format("%.2f", cgpaVal);
@@ -141,4 +172,39 @@ public class userProfileController {
         stage.centerOnScreen();
         stage.show();
     }
+
+    public void importButtonHandle()
+    {
+        Gson gson = new Gson();
+        String jsonString="";
+        try {
+            jsonString = FileUtils.readFileToString(new File("currAccount.json"), StandardCharsets.UTF_8);
+            this.currAccount = gson.fromJson(jsonString, UserProfile.class);
+        } catch (IOException e) {
+            System.out.println("Failed to import userProfile (importButtonHandle())");
+            this.currAccount = new UserProfile();
+        }
+
+        nameField.setText(this.currAccount.getName());
+        studentNumberField.setText(this.currAccount.getStudentID());
+        majorField.setText(this.currAccount.getMajor());
+    }
+
+    public void exportButtonHandle()
+    {
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        try
+        {
+            FileWriter writer = new FileWriter("currAccount.json");
+            writer.write(gson.toJson(this.currAccount));
+            writer.close();
+        }
+        catch (Exception e)
+        {
+            System.out.println("Failed to export userProfile (exportButtonHandle())");
+        }
+    }
+
+
 }
