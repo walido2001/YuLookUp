@@ -66,7 +66,7 @@ public class userProfileController {
         studentNumberField.setText(this.currAccount.getStudentID());
         majorField.setText(this.currAccount.getMajor());
         if(this.currAccount.getCourses() != null)
-            coursesTakenTable.getItems().addAll(this.currAccount.getCourses());
+            coursesTakenTable.getItems().setAll(this.currAccount.getCourses());
         updateUserStats();
 
         nameField.textProperty().addListener((obselete, obselete2, newText) -> {
@@ -195,6 +195,8 @@ public class userProfileController {
         nameField.setText(this.currAccount.getName());
         studentNumberField.setText(this.currAccount.getStudentID());
         majorField.setText(this.currAccount.getMajor());
+        if(this.currAccount.getCourses() != null)
+            coursesTakenTable.getItems().setAll(this.currAccount.getCourses());
     }
 
     public void exportButtonHandle()
