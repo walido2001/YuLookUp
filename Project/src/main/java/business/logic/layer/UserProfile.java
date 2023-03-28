@@ -54,6 +54,16 @@ public class UserProfile {
         return courses;
     }
 
+    public ArrayList<Course> getRegularCourses()
+    {
+        ArrayList<Course> returnable = new ArrayList<>();
+        for (TakenCourse taken: this.courses)
+        {
+            returnable.add(taken.getCourse());
+        }
+        return returnable;
+    }
+
     public void setCourses(ArrayList<TakenCourse> courses) {
         this.courses = courses;
     }
