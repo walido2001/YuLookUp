@@ -1,9 +1,12 @@
 package business.logic.layer;
 
+import java.util.ArrayList;
+
 public class UserProfile {
     private String name;
     private String studentID;
     private String major;
+    private ArrayList<TakenCourse> courses;
 
     public UserProfile()
     {}
@@ -31,4 +34,13 @@ public class UserProfile {
     public void setMajor(String major) {
         this.major = major;
     }
+
+    public ArrayList<TakenCourse> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(ArrayList<TakenCourse> courses) {
+        this.courses = courses;
+    }
+
 }

@@ -20,9 +20,12 @@ import org.apache.commons.io.FileUtils;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
+
 import static persistence.layer.mainScraper.getCourseList;
 import static business.logic.layer.courseSearchandFilterMethods.searchCourse;
 
@@ -129,6 +132,8 @@ public class userProfileController {
         creditsEarned.setText("Credits: " + totalCredits);
         String cgpaString = String.format("%.2f", cgpaVal);
         cgpa.setText( "CGPA: " + cgpaString);
+
+        ArrayList<TakenCourse> wanted;
     }
     //implemented using the approach explained at https://stackoverflow.com/questions/30610011/how-to-determine-if-record-exist-in-tableview-in-javafx
     public boolean contains(TableView<TakenCourse> table, Course obj){

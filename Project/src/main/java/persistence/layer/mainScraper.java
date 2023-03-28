@@ -27,16 +27,6 @@ import static java.lang.Character.compare;
 public class mainScraper {
     private static ArrayList<Course> courseList = null;
 
-//    public static void main(String[] args) {
-//        getCourseList();
-////        String sample = "[hello, there]";
-////        sample = sample.substring(1, sample.length()-1);
-////
-////        String[] sampleArray = sample.split(",");
-////        ArrayList<String> sampleArrayList = new ArrayList<>(Arrays.asList(sampleArray));
-////        System.out.println(sampleArrayList.toString());
-//    }
-
     public static void momentaryPause(int val)
     {
 
@@ -47,6 +37,10 @@ public class mainScraper {
         }
     }
 
+    /**
+     * This method needs to be run only once in the beginning of the semester.
+     * The method webscrapes courses from the YorkU website and stores them in a JSON file.
+     */
     public static void navigateToCourseList() {
 //        System.setProperty("webdriver.chrome.driver", "chromedriver_mac_arm64/chromedriver.exe");
         ArrayList<Course> courseList = new ArrayList<Course>();
@@ -159,21 +153,27 @@ public class mainScraper {
                 System.out.println(course.getCode() + " | " + course.getName());
             }
         }
+
+        exportArrayListToJSON(courseList, "courses.json");
+
+        driver.close();
+        driver2.close();
+    }
+
+    private static void exportArrayListToJSON(ArrayList<Course> courses, String filename)
+    {
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
         try
         {
-            FileWriter writer = new FileWriter("courses.json");
-            writer.write(gson.toJson(courseList));
+            FileWriter writer = new FileWriter(filename);
+            writer.write(gson.toJson(courses));
             writer.close();
         }
         catch (Exception e)
         {
             System.out.println(e.getMessage());
         }
-
-        driver.close();
-        driver2.close();
     }
 
     //Get course list from the database
