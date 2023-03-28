@@ -65,6 +65,8 @@ public class userProfileController {
         nameField.setText(this.currAccount.getName());
         studentNumberField.setText(this.currAccount.getStudentID());
         majorField.setText(this.currAccount.getMajor());
+        coursesTakenTable.getItems().addAll(this.currAccount.getCourses());
+        updateUserStats();
 
         nameField.textProperty().addListener((obselete, obselete2, newText) -> {
             this.currAccount.setName(newText);
@@ -75,6 +77,7 @@ public class userProfileController {
         majorField.textProperty().addListener((obselete, obselete2, newText) -> {
             this.currAccount.setMajor(newText);
         });
+
     }
 
     public void searchCourseHandler(ActionEvent actionEvent) {
@@ -132,6 +135,8 @@ public class userProfileController {
         creditsEarned.setText("Credits: " + totalCredits);
         String cgpaString = String.format("%.2f", cgpaVal);
         cgpa.setText( "CGPA: " + cgpaString);
+
+        //Move calculations of UserStats from addCourseHandler and deleteCourseHandler to here
 
         ArrayList<TakenCourse> wanted = new ArrayList<>(coursesTakenTable.getItems());
         this.currAccount.setCourses(wanted);
