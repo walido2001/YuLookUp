@@ -59,9 +59,8 @@ public class userProfileController {
         coursesTakenTable.getColumns().setAll(courseCol, gradeCol);
         selectGrade.getItems().addAll("A+","A","B+","B","C+","C","D+","D","E","F");
 
-        this.currAccount = new UserProfile();
+        this.currAccount = UserProfile.getInstanceOfUserProfile();
 
-        importButtonHandle();
         nameField.setText(this.currAccount.getName());
         studentNumberField.setText(this.currAccount.getStudentID());
         majorField.setText(this.currAccount.getMajor());
@@ -189,7 +188,6 @@ public class userProfileController {
             this.currAccount = gson.fromJson(jsonString, UserProfile.class);
         } catch (IOException e) {
             System.out.println("Failed to import userProfile (importButtonHandle())");
-            this.currAccount = new UserProfile();
         }
 
         nameField.setText(this.currAccount.getName());
