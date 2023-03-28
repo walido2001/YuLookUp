@@ -133,7 +133,8 @@ public class userProfileController {
         String cgpaString = String.format("%.2f", cgpaVal);
         cgpa.setText( "CGPA: " + cgpaString);
 
-        ArrayList<TakenCourse> wanted;
+        ArrayList<TakenCourse> wanted = new ArrayList<>(coursesTakenTable.getItems());
+        this.currAccount.setCourses(wanted);
     }
     //implemented using the approach explained at https://stackoverflow.com/questions/30610011/how-to-determine-if-record-exist-in-tableview-in-javafx
     public boolean contains(TableView<TakenCourse> table, Course obj){
