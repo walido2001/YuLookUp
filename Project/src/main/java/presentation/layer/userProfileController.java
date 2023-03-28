@@ -65,7 +65,8 @@ public class userProfileController {
         nameField.setText(this.currAccount.getName());
         studentNumberField.setText(this.currAccount.getStudentID());
         majorField.setText(this.currAccount.getMajor());
-        coursesTakenTable.getItems().addAll(this.currAccount.getCourses());
+        if(this.currAccount.getCourses() != null)
+            coursesTakenTable.getItems().addAll(this.currAccount.getCourses());
         updateUserStats();
 
         nameField.textProperty().addListener((obselete, obselete2, newText) -> {
@@ -93,15 +94,9 @@ public class userProfileController {
     }
 
     public void addCourseHandler(ActionEvent actionEvent) {
-
         if(selectGrade.getValue()!=null && !contains(coursesTakenTable, selectedCourse)){
-            double credit = Character.getNumericValue(selectedCourse.getCode().charAt(selectedCourse.getCode().length()-4));
-            totalCredits += credit;
-            gradePoint += (grade * credit);
-            cgpaVal = gradePoint/totalCredits;
-            updateUserStats();
-
             coursesTakenTable.getItems().add(new TakenCourse(selectedCourse, (String) selectGrade.getValue()));
+            updateUserStats();
         }
     }
 
@@ -121,22 +116,23 @@ public class userProfileController {
 
     public void deleteCourseHandler(ActionEvent actionEvent) {
         if(coursesTakenTable.getSelectionModel().getSelectedItem()!=null) {
-            TakenCourse c = coursesTakenTable.getSelectionModel().getSelectedItem();
             coursesTakenTable.getItems().removeAll(coursesTakenTable.getSelectionModel().getSelectedItem());
-
-            totalCredits -= c.getCredit();
-            gradePoint -= (c.getGradeVal() * c.getCredit());
-            cgpaVal = (totalCredits != 0) ? gradePoint / totalCredits : 0;
             updateUserStats();
         }
     }
 
     public void updateUserStats(){
+        totalCredits = 0;
+        gradePoint = cgpaVal = 0;
+        for(TakenCourse tc:coursesTakenTable.getItems()){
+            totalCredits += tc.getCredit();
+            gradePoint += tc.getGradeVal() * tc.getCredit();
+        }
+        cgpaVal = (totalCredits != 0) ? gradePoint / totalCredits : 0;
+
         creditsEarned.setText("Credits: " + totalCredits);
         String cgpaString = String.format("%.2f", cgpaVal);
         cgpa.setText( "CGPA: " + cgpaString);
-
-        //Move calculations of UserStats from addCourseHandler and deleteCourseHandler to here
 
         ArrayList<TakenCourse> wanted = new ArrayList<>(coursesTakenTable.getItems());
         this.currAccount.setCourses(wanted);
