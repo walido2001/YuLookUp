@@ -97,4 +97,25 @@ public class ScheduleGeneratorTest {
         }
     }
 
+    @Test
+    void inputCourseExclusionCheck() {
+        String major = "electrical";
+        ArrayList<Course> taken = new ArrayList<>();
+        for (int i=0; i < 10;i++){
+            taken.add(getCourseList().get(i));
+        }
+        scheduleBuilder(major, taken);
+        boolean contains = false;
+        for(int i=0; i< 10; i++) {
+            if(firstYear.contains(taken.get(i)) || secondYear.contains(taken.get(i))
+            || thirdYear.contains(taken.get(i)) || fourthYear.contains(taken.get(i))
+            ) {
+                contains = true;
+            }
+        }
+
+        assertFalse(contains);
+
+    }
+
 }
