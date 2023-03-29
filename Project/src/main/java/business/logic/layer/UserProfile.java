@@ -7,19 +7,8 @@ public class UserProfile {
     private String studentID;
     private String major;
     private ArrayList<TakenCourse> courses;
-    private static UserProfile instance;
 
-    public static UserProfile getInstanceOfUserProfile()
-    {
-      if (instance == null)
-      {
-          instance = new UserProfile();
-          return instance;
-      }
-        return instance;
-    }
-
-    private UserProfile()
+    public UserProfile()
     {
         this.name="";
         this.studentID="";

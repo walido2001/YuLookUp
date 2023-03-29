@@ -3,6 +3,7 @@ package presentation.layer;
 import business.logic.layer.Course;
 import business.logic.layer.TakenCourse;
 import business.logic.layer.UserProfile;
+import business.logic.layer.UserProfileInstance;
 import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -59,7 +60,7 @@ public class userProfileController {
         coursesTakenTable.getColumns().setAll(courseCol, gradeCol);
         selectGrade.getItems().addAll("A+","A","B+","B","C+","C","D+","D","E","F");
 
-        this.currAccount = UserProfile.getInstanceOfUserProfile();
+        this.currAccount = UserProfileInstance.getUserProfile();
 
         nameField.setText(this.currAccount.getName());
         studentNumberField.setText(this.currAccount.getStudentID());
@@ -183,12 +184,17 @@ public class userProfileController {
     {
         Gson gson = new Gson();
         String jsonString="";
+        UserProfile up = new UserProfile();
         try {
             jsonString = FileUtils.readFileToString(new File("currAccount.json"), StandardCharsets.UTF_8);
-            this.currAccount = gson.fromJson(jsonString, UserProfile.class);
+            up = gson.fromJson(jsonString, UserProfile.class);
         } catch (IOException e) {
             System.out.println("Failed to import userProfile (importButtonHandle())");
         }
+        this.currAccount.setName(up.getName());
+        this.currAccount.setMajor(up.getMajor());
+        this.currAccount.setStudentID(up.getStudentID());
+        this.currAccount.setCourses(up.getCourses());
 
         nameField.setText(this.currAccount.getName());
         studentNumberField.setText(this.currAccount.getStudentID());
