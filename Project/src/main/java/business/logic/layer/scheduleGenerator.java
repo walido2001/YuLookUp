@@ -3,7 +3,7 @@ package business.logic.layer;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 
-public class scheduleGenerator {
+public class  scheduleGenerator {
 
     public static ArrayList<Course> firstYear;
     public static ArrayList<Course> secondYear;

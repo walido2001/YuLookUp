@@ -9,7 +9,7 @@ import static persistence.layer.mainScraper.getCourseListFromJSON;
 
 public class Database {
 
-    //comment main method out later
+
     public static void formDatabase() throws Exception {
 
         // Opening a connection and creating database
