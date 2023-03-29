@@ -195,6 +195,7 @@ public class userProfileController {
         majorField.setText(this.currAccount.getMajor());
         if(this.currAccount.getCourses() != null)
             coursesTakenTable.getItems().setAll(this.currAccount.getCourses());
+        updateUserStats();
     }
 
     public void exportButtonHandle()
