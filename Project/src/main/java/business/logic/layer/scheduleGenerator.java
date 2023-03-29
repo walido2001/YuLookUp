@@ -48,10 +48,9 @@ public class  scheduleGenerator {
                     break;
             }
 
-//        UserProfile instance = UserProfile.getInstanceOfUserProfile();
-//        ArrayList<Course> profileTaken = instance.getRegularCourses();
-//        coursesTaken.addAll(profileTaken);
-//        System.out.println(profileTaken);
+        UserProfile instance = UserProfileInstance.getUserProfile();
+        ArrayList<Course> profileTaken = instance.getRegularCourses();
+        coursesTaken.addAll(profileTaken);
 
         firstYear = generateYear(majorCourses,coursesTaken,1);
         secondYear = generateYear(majorCourses,coursesTaken,2);
@@ -61,13 +60,11 @@ public class  scheduleGenerator {
     }
 
     public static ArrayList<Course> generateYear(LinkedHashMap<Integer,ArrayList<Course>> majorCourses, ArrayList<Course> coursesTaken, int year) {
-        System.out.println("\n" + year + " Year Courses:");
         ArrayList<Course> listYear = new ArrayList<>(majorCourses.get(year).size());
         for(int i=0; i<majorCourses.get(year).size(); i++) {
             listYear.add(majorCourses.get(year).get(i));
         }
         listYear.removeAll(coursesTaken);
-        System.out.println(listYear);
         return listYear;
     }
 }
