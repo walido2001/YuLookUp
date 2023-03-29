@@ -47,6 +47,8 @@ public class scheduleGeneratorGUIController extends Application {
     public ListView fourthList;
     public AnchorPane pane;
     public ImageView yuLogo;
+    public Button softwareButton;
+    public Button spaceButton;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -96,6 +98,20 @@ public class scheduleGeneratorGUIController extends Application {
         fillSchedule(event);
     }
 
+    public void setSoftwareMajor(ActionEvent event) throws IOException {
+        ArrayList<Course> taken = new ArrayList<>();
+        taken.addAll(takenList.getItems());
+        scheduleBuilder("software",taken);
+        fillSchedule(event);
+    }
+
+    public void setSpaceMajor(ActionEvent event) throws IOException {
+        ArrayList<Course> taken = new ArrayList<>();
+        taken.addAll(takenList.getItems());
+        scheduleBuilder("space",taken);
+        fillSchedule(event);
+    }
+    
     public void setComputerMajor(ActionEvent event) throws IOException {
         ArrayList<Course> taken = new ArrayList<>();
         taken.addAll(takenList.getItems());

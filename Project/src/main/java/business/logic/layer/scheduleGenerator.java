@@ -18,23 +18,10 @@ public class scheduleGenerator {
     public static LinkedHashMap<Integer, ArrayList<Course>> civilCourses = civilMajor.getMajor();
     static Major elecMajor = new Major("Electrical Engineering");
     public static LinkedHashMap<Integer, ArrayList<Course>> elecCourses = elecMajor.getMajor();
-
-//    public static void main(String[] args) {
-//
-//        ArrayList<Course> courses = getCourseList();
-//
-//        ArrayList<Course> taken = new ArrayList<>();
-////        taken.add(courses.get(0));
-////        taken.add(courses.get(1));
-////        taken.add(courses.get(2));
-////        taken.add(courses.get(3));
-////        taken.add(courses.get(9));
-////        taken.add(courses.get(10));
-//
-//        System.out.println("taken:\n" + taken + "\n");
-//        scheduleBuilder("civil", taken);
-//
-//    }
+    static Major softMajor = new Major("Software Engineering");
+    public static LinkedHashMap<Integer, ArrayList<Course>> softCourses = softMajor.getMajor();
+    static Major spaceMajor = new Major("Space Engineering");
+    public static LinkedHashMap<Integer, ArrayList<Course>> spaceCourses = spaceMajor.getMajor();
 
     public static void scheduleBuilder(String major, ArrayList<Course> coursesTaken) {
 
@@ -53,40 +40,34 @@ public class scheduleGenerator {
                 case "computer":
                     majorCourses = compCourses;
                     break;
+                case "software":
+                    majorCourses = softCourses;
+                case "space":
+                    majorCourses = spaceCourses;
                 default:
                     break;
             }
 
-        System.out.println("\nFirst Year Courses:");
-        firstYear = new ArrayList<>(majorCourses.get(1).size());
-        for(int i=0; i<majorCourses.get(1).size(); i++) {
-            firstYear.add(majorCourses.get(1).get(i));
-            firstYear.removeAll(coursesTaken);
-        }
-        System.out.println(firstYear);
+//        UserProfile instance = UserProfile.getInstanceOfUserProfile();
+//        ArrayList<Course> profileTaken = instance.getRegularCourses();
+//        coursesTaken.addAll(profileTaken);
+//        System.out.println(profileTaken);
 
-        System.out.println("\nSecond Year Courses:");
-        secondYear = new ArrayList<>(majorCourses.get(2).size());
-        for(int i=0; i<majorCourses.get(2).size(); i++) {
-            secondYear.add(majorCourses.get(2).get(i));
-            secondYear.removeAll(coursesTaken);
-        }
-        System.out.println(secondYear);
+        firstYear = generateYear(majorCourses,coursesTaken,1);
+        secondYear = generateYear(majorCourses,coursesTaken,2);
+        thirdYear = generateYear(majorCourses, coursesTaken,3);
+        fourthYear = generateYear(majorCourses,coursesTaken,4);
 
-        System.out.println("\nThird Year Courses:");
-        thirdYear = new ArrayList<>(majorCourses.get(3).size());
-        for(int i=0; i<majorCourses.get(3).size(); i++) {
-            thirdYear.add(majorCourses.get(3).get(i));
-            thirdYear.removeAll(coursesTaken);
-        }
-        System.out.println(thirdYear);
+    }
 
-        System.out.println("\nFourth Year Courses:");
-        fourthYear = new ArrayList<>(majorCourses.get(4).size());
-        for(int i=0; i<majorCourses.get(4).size(); i++) {
-            fourthYear.add(majorCourses.get(4).get(i));
-            fourthYear.removeAll(coursesTaken);
+    public static ArrayList<Course> generateYear(LinkedHashMap<Integer,ArrayList<Course>> majorCourses, ArrayList<Course> coursesTaken, int year) {
+        System.out.println("\n" + year + " Year Courses:");
+        ArrayList<Course> listYear = new ArrayList<>(majorCourses.get(year).size());
+        for(int i=0; i<majorCourses.get(year).size(); i++) {
+            listYear.add(majorCourses.get(year).get(i));
         }
-        System.out.println(fourthYear);
+        listYear.removeAll(coursesTaken);
+        System.out.println(listYear);
+        return listYear;
     }
 }
