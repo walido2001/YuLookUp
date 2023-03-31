@@ -84,9 +84,18 @@ Iteration 2
 	- Discussed schedule generator and implementation of course select for both GUIs
 	- Finalized decision on how selection will be implemented
 
-     Wednesday March 8th 2023 - 90 minutes
+    Wednesday March 8th 2023 - 90 minutes
 	    Group Meeting during class time
 	- Discussed the documents that needed to be completed ahead of iteration 2 deadline
 	- We refined our big user stories and detailed user stories while adding the actual cost of completed stories
 	- Merged all of our code to the main branch on Github and resolved merge conflicts as they occured
 	- We talked about what needed to be implemented ahead of iteration 3
+   Tuesday March 28th 2023 - 30 minutes
+   	Dwumah & David
+	- David noticed that use of the Gpa calculator was unclear which lead to several issues
+	- David and Dwumah metup to address the issues
+   Wednesday March 29th 2023 - 90 minutes
+   	   Group Meeting during class time
+	- Discussed the next steps for iteration 3 and delegated tasks
+	- When we merged our code their was a problem with Schedule generator class not receiving data from 
+	the UserProfile class. Walid and Ali fixed the issue
