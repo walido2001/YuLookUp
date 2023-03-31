@@ -42,8 +42,10 @@ public class  scheduleGenerator {
                     break;
                 case "software":
                     majorCourses = softCourses;
+                    break;
                 case "space":
                     majorCourses = spaceCourses;
+                    break;
                 default:
                     break;
             }
