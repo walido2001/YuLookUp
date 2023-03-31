@@ -10,7 +10,7 @@
 
 <AnchorPane prefHeight="405.0" prefWidth="879.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="presentation.layer.gpaCalculatorController">
    <children>
-      <Button layoutX="29.0" layoutY="353.0" mnemonicParsing="false" onAction="#CalculateGPA" text="Calculate" />
+      <Button layoutX="800.0" layoutY="365.0" mnemonicParsing="false" onAction="#CalculateGPA" text="Calculate" />
       <Label layoutX="88.0" layoutY="60.0" prefHeight="34.0" prefWidth="72.0" text="Course Name" />
       <Label layoutX="249.0" layoutY="59.0" prefHeight="34.0" prefWidth="74.0" text="Credit Weight" />
       <Label layoutX="418.0" layoutY="61.0" prefHeight="34.0" prefWidth="32.0" text="Grade" />
@@ -25,12 +25,12 @@
       <TextField fx:id="textFieldGPV3" editable="false" layoutX="545.0" layoutY="197.0" prefHeight="25.0" prefWidth="65.0" />
       <TextField fx:id="textFieldGPV4" editable="false" layoutX="547.0" layoutY="251.0" prefHeight="25.0" prefWidth="65.0" />
       <TextField fx:id="textFieldGPV5" editable="false" layoutX="547.0" layoutY="297.0" prefHeight="25.0" prefWidth="65.0" />
-      <Label alignment="CENTER" layoutY="-1.0" prefHeight="41.0" prefWidth="879.0" style="-fx-background-color: e31837;" text="GPA Calculator" textAlignment="JUSTIFY" textFill="WHITE">
+      <Label alignment="CENTER" layoutY="-6.0" prefHeight="46.0" prefWidth="879.0" style="-fx-background-color: e31837;" text="GPA Calculator" textAlignment="JUSTIFY" textFill="WHITE">
          <font>
             <Font size="22.0" />
          </font>
       </Label>
-      <Button layoutX="310.0" layoutY="354.0" mnemonicParsing="false" onAction="#Clear" text="Clear" />
+      <Button layoutX="623.0" layoutY="367.0" mnemonicParsing="false" onAction="#Clear" text="Clear" />
       <ChoiceBox fx:id="choicebox1" layoutX="360.0" layoutY="100.0" onDragDone="#GradeToGradePoint" onMouseDragEntered="#GradeToGradePoint" onMouseDragReleased="#GradeToGradePoint" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox2" layoutX="359.0" layoutY="152.0" prefWidth="150.0" />
       <ChoiceBox fx:id="choicebox3" layoutX="360.0" layoutY="198.0" prefWidth="150.0" />
@@ -42,16 +42,21 @@
       <TextField fx:id="textFieldCredits" editable="false" layoutX="433.0" layoutY="354.0" prefHeight="25.0" prefWidth="74.0" />
       <Label alignment="CENTER" layoutX="359.0" layoutY="350.0" prefHeight="34.0" prefWidth="74.0" text="Total Credits" />
       <Button fx:id="backButton" layoutX="11.0" layoutY="7.0" mnemonicParsing="false" onAction="#getSearchResultsScene" text="Back" />
-      <TextArea fx:id="textAreaCourses" editable="false" layoutX="625.0" layoutY="101.0" prefHeight="280.0" prefWidth="238.0">
+      <TextArea fx:id="textAreaCourses" editable="false" layoutX="625.0" layoutY="101.0" prefHeight="222.0" prefWidth="238.0">
          <font>
             <Font name="Times New Roman" size="12.0" />
          </font>
       </TextArea>
       <Label alignment="CENTER" layoutX="678.0" layoutY="63.0" prefHeight="34.0" prefWidth="112.0" text="Courses Added" />
-      <Button layoutX="105.0" layoutY="354.0" mnemonicParsing="false" onAction="#AddCourses" prefHeight="25.0" prefWidth="112.0" text="Add Courses" />
+      <Button layoutX="229.0" layoutY="354.0" mnemonicParsing="false" onAction="#AddCourses" prefHeight="25.0" prefWidth="112.0" text="Add Courses" />
       <TextField fx:id="textFieldCourseName2" alignment="CENTER" layoutX="31.0" layoutY="150.0" prefHeight="25.0" prefWidth="194.0" />
       <TextField fx:id="textFieldCourseName3" alignment="CENTER" layoutX="33.0" layoutY="197.0" prefHeight="25.0" prefWidth="194.0" />
       <TextField fx:id="textFieldCourseName4" alignment="CENTER" layoutX="31.0" layoutY="249.0" prefHeight="25.0" prefWidth="194.0" />
       <TextField fx:id="textFieldCourseName5" alignment="CENTER" layoutX="32.0" layoutY="295.0" prefHeight="25.0" prefWidth="194.0" />
+      <Label alignment="CENTER" layoutX="22.0" layoutY="353.0" prefHeight="25.0" prefWidth="183.0" style="-fx-background-color: white;" text="Input courses taken then select " />
+      <Label alignment="CENTER" layoutX="22.0" layoutY="375.0" prefHeight="17.0" prefWidth="183.0" style="-fx-background-color: white;" text="Add Courses then select Calculate" />
+      <Label alignment="CENTER" layoutX="625.0" layoutY="324.0" prefHeight="25.0" prefWidth="96.0" text="Course Number" />
+      <TextField fx:id="removedCourse" layoutX="723.0" layoutY="324.0" prefHeight="25.0" prefWidth="41.0" />
+      <Button layoutX="777.0" layoutY="324.0" mnemonicParsing="false" onAction="#removeCourse" prefHeight="25.0" prefWidth="87.0" text="Remove " />
    </children>
 </AnchorPane>
