@@ -1,10 +1,5 @@
 package presentation.layer;
 
-import business.logic.layer.Course;
-import business.logic.layer.TakenCourse;
-import business.logic.layer.UserProfile;
-import business.logic.layer.UserProfileInstance;
-import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import javafx.event.ActionEvent;
@@ -17,23 +12,22 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import org.apache.commons.io.FileUtils;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.lang.reflect.Array;
-import java.lang.reflect.Type;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
-
+import business.logic.layer.Course;
+import business.logic.layer.TakenCourse;
+import business.logic.layer.UserProfile;
+import business.logic.layer.UserProfileInstance;
 import static persistence.layer.mainScraper.getCourseList;
 import static business.logic.layer.courseSearchandFilterMethods.searchCourse;
 
 public class userProfileController {
     @FXML
-    public TextField searchField;
-    public Hyperlink loginLink, majorCourseViewLink, gpaCalculatorViewLink, scheduleViewLink;
+    public TextField searchField, nameField, studentNumberField, majorField;
+    public Hyperlink majorCourseViewLink, gpaCalculatorViewLink, scheduleViewLink;
     public Label studentName, studentId, studentMajor, creditsEarned, cgpa;
     public TableView<TakenCourse> coursesTakenTable;
     public Button deleteButton, searchButton, addCourseButton;
@@ -43,15 +37,13 @@ public class userProfileController {
     private Scene scene;
     private Parent root;
     private Course selectedCourse;
-    private int grade = 0;
+    private int grade = totalCredits = 0;
     private double cgpaVal = 0;
     private double gradePoint = 0;
     private int totalCredits = 0;
-
-    public TextField nameField, studentNumberField, majorField;
     private UserProfile currAccount;
-//    private String nameFieldValue, studentNumberFieldValue, majorFieldValue;
 
+    // This method initializes the user profile as well as some of its gui components: table, fields, labels
     public void initialize() {
         TableColumn<TakenCourse,String> courseCol = new TableColumn<>("Course");
         TableColumn<TakenCourse,String> gradeCol = new TableColumn<>("Grade");
@@ -65,8 +57,8 @@ public class userProfileController {
         nameField.setText(this.currAccount.getName());
         studentNumberField.setText(this.currAccount.getStudentID());
         majorField.setText(this.currAccount.getMajor());
-        if(this.currAccount.getCourses() != null)
-            coursesTakenTable.getItems().setAll(this.currAccount.getCourses());
+
+        if(this.currAccount.getCourses() != null) coursesTakenTable.getItems().setAll(this.currAccount.getCourses());
         updateUserStats();
 
         nameField.textProperty().addListener((obselete, obselete2, newText) -> {
@@ -81,6 +73,8 @@ public class userProfileController {
 
     }
 
+    // The method handles the course search feature.
+    // It utilizes the searchCourse() method found in courseSearchandFilterMethods
     public void searchCourseHandler(ActionEvent actionEvent) {
         String input = searchField.getText();
         ArrayList<Course> results = searchCourse(input, getCourseList());
@@ -93,6 +87,7 @@ public class userProfileController {
         });
     }
 
+    // This method handles the on-click action when a user tries to add a course to "Courses Taken" table
     public void addCourseHandler(ActionEvent actionEvent) {
         if(selectGrade.getValue()!=null && !contains(coursesTakenTable, selectedCourse)){
             coursesTakenTable.getItems().add(new TakenCourse(selectedCourse, (String) selectGrade.getValue()));
@@ -100,6 +95,7 @@ public class userProfileController {
         }
     }
 
+    // This method handles the on-click action of a grade drop-down menu, and converts a letter grade to an integer
     public void gradeSelectionHandler(ActionEvent actionEvent) {
         String value = (String) selectGrade.getValue();
         if(value.equals("A+")) grade=9;
@@ -114,6 +110,7 @@ public class userProfileController {
         else grade=0;
     }
 
+    // This method handles the on-click action when a user tries to remove a course to "Courses Taken" table
     public void deleteCourseHandler(ActionEvent actionEvent) {
         if(coursesTakenTable.getSelectionModel().getSelectedItem()!=null) {
             coursesTakenTable.getItems().removeAll(coursesTakenTable.getSelectionModel().getSelectedItem());
@@ -121,6 +118,8 @@ public class userProfileController {
         }
     }
 
+    // This method updated user academic standing (gpa and credits) by iterating through a table of taken courses
+    // It also updates the UserProfile instance to reflect the up-to-date list of taken courses
     public void updateUserStats(){
         totalCredits = 0;
         gradePoint = cgpaVal = 0;
@@ -134,10 +133,10 @@ public class userProfileController {
         String cgpaString = String.format("%.2f", cgpaVal);
         cgpa.setText( "CGPA: " + cgpaString);
 
-        ArrayList<TakenCourse> wanted = new ArrayList<>(coursesTakenTable.getItems());
-        this.currAccount.setCourses(wanted);
+        this.currAccount.setCourses(new ArrayList<>(coursesTakenTable.getItems()));
     }
-    //implemented using the approach explained at https://stackoverflow.com/questions/30610011/how-to-determine-if-record-exist-in-tableview-in-javafx
+
+    // The method check if the provided table contains a particular course; returns true if it contains, false otherwise
     public boolean contains(TableView<TakenCourse> table, Course obj){
         for(TakenCourse item: table.getItems())
             if (item.getCourseCode().equals(obj.getCode()))
@@ -145,6 +144,7 @@ public class userProfileController {
         return false;
     }
 
+    // The method redirects the user to a "GPA Calculator" view/feature
     public void openGpaCalc(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(getClass().getClassLoader().getResource("gpaCalculator.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -153,6 +153,7 @@ public class userProfileController {
         stage.show();
     }
 
+    // The method redirects the user to a "Major Courses" view/feature
     public void openMajorCourseView(ActionEvent actionEvent) throws IOException {
         courseTableGUIController majorsListObject = new courseTableGUIController();
         Scene majorsListScene = majorsListObject.getMajorsListScene();
@@ -166,6 +167,7 @@ public class userProfileController {
         newStage.show();
     }
 
+    // The method redirects the user to a "Schedule" view/feature
     public void openScheduleView(ActionEvent actionEvent) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getClassLoader().getResource("scheduleGeneratorGUI.fxml"));
         root = loader.load();
@@ -180,8 +182,9 @@ public class userProfileController {
         stage.show();
     }
 
-    public void importButtonHandle()
-    {
+    // The method handles the on-click action of an import button
+    // It loads the previously created user profile (in a json format) and populates all the fields: name, id, courses, etc.
+    public void importButtonHandle(){
         Gson gson = new Gson();
         String jsonString="";
         UserProfile up = new UserProfile();
@@ -204,21 +207,18 @@ public class userProfileController {
         updateUserStats();
     }
 
-    public void exportButtonHandle()
-    {
+    // The method handles the on-click action of an import button
+    // It exports the current state of a user profile in a json file and stores it in a project directory
+    public void exportButtonHandle(){
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
-        try
-        {
+        try {
             FileWriter writer = new FileWriter("currAccount.json");
             writer.write(gson.toJson(this.currAccount));
             writer.close();
         }
-        catch (Exception e)
-        {
+        catch (Exception e) {
             System.out.println("Failed to export userProfile (exportButtonHandle())");
         }
     }
-
-
 }
