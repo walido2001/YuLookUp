@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 
 public class courseSearchandFilterMethods {
+
+    /*
+    A search method, that searches for a string "search" within the code, title, or description of every course in the directory
+     */
     public static ArrayList<Course> searchCourse(String search, ArrayList<Course> directory)
     {
         ArrayList<Course> returnable = new ArrayList<>();
@@ -31,6 +35,9 @@ public class courseSearchandFilterMethods {
         return returnable;
     }
 
+    /*
+    Given a list of Courses, return a filtered list of courses of a specific department
+     */
     public static ArrayList<Course> filterDepartment(ArrayList<Course> currentResult, String dep)
     {
         ArrayList<Course> returnable = new ArrayList<>();
@@ -46,6 +53,9 @@ public class courseSearchandFilterMethods {
         return returnable;
     }
 
+    /*
+    Given a list of Courses, return a filtered list of courses of a specific subject
+     */
     public static ArrayList<Course> filterSubject(ArrayList<Course> currentResult, String subject)
     {
         ArrayList<Course> returnable = new ArrayList<>();
@@ -61,6 +71,9 @@ public class courseSearchandFilterMethods {
         return returnable;
     }
 
+    /*
+    Given a list of Courses, return a filtered list of courses of a specific Year Level
+     */
     public static ArrayList<Course> filterYearLevel(ArrayList<Course> currentResult, int yearLevel)
     {
         ArrayList<Course> returnable = new ArrayList<>();
@@ -76,6 +89,9 @@ public class courseSearchandFilterMethods {
         return returnable;
     }
 
+    /*
+    Given a list of Courses, return a filtered list of courses of a specific Credit Amount
+     */
     public static ArrayList<Course> filterCreditAmount(ArrayList<Course> currentResult, int creditAmount)
     {
         ArrayList<Course> returnable = new ArrayList<>();

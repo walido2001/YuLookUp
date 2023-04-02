@@ -27,6 +27,9 @@ import static java.lang.Character.compare;
 public class mainScraper {
     private static ArrayList<Course> courseList = null;
 
+    /**
+     * A basic delay function
+     */
     public static void momentaryPause(int val)
     {
 
@@ -160,6 +163,10 @@ public class mainScraper {
         driver2.close();
     }
 
+
+    /**
+     * Given an arraylist of Course objects, export them into a JSON file
+     */
     private static void exportArrayListToJSON(ArrayList<Course> courses, String filename)
     {
         GsonBuilder builder = new GsonBuilder();
@@ -176,7 +183,9 @@ public class mainScraper {
         }
     }
 
-    //Get course list from the database
+    /**
+     * Request from a local mySQL server all the stored courses and store them into an ArrayList of Course objects
+     */
     public static ArrayList<Course> getCourseList()
     {
         if (courseList != null)
@@ -232,6 +241,9 @@ public class mainScraper {
 //        return returnable;
     }
 
+    /**
+     * Import all stored courses from the stub database (JSON)
+     */
     public static ArrayList<Course> getCourseListFromJSON()
     {
         Gson gson = new Gson();
@@ -246,6 +258,9 @@ public class mainScraper {
         return returnable;
     }
 
+    /**
+     * Find all occurences of a char within a string, and return a list of their indices
+     */
     private static ArrayList<Integer> findInstancesOf(char target, String sample)
     {
         ArrayList<Integer> returnable = new ArrayList<>();
@@ -260,6 +275,10 @@ public class mainScraper {
         return returnable;
     }
 
+
+    /**
+     * Extract the prerequisite course names from a course description
+     */
     public static ArrayList<String> setPrerequisites(String desc, String name)
     {
         int PrereqIndex = desc.toLowerCase(Locale.ROOT).lastIndexOf("prerequisite");
