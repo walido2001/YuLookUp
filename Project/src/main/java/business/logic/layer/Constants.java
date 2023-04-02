@@ -2,7 +2,7 @@ package business.logic.layer;
 
 public class Constants {
     //change to YOUR username for you local mysql
-    public static final String USERNAME = "guest";
+    public static final String USERNAME = "root";
     //change to YOUR password for your local mysql
     public static final String PASSWORD = "";
 
