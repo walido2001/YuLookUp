@@ -23,6 +23,13 @@ public class  scheduleGenerator {
     static Major spaceMajor = new Major("Space Engineering");
     public static LinkedHashMap<Integer, ArrayList<Course>> spaceCourses = spaceMajor.getMajor();
 
+    /**
+     * This method reads a major, and based on this major depicts which list of courses to use. It also checks for
+     * courses inputted as taken by the user in the user profile, then calls the generateYear() method to generate
+     * the list of courses pertaining to that major for each year, not including courses taken.
+     * @param major is the engineering major inputted by the user
+     * @param coursesTaken is the list of courses taken inputted by the user.
+     */
     public static void scheduleBuilder(String major, ArrayList<Course> coursesTaken) {
 
         LinkedHashMap<Integer,ArrayList<Course>> majorCourses = null;
@@ -61,6 +68,14 @@ public class  scheduleGenerator {
 
     }
 
+    /**
+     * This method takes in a list of courses for a major and organizes them based on year/level. It then uses the
+     * coursesTaken parameter to remove courses already taken from this list.
+     * @param majorCourses List of courses based on major provided by user
+     * @param coursesTaken List of courses taken based on user input
+     * @param year Integer representing course level/year (1, 2, 3, 4)
+     * @return Returns the list of courses for that year
+     */
     public static ArrayList<Course> generateYear(LinkedHashMap<Integer,ArrayList<Course>> majorCourses, ArrayList<Course> coursesTaken, int year) {
         ArrayList<Course> listYear = new ArrayList<>(majorCourses.get(year).size());
         for(int i=0; i<majorCourses.get(year).size(); i++) {
