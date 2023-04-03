@@ -7,6 +7,7 @@ public class TakenCourse {
     private int gradeVal;
     private double credit;
 
+    // Class constructor
     public TakenCourse(Course course, String grade) {
         this.course = course;
         this.grade = grade;
@@ -15,21 +16,32 @@ public class TakenCourse {
         this.credit = Character.getNumericValue(getCourseCode().charAt(getCourseCode().length() - 4));
     }
 
+    // Method returns course object
     public Course getCourse() {
         return course;
     }
+
+    // Method returns course code
     public String getCourseCode() {
         return course.getCode();
     }
+
+    // Method returns the letter grade received for the course
     public String getGrade() {
         return grade ;
     }
+
+    // Method returns the grade in an integer form
     public int getGradeVal() {
         return gradeVal;
     }
+
+    // Method returns the credit earned for the course
     public double getCredit() {
         return credit;
     }
+
+    // Method converts the letter grade into integer one
     public int setGradeVal(String letter) {
         int val = 0;
         if(letter.equals("A+")) val=9;

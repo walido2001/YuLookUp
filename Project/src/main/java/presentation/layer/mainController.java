@@ -59,8 +59,4 @@ public class mainController extends Application { // controller class
         stage.centerOnScreen();
         stage.show();
     }
-
-//    public static void main(String[] args) { // main class
-////        launch(args);
-//    }
 }

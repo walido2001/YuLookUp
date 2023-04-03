@@ -50,6 +50,9 @@ public class Course {
         return (prerequisites == null) ? new ArrayList<>() : this.prerequisites;
     }
 
+    /*
+    Similar to getPrerequisites, except it'll return the Course object form of the prerequisites
+     */
     public ArrayList<Course> getCoursePrerequisites()
     {
         if (this.prerequisites == null || this.prerequisites.size() == 0)
@@ -115,21 +118,7 @@ public class Course {
     {
         return this.code + " | "+ this.name;
     }
-//    public ArrayList<Course> getPrerequisites() {
-//        return prerequisites;
-//    }
 
-//    public void addPrerequisite(Course prereq)
-//    {
-//        if (!prerequisites.contains(prereq))
-//        {
-//            this.prerequisites.add(prereq);
-//        }
-//    }
-
-//    public void setPrerequisites(ArrayList<Course> prerequisites) {
-//        this.prerequisites = prerequisites;
-//    }
     @Override
     public boolean equals(Object obj) {
         if(this == obj) return true;

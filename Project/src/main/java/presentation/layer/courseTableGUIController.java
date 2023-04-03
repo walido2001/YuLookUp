@@ -1,7 +1,5 @@
 package presentation.layer;
 
-import business.logic.layer.Course;
-import business.logic.layer.Major;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -15,14 +13,11 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-
-// following the tutorial found at https://docs.oracle.com/javafx/2/layout/LayoutSample.java.html
-
+import business.logic.layer.Course;
+import business.logic.layer.Major;
 
 public class courseTableGUIController {
     Major major;
@@ -30,29 +25,18 @@ public class courseTableGUIController {
     Parent root;
     Stage stage;
     Scene scene;
-
     HashMap<String, Button> buttonsList = new HashMap<>();
-//    HashMap<String, Button> buttonsYear2 = new HashMap<>();
-//    HashMap<String, Button> buttonsYear3 = new HashMap<>();
-//    HashMap<String, Button> buttonsYear4 = new HashMap<>();
 
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
-
-
+    // The method initializes the window of this UI
     public Scene getMajorsListScene() {
-//        primaryStage.setTitle("Courses By Major");
-
         border = new BorderPane();
         HBox hbox = majorsBar();
         border.setTop(hbox);
         setCourseColumnsView();
         return new Scene (border, 1150, 730);
-//        primaryStage.setScene(new Scene(border, 1150, 820));
-//        primaryStage.show();
     }
 
+    // The method setts up the four columns of courses corresponding to the course level (1 col -> first level courses)
     public void setCourseColumnsView(){
         border.setCenter(null);
         border.setRight(null);
@@ -67,6 +51,7 @@ public class courseTableGUIController {
         }
     }
 
+    // The method formats the information about the course and displays it on the right side of the window
     public void courseDescription(Course course){
         border.setRight(null);
         HBox frame = new HBox();
@@ -85,17 +70,15 @@ public class courseTableGUIController {
         summary.setFont(Font.font("Arial", FontWeight.LIGHT,14)); //"Helvetica"
         summary.setWrappingWidth(400);
 
-//        Text prereqs = new Text("Prerequisites: "+course.getPrerequisites().toString());
-//        prereqs.setFont(Font.font("Arial", FontWeight.LIGHT,14));
-//        prereqs.setWrappingWidth(400);
-
-        description.getChildren().addAll(title, credit, summary /*,prereqs*/);
+        description.getChildren().addAll(title, credit, summary);
         frame.getChildren().addAll(description);
         frame.setHgrow(description, Priority.ALWAYS);
         description.setStyle("-fx-background-color: #FFFFFF");
         border.setRight(description);
     }
 
+    // The method fills a particular year column with the courses of that level
+    // It adds the courses in the form of buttons so that once it's selected, the user will see its prerequisites
     public VBox yearCol(int year, HashMap<String, Button> buttons){
         VBox stack = new VBox();
         stack.setPadding(new Insets(20, 15, 5, 15));
@@ -116,6 +99,7 @@ public class courseTableGUIController {
         return stack;
     }
 
+    // The method utilizes recursion to find and highlight all the prerequisites of a given course
     public void showPrerequisites(Button btn, Course course){
         if(course.getCoursePrerequisites()==null) return;
         for(int i = 0; i<course.getCoursePrerequisites().size(); i++) {
@@ -127,11 +111,13 @@ public class courseTableGUIController {
         }
     }
 
+    // This method de-selects all highlighted prerequisites
     public void clearPrerequisites(){
         for (Map.Entry<String,Button> mapElement : buttonsList.entrySet())
             mapElement.getValue().setStyle("-fx-background-color: #FFFFFF");
     }
 
+    // This method constructs a button given its parameters
     public Button createButton(String text, double width, double height){
         Button btn = new Button(text);
         btn.setStyle("-fx-border-color: #FFFFFF; -fx-border-width: 1px;");
@@ -140,9 +126,8 @@ public class courseTableGUIController {
         return btn;
     }
 
-    public void setCourses(){
-    }
-
+    // This method initializes the header bar consisting of different majors
+    // Upon a click of one of the majors, the method initializes the view with all of the courses in that major
     public HBox majorsBar() {
         HBox hbox = new HBox();
         hbox.setPadding(new Insets(15, 15, 15, 15));
@@ -213,15 +198,12 @@ public class courseTableGUIController {
         return hbox;
     }
 
+    // The method retrieves the short version of a course code of a given course
     private String getShortCode(Course course) {
         return course.getCode().substring(3, course.getCode().length()-5);
     }
 
-    private int getCourseLevel(Course course){
-        String code = getShortCode(course);
-        return Character.getNumericValue(code.charAt(code.length()-4));
-    }
-
+    // The method retrieves the credit of a given course
     private double getCredit(Course course){
         String c = course.getCode();
         return Character.getNumericValue(c.charAt(c.length()-4));

@@ -9,6 +9,7 @@ public class CustomPreloader extends Preloader{
     Stage stage;
     Label label;
 
+    //The Preloader is the GUI that visualizes database setup before the app runs
     public void start(Stage stage) throws Exception {
         this.stage = stage;
         BorderPane p = new BorderPane();

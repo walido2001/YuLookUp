@@ -22,6 +22,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class gpaCalculatorController implements Initializable {
+
+    //representation of a completed course
     private class CompletedCourse{
         String name;
         String grade;
@@ -95,6 +97,7 @@ public class gpaCalculatorController implements Initializable {
     private ArrayList<ChoiceBox> grades = new ArrayList<>();
     private ArrayList<TextField> gradePoints =new ArrayList<>();
 
+    //initializes the input fields
     @FXML
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -149,6 +152,7 @@ public class gpaCalculatorController implements Initializable {
         grades.add(choicebox5);
     }
 
+    //converts the grade selected by the user to their equivalent grade point value
     @FXML
     public void GradeToGradePoint(ActionEvent event){
         try {
@@ -208,6 +212,7 @@ public class gpaCalculatorController implements Initializable {
         textFieldGPA.setText(""+gpa);
         textFieldCredits.setText(""+TotalCredits);
     }
+
     @FXML
     private void AddCourses(ActionEvent event){
         toCompleted();
@@ -215,6 +220,8 @@ public class gpaCalculatorController implements Initializable {
         clearFields();
         fillCoursesAdded();
     }
+
+    //removes a course with the same course number as provided by the user
     @FXML
     private void removeCourse(ActionEvent event){
 
@@ -224,6 +231,8 @@ public class gpaCalculatorController implements Initializable {
         CalculateGPA(event);
         fillCoursesAdded();
     }
+
+    //adds courses given by the user to the completed list if they have not been added already
     @FXML
     private void toCompleted(){
 
@@ -248,9 +257,8 @@ public class gpaCalculatorController implements Initializable {
     }catch(Exception e){
 
     }
-
-       // fillCoursesAdded(event);
     }
+    //fills the courses added text area with all the courses taken and their associated values
     @FXML
     private void fillCoursesAdded(){
         textAreaCourses.setText(" ");
@@ -260,10 +268,12 @@ public class gpaCalculatorController implements Initializable {
 
         }
     }
+
+    //clears only the user input fields
     @FXML
     private void clearFields(){
         for ( int i=0; i <gradePointFields.size(); i++){
-            //courseNames.get(i).clear();
+
             courseNames.get(i).setText(null);
             creditWeightFields.get(i).setText(null);
             gradePointFields.get(i).setText(null);
@@ -271,6 +281,7 @@ public class gpaCalculatorController implements Initializable {
 
         }
     }
+    //clears all the fields associated with the Gpa calculator
     @FXML
     private void Clear(ActionEvent event) throws IOException {
 
