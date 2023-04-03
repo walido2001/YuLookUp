@@ -11,6 +11,17 @@ public class Database {
 
     //creates database and populates it on user's system
     public static void formDatabase() throws Exception {
+        ResultSet rs = null;
+        try (Connection conn = DriverManager.getConnection(Constants.CONNECTION1, Constants.USERNAME, Constants.PASSWORD)) {
+            rs = conn.getMetaData().getCatalogs();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        while(rs.next()){
+            String catalogs = rs.getString(1);
+            if(Constants.DATABASE.equals(catalogs)) return;
+        }
 
         // Opening a connection and creating database
         try (Connection conn = DriverManager.getConnection(Constants.CONNECTION1, Constants.USERNAME, Constants.PASSWORD);
